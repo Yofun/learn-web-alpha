@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 1、变量值的改变
+    var age = 18;
+    console.log(age)
+    age = 20;
+    console.log(age);
+
+    // 2、变量的多个声明
+    var name = '张三',height = 170,weight = 55;
+    console.log(name);
+    console.log(height);
+    console.log(weight);
+
+
+    // 3、声明变量的特殊情况
+    // 3.1 只声明不赋值
+    var sex;
+    console.log(sex); // undefined
+    // 3.2 不声明 也不赋值
+    // console.log(tel); // Uncaught ReferenceError: tel is not defined
+    // 3.3 不声明，直接赋值使用
+    qq = 110;
+    console.log(qq); // 110 表示不声明直接赋值也可以 表示为全局的变量，不提倡使用
+
+</script>
