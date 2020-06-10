@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    // 1、算术运算符 + - * / %
+    console.log(1 + 1); // 2
+    console.log(1 - 1); // 0
+    console.log(12 * 2); // 24
+    console.log(12 / 2); // 6
+    console.log(4 % 3); // 1
+    console.log(3 % 4); // 1
+
+
+    // 2、浮点数：在算术运算符中有问题
+    console.log(0.1 + 0.2); // 0.30000000000000004
+    console.log((0.1 + 0.2) == 0.3); // false
+    
+    
+    // 3、表达式：数字、运算符、变量等组成的式子  我们称之为表达式。表达式又应该有返回值给我们
+    console.log(1 + 1);
+
+    // 4、递增 递减运算符
+    var num = 0;
+    console.log(num++);  // 0
+    console.log(++num);  // 2
+
+    // 5、比较运算符
+    console.log(3 > 5); // false
+    console.log(3 < 5); // true
+    console.log(3 == 5); // false
+    console.log(3 >= 5); // false
+    console.log(3 <= 5); // true
+    console.log(18 == '18'); // true  会转换数据类型
+    console.log(true == 1); // true
+    console.log(false == 0); // true
+    console.log(undefined == 0); // false
+    console.log(null == 0); // false
+    console.log(true == 'true');  // false
+    console.log(false == 'false'); // false
+
+
+    // 6、逻辑运算符 && || !
+
+
+    // 7、短路
+    // 逻辑与  如果第一个为真，则返回表达式二；如果第一个为假，则返回第一个
+    console.log(0 && 333 && 444); // 0
+    console.log(222 && 0 && 444); // 0
+    console.log(222 && 333 && 444); // 444
+    // 逻辑或  如果表达式1结果为真，则返回表达式1；如果表达式1结果为假，则返回表达式2
+    console.log(0 || 2);
+    console.log(1 || 2);
+    console.log(0 || 0);
+    {
+        var num = 0;
+        console.log(123 || num++);
+        console.log(num); // 0
+        console.log(123 && num++);
+        console.log(num); // 1
+    }
+
+
+    // 8、赋值运算符 =  +=  -= *=  /=  %=
+    
+    
+    
+    // 9、运算符优先级 从高到低
+    // 小括号
+    // 一元运算符
+    // 比较运算法
+    // 算术运算法
+    // 逻辑运算符  && 大于 ||
+    
+    
+    
+</script>

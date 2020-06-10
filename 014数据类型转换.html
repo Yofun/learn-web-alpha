@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    // 1、转换成字符转
+    // 变量.toString()
+    var num = 11;
+    console.log(num.toString());  // 字符串类型的11
+    // String()
+    console.log(String(11));  // 11
+    // 字符串+任何类型
+    console.log(11+'');
+    
+    
+    // 2、转换成数字类型
+    // parseInt 转换为整数
+    console.log(parseInt('18.9'));  // 18
+    console.log(parseInt('120px')); // 120
+    console.log(parseInt('rem120')); // NaN
+    // parseFloat 转换为浮点数
+    console.log(parseFloat('3.14')); // 3.14
+    console.log(parseFloat('10')); // 10
+    console.log(parseFloat('120px')); // 120
+    console.log(parseFloat('rem120')); // NaN
+    // Number() 转换为数字类型
+    console.log(Number('123'));
+    console.log(Number('123.123'));
+    // 利用运算符 - * / 进行隐式转换
+    console.log('12' - 2); // 10
+    console.log('12' - '2'); // 10
+    console.log('12' * '2'); // 24
+    console.log('12' / '2'); // 6
+
+
+    // 3、其他类型转换为布尔类型
+    console.log(Boolean('')); // false
+    console.log(Boolean(undefined)); // false
+    console.log(Boolean(null)); // false
+    console.log(Boolean(NaN)); // false
+    console.log(Boolean(0)); // false
+
+    console.log(Boolean(1)); // true
+    console.log(Boolean('你好')); // true
+    console.log(Boolean(true)); // true
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+</script>

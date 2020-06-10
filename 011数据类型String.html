@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  var str = "字符串";
+
+  // 字符串嵌套
+  var str1 = '我是一个"高富帅"的程序员'; // 外单内双
+  console.log(str1);
+  var str2 = "我是一个'高富帅'的程序员"; // 外双内单
+  console.log(str2);
+  var str3 = '我是一个"高富帅"的程序员'; // 转义符
+  console.log(str3);
+
+  // 字符串转义字符 都是使用\开头的，
+  // \n 换行
+  // \\ \
+  // \' 单引号
+  // \" 双引号
+  // \t 缩进
+  // \b 空格
+
+  // 检测获取字符串的长度
+  var strLength = "my name is andy";
+  console.log(strLength.length); // 15
+
+  // 字符串拼接  字符串+任何类型=一个新的字符串
+  console.log("沙漠" + "骆驼🐫");
+  console.log("沙漠" + 222); // 沙漠222
+  console.log("沙漠" + true); // 沙漠true
+  console.log("23" + 7); // 237
+  console.log(5 + "5"); // 55
+  console.log("我" + 1 + 2); // 我12
+
+ 
+
+</script>
