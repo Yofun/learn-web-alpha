@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 1、数组：数组是指一组数据的集合，其中的每个数据被称作元素，在数组中可以存放任意类型的元素。数组是一种将一组数据存储在单个变量名下的优雅方式。
+
+    // 2、数组中可以存放任意类型的值
+
+    // 3、创建数组的两种方式
+    var array1 = [];
+    var array2 = new Array();
+    console.log(array1);
+    console.log(array2);
+    
+    // 4、数组元素
+    var array3 = [1,2,3,'老师',true,undefined,null]
+    console.log(array3);
+
+    // 5、获取数组元素:数组名[索引号]
+    console.log(array3[3]);
+    
+
+    // 6、数组的遍历
+    for(let i = 0;i<array3.length;i++){
+        console.log(array3[i]);
+    }
+
+    // 7、求数组最大值:冒泡算法
+    {
+        let array = [1,23,4,5,6,7,2,83,11,23,43,56,67];
+        let max = 0;
+        for(let i = 0;i<array.length;i++){
+            let c = array[i];
+            if(max < c){
+                max = c;
+            }
+        }
+        console.log('最大值为：'+max);  
+    }
+
+    // 8、数组排序:冒泡排序算法
+    {
+        let array = [1,23,4,5,6,7,2,83,11,23,43,56,67];
+        let max = 0;
+        for(let i = 0;i<array.length;i++){
+            let c = array[i];
+            if(max < c){
+                max = c;
+            }
+        }
+        console.log('最大值为：'+max);  
+    }
+
+    // 9、修改索引值 追加数组元素
+    {
+        let array = []; // 空数组
+        array.length = 1;
+        console.log(array); // [empty]
+        array[0] = '张三';
+        console.log(array); // ["张三"]
+    }
+
+
+    // 10、将大于10的数放在新的数组中
+    {
+        let array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+        let newArray = []
+        for(let i = 0;i<array.length;i++){
+            if(array[i] > 10){
+                newArray[newArray.length] = array[i];
+            }
+        }
+        console.log(newArray);    
+    }
+
+
+    // 11、数组的冒泡排序
+    {
+        let arr = [5,4,3,2,1];
+        for(let i = 0;i<arr.length;i++){
+            for(let j = 0;j<arr.length-1-i;j++){
+                if(arr[j] > arr[j+1]){
+                    let tem = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = tem;
+                }
+            }
+        }
+        console.log(arr);  
+    }
+
+    
+</script>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // 简单的for循环
+  for (let i = 0; i < 5; i++) {
+    console.log(i);
+  }
+
+  // while循环
+  {
+    let num = 0;
+    while (num < 5) {
+      console.log("while>>>>" + num);
+      num++;
+    }
+  }
+
+  // do while循环
+  {
+    let num = 0;
+    do {
+      num++;
+      console.log("do...while>>>>" + num);
+    } while (num < 5);
+  }
+
+  // 九九乘法表
+  {
+    console.log("-------乘法口诀------");
+    for (let i = 1; i <= 9; i++) {
+        let sum = '';
+      for (let j = 1; j <= i; j++) {
+        sum += (j + "*" + i + "=" + (i * j)+'\t')
+      }
+      console.log(sum);
+    }
+    console.log("-------乘法口诀------");
+  }
+
+  // 1~100的和
+  {
+    let sum = 0;
+    for (let i = 1; i <= 100; i++) {
+      sum += i;
+    }
+    console.log("1~100的和为：" + sum);
+  }
+
+  // 打印☆
+  {
+    for (let i = 1; i <= 10; i++) {
+      let sum = "";
+      for (let j = 10; j >= i; j--) {
+        sum += "☆";
+      }
+      console.log(sum);
+    }
+  }
+</script>
