@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    /**
+    声明对象的三种方法
+        1、字面量
+        2、使用new关键字
+        3、使用构造方法
+    */
+
+    // 1、使用字面量
+    var dog = {
+        name: '王可可',
+        age: 5,
+        sayHi: function () {
+            console.log('hello~');
+        }
+    }
+
+    // 2、使用new创建对象
+    var zhu = new Object(); // 创建一个空对象
+    zhu.name = '朱元璋';
+    zhu.age = 500;
+    zhu.sayHi = function () {
+        console.log('hello');
+    }
+
+    // 3、利用构造函数创建对象
+    function Star(uname,age,sang) {
+        this.name = uname;
+        this.age = age;
+        this.song = function() {
+            console.log('我的名字叫做'+this.name+',今年'+age+'岁啦,我唱过'+sang);
+        }
+    }
+    var ldh = new Star('刘德华',54,'冰雨');
+    ldh.song();
+    var zxy = new Star('张学友',54,'李香兰');
+    zxy.song();
+
+
+    // 遍历对象 for...in...
+    for (var key in ldh) {
+        console.log(key+'====>'+ldh[key]);
+    }
+
+
+</script>

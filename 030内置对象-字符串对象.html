@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内置对象-字符串对象</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    // 1、indexOf()和lastIndexOf()
+    var str1 = '改革春风吹满地,春天来了';
+    console.log(str1.indexOf('春',3));  // 第二个参数表示开始索引的位置
+    console.log(str1.lastIndexOf('春',3));  // 
+
+
+    // 2、根据字符位置返回字符
+    // charAt()
+    var str2 = 'hello world';
+    console.log(str2.charAt(1));
+    // charCodeAt() 返回相应索引号的字符ASCII值，目的：判断用户按下哪个键
+    console.log(str2.charCodeAt(0));
+    // str[index]
+    console.log(str2[0]); // h
+
+    // 利用charAt统计字符串出现数量
+    let s = {};
+    var str3 = '18738079950';
+    for(let i = 0;i < str3.length; i++) {
+        let w = str3.charAt(i);
+        if (s[w]) {
+            s[w] ++
+        }else {
+            s[w] = 1
+        }
+    }
+    console.log(s);
+
+
+    // 3、字符串拼接 concat 返回一个新的字符串
+    var str4 = 'pink';
+    console.log(str4.concat('老师'));   // 返回一个新的字符串
+    console.log(str4);  // 原来的字符串不变
+
+
+    // 4、截取字符串 substr(开始位置，个数)
+    var str5 = 'pink老师';
+    console.log(str5.substr(0,2));  // 返回截取的字符串
+    console.log(str5);  // 原来的字符串不变
+
+
+    // 5、截取字符串 slice(开始位置，结束位置(不包含,可不填))
+    console.log(str5.slice(0,2)); // pi
+    console.log(str5); // 原来的字符串不变
+
+
+    // 6、截取字符串 substring(开始位置，结束位置(不包含,可不填))
+    console.log(str5.substring(0,2)); // pi
+    console.log(str5); // 原来的字符串不变
+
+
+    // 7、替换字符串 replace('被替换的字符','替换为的字符')
+    var str7 = '改革春风吹满面,春天来了';
+    console.log(str7.replace('春','pink老师')); // 返回新的替换的字符串,只替换第一个
+    console.log(str7); // 原字符串不变
+    // 扩展：使用正则表达式替换全部的
+    console.log(str7.replace(new RegExp('春','g'),'pink老司机'));
+
+
+    // 8、字符串分割为数组
+    var str8 = '我,你,他'
+    console.log(str8.split(','));
+    console.log(str8); // 原字符串不会变
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+</script>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内置对象-数组对象</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    // 1、创建数组的两种方法
+    // 字面量方式
+    var array1 = [1, 2, 3]
+    console.log(array1);
+    // new
+    var array2 = new Array(1, 2, 3);
+    console.log(array2);
+
+
+    // 2、检测是否为数组
+    // 第一种 instanceof
+    console.log([1] instanceof Array); // true
+    console.log(1 instanceof Array);   // false
+    console.log('sdsd' instanceof Array);   // false
+    console.log(undefined instanceof Array);   // false
+    console.log(null instanceof Array);   // false
+    console.log(NaN instanceof Array);   // false
+    console.log(true instanceof Array);   // false
+    // Array.isArray()  h5新增方法，IE9+
+    console.log(Array.isArray([123])); // true
+    console.log(Array.isArray(1)); // false
+    console.log(Array.isArray(true)); // false
+    console.log(Array.isArray(undefined)); // false
+    console.log(Array.isArray(null)); // false
+    console.log(Array.isArray('null')); // false
+
+
+    // 3、添加数组元素
+    var array3 = [1, 2, 3];
+    // 在数组后面追加 并返回数组的长度
+    array3.push(4, 'pink');
+    console.log(array3);
+    // 在数组前面进行添加 并返回数组的长度
+    array3.unshift(-1, 0);
+    console.log(array3);
+
+
+    // 4、删除数组元素
+    // 删除数组最后一个元素
+    console.log(array3.pop());  // 返回值为被删除的元素
+    console.log(array3);
+    // 删除数组第一个元素
+    console.log(array3.shift());    // 返回值为被删除的元素
+    console.log(array3);
+
+
+    // 5、翻转数组
+    var array4 = ['pink', 'red', 'blue']
+    array4.reverse()
+    console.log(array4);
+
+
+    // 6、数组排序
+    var array5 = [1, 9, 2, 5, 6, 10];
+    // 个位数没问题，>10的时候就会有问题
+    array5.sort();
+    console.log(array5); // [1, 10, 2, 5, 6, 9]
+    // 以上问题解决方案
+    // 升序排序
+    array5.sort((a , b)=>{
+        return a - b;
+    })
+    console.log(array5); // [1, 2, 5, 6, 9, 10]
+    // 降序排序
+    array5.sort((a , b)=>{
+        return b - a;
+    })
+    console.log(array5); // [10, 9, 6, 5, 2, 1]
+
+
+    // 7、数组索引 indexOf()、lastIndexOf()
+    var array6 = [1,2,2,3,4,5]
+    console.log(array6.indexOf(5));     // 返回索引号 5
+    console.log(array6.indexOf(10));    // 未找到返回 -1
+    console.log(array6.indexOf(2));     // 找到返回第一个 1
+
+
+    // 8、数组转换为字符串
+    var array7 = [1,2,3];
+    console.log(array7.toString());
+    console.log(array7.join(','));
+
+
+    // 9、map() 方法创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值。
+    var array8 = [1,2,3]
+    console.log(array8.map(x=>x*2));    // 返回一个新数组 [2,4,6]
+
+
+    // 10、slice() 方法返回一个新的数组对象，这一对象是一个由 begin 和 end 决定的原数组的浅拷贝（包括 begin，不包括end）。原始数组不会被改变。
+    var array9 = [0,1,2,3,4,5,6]
+    console.log(array9.slice(0,5)); // 包括第0个，不包括第5个  [0,1,2,3,4]
+    console.log(array9);    // 原数组不变 [0,1,2,3,4,5,6]
+
+
+    // 11、splice(开始索引,删除个数,替换的元素...) 方法通过删除或替换现有元素或者原地添加新的元素来修改数组,并以数组形式返回被修改的内容。此方法会改变原数组。
+    var array10 = [0,1,2,3,4,5,6];
+    array10.splice(0,0) // 什么都没做，原数组不变
+    console.log(array10); 
+    array10.splice(1,0,'pink老师');
+    console.log(array10); // 从第1个索引处添加pink老师 [0, "pink老师", 1, 2, 3, 4, 5, 6]
+    array10.splice(0,2,'pink老师','张三','李四');
+    console.log(array10);   // 从数组第0处索引删除2个元素，并在第0个索引处添加 'pink老师','张三','李四'.所以结果为["pink老师", "张三", "李四", 1, 2, 3, 4, 5, 6]
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

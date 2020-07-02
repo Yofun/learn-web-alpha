@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本数据类型和引用类型</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    /**
+    基本数据类型：string、number、boolean、undefined、null
+    引用类型：Object、Array、Date、String。。。。
+
+    1）简单数据类型 是存放在栈里边 里边直接开辟了一个空间存放的是值
+    2）复杂数据类型 首先在栈里边存放一个十六进制的地址 这个地址指向堆里存放的数据
+    */
+
+    console.log(typeof null);   // object
+
+
+    // function fn(a) {
+    //     a++;
+    //     console.log(a); // 11
+    // }
+
+    // var x = 10;
+    // fn(x);
+    // console.log(x); // 10
+
+    
+    function Person(name) {
+        this.name = name;
+    }
+
+    function fn(x) {
+        console.log(x.name);    // 2. 刘德华
+        x.name = '张学友';
+        console.log(x.name);    // 3. 张学友
+    }
+
+    var p = new Person('刘德华')
+    console.log(p.name);    // 1. 刘德华
+    fn(p)
+    console.log(p.name);    // 4. 张学友
+    
+    
+</script>

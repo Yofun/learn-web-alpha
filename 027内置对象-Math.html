@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内置对象-Math</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    /**
+    Math数学对象 不是一个构造函数，所以我们不需要new来调用，而是直接使用里边的属性和方法即可
+    */
+
+    // 1、圆周率
+    console.log(Math.PI);   // 3.141592653589793
+
+
+    // 2、求最大值
+    console.log(Math.max(1, 99, 23)); // 99
+    //如果有参数为非数字类型的值
+    console.log(Math.max('hhh', 1, 2, 3)); // NaN
+    console.log(Math.max(null, 1, 2, 3)); // 3
+    console.log(Math.max(true, 1, 2, 3)); // 3
+    console.log(Math.max(undefined, 1, 2, 3)); // NaN
+    // 如果没有参数
+    console.log(Math.max());    // -Infinity
+
+
+    // 3、求最小值
+    console.log(Math.min(-1, 10));   // -1
+    console.log(Math.min()); // Infinity
+    console.log(Math.min() > Math.max());   // true
+    
+    
+
+
+    // 4、绝对值
+    console.log(Math.abs(5)); // 5
+    console.log(Math.abs(-5)); // 5
+    console.log(Math.abs('-5')); // 5
+    console.log(Math.abs(undefined)); // NaN
+    console.log(Math.abs(true)); // 1
+    console.log(Math.abs(false)); // 0
+    console.log(Math.abs(null)); // 0
+
+
+    // 5、向下取整
+    console.log(Math.floor(1.1)); // 1
+    console.log(Math.floor(1.5)); // 1
+    console.log(Math.floor(1.9)); // 1
+
+
+    // 6、向上取整
+    console.log(Math.ceil(1.1));    // 2
+    console.log(Math.ceil(1.5));    // 2
+    console.log(Math.ceil(1.9));    // 2
+
+
+    // 7、四舍五入 其他数字都是四舍五入，但是 .5 比较特殊 它往大了取
+    console.log(Math.round(1.1));   // 1
+    console.log(Math.round(1.5));   // 2
+    console.log(Math.round(1.9));   // 2
+    console.log(Math.round(-1.1));   // -1
+    console.log(Math.round(-1.5));   // -1  注意
+    console.log(Math.round(-1.9));   // -2
+
+
+    // 8、随机数 Math.random() 返回一个随机的小数, [0,1)之间
+    console.log(Math.random());
+    // 两个数之间的随机整数
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    console.log(getRandomInt(0,10));
+    // 随机点名
+    var classNames = ['张三','李四','王五','赵六','张三丰','张三疯','李思思','李思']
+    console.log(classNames[getRandomInt(0,classNames.length - 1)]);
+    
+
+</script>

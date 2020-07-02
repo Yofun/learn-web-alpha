@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    /*
+    1、我们的js引擎运行js 分为两步：预解析  代码执行
+    2、预解析js引擎会把js里面所有的var 还有function提升到当前作用域的最前面
+    3、代码执行  按照代码书写的顺序从上往下执行
+
+    2、预解析分为变量预解析（变量提升）和函数预解析（函数提升）
+        1）变量提升     就是把所有的变量声名提升到当前的作用域最前面    不提升赋值操作
+        2）函数提升     就是把所有的函数声明提升到当前的作用域最前面    不调用函数
+    */
+
+
+    // // 案例一
+    // var num = 10;
+    // fun();
+    // function fun() {
+    //     console.log(num);
+    //     var num = 20;
+    // }
+    // // 相当于
+    // var num = 10;
+    // fun();
+    // function fun() {
+    //     var num;
+    //     console.log(num);    // undefined
+    //     num = 20;
+    // }
+
+
+    // // 案例二
+    // var num = 10;
+    // fn();
+    // function fn() {
+    //     console.log(num);
+    //     var num = 20;
+    //     console.log(num);
+    // }
+    // // 相当于
+    // var num = 10;
+    // fn();
+    // function fn() {
+    //     var num;
+    //     console.log(num);   // undefined
+    //     num = 20;
+    //     console.log(num);   // 20
+    // }
+
+
+    // // 案例三
+    // var a = 18;
+    // f1();
+    // function f1() {
+    //     var b = 9;
+    //     console.log(a); // undefined
+    //     console.log(b); // 9
+    //     var a = '123';
+    // }
+    // // 相当于
+    // var a = 18;
+    // f1();
+    // function f1() {
+    //     var a;
+    //     var b;
+    //     b = 9;
+    //     console.log(a); // undefined
+    //     console.log(b); // 9
+    //     a = '123';
+    // }
+
+
+    // 案例四
+    f1();
+    console.log(c);  // 9
+    console.log(b);  // 9
+    console.log(a);  // a is not defined
+    function f1() {
+        var a = b = c = 9;
+        console.log(a); // 9
+        console.log(b); // 9
+        console.log(c); // 9
+    }
+    
+
+
+
+
+
+
+
+</script>
