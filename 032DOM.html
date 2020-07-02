@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="myDiv">这是一个div喔~</div>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <ul>
+        <li>生僻字</li>
+        <li>生僻字</li>
+        <li>生僻字</li>
+        <li>生僻字</li>
+        <li>生僻字</li>
+    </ul>
+
+
+    <div class="box">这是1</div>
+    <div class="box">这是2</div>
+    <div class="box">这是3</div>
+</body>
+
+</html>
+<script>
+    // 文档对象模型（Document Object Model，简称DOM），是w3c组织推荐的处理可扩展标记语言的标准编程接口
+
+    /*
+    获取页面元素
+        根据ID获取
+        根据标签名获取
+        通过HTML5新增方法获取
+        特殊元素获取
+    */
+
+    // 1、根据元素ID获取
+    var div = document.getElementById('myDiv')
+    console.log(div); // 打印元素对象 <div id="myDiv"></div>
+    console.dir(div); // 打印出元素对象的属性和方法
+
+
+
+    // 2、根据标签获取到一个集合
+    var lis = document.getElementsByTagName('li');
+    // 遍历每个元素
+    for (let i = 0; i < lis.length; i++) {
+        console.log(lis[i].innerText);
+    }
+    // 扩展，可以通过element.getElementByTagName
+    var lis2 = document.getElementsByTagName('ul')[1].getElementsByTagName('li');
+    console.log(lis2);
+
+
+
+    // 3、通过类名获取  HTML5方法 IE9+
+    var boxs = document.getElementsByClassName('box');
+    // 遍历循环boxs
+    for (let i = 0; i < boxs.length; i++) {
+        boxs[i].style.color = 'red';
+    }
+
+
+    // 4、querySelector 返回指定选择器的第一个元素对象  HTML5方法 IE9+
+    var box1 = document.querySelector('.box')
+    console.log(box1);
+
+
+    // 5、querySelectorAll  返回指定选择器所有元素的对象集合
+    var htmls = document.querySelectorAll('.box');
+    console.log(htmls);
+
+
+    // 6、获取页面中的所有元素
+    var all1 = document.getElementsByTagName('*')
+    console.log(all1);
+    var all2 = document.querySelectorAll('*')
+    console.log(all2);
+    // 统计页面所有元素的个数
+    let array = Object.entries([...document.querySelectorAll('*')].map(v => v.tagName).reduce((res, a) => { res[a] = (res[a] || 0) + 1; return res; }, {})).sort((a, b) => b[1] - a[1])
+    console.log(array);
+
+
+
+    // 7、获取body元素
+    var body = document.body
+    console.dir(body);
+    
+
+    // 8、获取html元素
+    var html = document.documentElement;
+    console.dir(html);
+    
+
+
+
+
+
+
+
+
+</script>

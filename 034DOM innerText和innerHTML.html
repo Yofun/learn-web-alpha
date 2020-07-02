@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myDiv"></div>
+
+    <div id="myDiv2">
+        <span>
+            这是一段文字
+        </span>
+    </div>
+
+    <div id="myDiv3"></div>
+</body>
+</html>
+
+<script>
+    // innerText
+
+    var myDiv = document.getElementById('myDiv');
+    myDiv.innerText = "这是一个文字哦哦哦~"
+
+
+    // innerText不识别html标签
+    var myDiv2 = document.getElementById('myDiv2')
+    myDiv2.innerText = '<strong>这是一段文字啦啦啦啦</strong>'
+
+
+
+    // innerHtml识别html标签  保留空格和换行
+    document.getElementById('myDiv3').innerHTML = '<strong>这是一段      文字啦啦啦啦</strong>'
+</script>

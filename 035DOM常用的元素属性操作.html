@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用元素属性操作</title>
+</head>
+<body>
+    <button onclick="changeLdh()">刘德华</button>
+    <button onclick="changeZxy()">张学友</button>
+    <img src="" alt="" id="myImg">
+</body>
+</html>
+
+<script>
+
+    var img = document.getElementById('myImg')
+
+    // 改变为刘德华
+    function changeLdh() {
+        img.src = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593698052836&di=cd34770a54774d6c44e481b6a23c3acd&imgtype=0&src=http%3A%2F%2Fimg4.imgtn.bdimg.com%2Fit%2Fu%3D1139014529%2C2645734805%26fm%3D214%26gp%3D0.jpg'
+        img.title = '刘德华'
+    }
+
+    // 改变为张学友
+    function changeZxy(){
+        img.src = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593698080167&di=3cdb6606a11934298957819410001c89&imgtype=0&src=http%3A%2F%2Fi7.qhimg.com%2Ft017111f3086541e3e3.jpg'
+        img.title = '张学友'
+    }
+
+
+</script>
