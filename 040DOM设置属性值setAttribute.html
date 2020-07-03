@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置属性值</title>
+</head>
+<body>  
+    <img src="" alt="" id="img">
+</body>
+</html>
+
+<script>
+    /* 
+    设置元素属性： 
+        1）element.属性名 = 值                 只可以设置内置的自带属性
+        2）element.setAttribute('属性名','属性值')  可以设置内置自带属性，也可以设置自定义属性
+    */
+
+    var img = document.getElementById('img')
+    img.src = 'https://ww3.sinaimg.cn/bmiddle/005JggDZly1ggdlcgsu3pg30hr09k4qp.gif'
+    img.title = '隐秘的角落'
+
+    img.setAttribute('tv-name',"《隐秘的角落》");
+    
+</script>

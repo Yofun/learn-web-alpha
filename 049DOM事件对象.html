@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+    </ul>
+</body>
+</html>
+
+<script>
+    document.documentElement.onclick = function(e) {
+        // 兼容IE
+        var e = e || window.event;
+        console.log(e);
+
+        // 点击的对象
+        var target = e.target || e.srcElement;
+        console.log(target);
+
+        // this返回的是绑定的那个对象
+        console.log(this);
+
+        // 事件类型
+        console.log(e.type);
+        
+
+        // 阻止默认行为
+        // 普通浏览器
+        e.preventDefault()
+        // IE678
+        e.returnValue
+        // 通用 只限于.onclick方式
+        return false;
+        
+        
+        
+        
+    }
+</script>

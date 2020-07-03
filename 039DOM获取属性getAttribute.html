@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo" name="这是一个div"></div>
+</body>
+</html>
+
+<script>
+    /**
+    获取属性的方法
+        element.属性名          获取元素自带的属性
+        element.getAttribute()  获取元素自带的属性、自定义的属性
+    */
+
+    var div = document.getElementById('demo')
+    console.log(div.id);    // demo
+    console.log(div.name);  // undefined
+
+    console.log(div.getAttribute('id'));    // demo
+    console.log(div.getAttribute('name'));  // 这是一个div
+    
+    
+</script>

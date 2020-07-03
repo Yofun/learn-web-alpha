@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复制元素节点</title>
+</head>
+<body>
+    <ul>
+        <li><a href="javascript:void(0);">11111</a></li>
+    </ul>
+</body>
+</html>
+
+<script>
+
+    // cloneNode(arg)  参数为空或者参数为false，表示为浅拷贝。只克隆元素标签，不会克隆内容
+    var ul = document.querySelector('ul')
+    var node = ul.children[0].cloneNode();
+    ul.appendChild(node)
+    // 如果参数为true  则表示为深克隆，可以克隆标签的内容
+    var node2 = ul.children[0].cloneNode(true)
+    ul.appendChild(node2)
+
+</script>

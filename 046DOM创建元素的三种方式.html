@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击</button>
+    <div>abc</div>
+    <div id="inner"></div>
+    <div id="create"></div>
+</body>
+
+</html>
+
+<script>
+    /* 
+        第一种：document.write
+            如果文档流加载完毕，使用此方法创建元素，则会导致页面重绘
+     */
+    // window.onload = function() {
+    //     document.write('123')   // 页面之前的元素都不见了，只会显示我们写的123
+    // }
+
+
+    /* 
+        第二种：innerHTML 创建元素
+            拼接字符串的方式添加元素，效率低，耗时长，耗内存
+            解决方法：使用数组拼接，然后join转换成字符串，效率就很高
+     */
+    // 使用字符串拼接方式
+    // var startTM = Date.now();
+    // var div = document.querySelector('#inner')
+    // for (var i = 0;i < 2000; i++){
+    //     div.innerHTML += '<a href="javascript:;">百度地图</a>'
+    // }
+    // console.log('耗时：'+(+new Date() - startTM)); // 耗时：4439
+
+    // 使用数组的拼接方式
+    // var startTM = Date.now();
+    // var array = [];
+    // var div = document.querySelector('#inner')
+    // for (var i = 0;i < 2000; i++){
+    //     array.push('<a href="javascript:;">百度地图</a>')
+    // }
+    // div.innerHTML = array.join('')
+    // console.log('耗时：'+(+new Date() - startTM)); // 耗时：5
+
+
+
+    /* 
+        第三种：使用element.createElement
+            效率比innerHTML的数组拼接要低一点
+     */
+    // var startTM = Date.now();
+    // var div = document.querySelector('#create');
+    // for (var i = 0; i < 2000; i++) {
+    //     var a = document.createElement('a');
+    //     a.href = 'javascript:;';
+    //     a.innerHTML = '百度';
+    //     div.appendChild(a)
+    // }
+    // console.log('耗时：'+(+new Date() - startTM)); // 耗时：15
+
+
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>传统事件</button>
+    <button>监听事件</button>
+    <button>IE9以前</button>
+</body>
+</html>
+
+<script>
+    var buttons = document.body.children;
+
+    // 传统事件：具有唯一性，后面的事件会覆盖前面的事件
+    buttons[0].onclick = function () {
+        console.log('点击了我1');
+    }
+    buttons[0].onclick = function() {
+        console.log('点击了我2');
+    }
+    // 结果：点击了我2
+
+
+    // 方法监听注册方式：同一个元素可以注册多个监听事件  addEventListener(type,listener,useCapture)
+    // IE9+
+    // 解决IE9之前版本的：element.attachEvent('onclick',function)   不推荐使用
+    buttons[1].addEventListener('click',function() {
+        console.log('点击了我1');
+    })
+    buttons[1].addEventListener('click',function() {
+        console.log('点击了我2');
+    })
+    // 结果：点击了我1      点击了我2
+
+        
+</script>

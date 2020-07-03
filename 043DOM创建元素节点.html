@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建元素节点</title>
+    <style>
+        img {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="myDiv">
+        <div>这是一个内容</div>
+    </div>
+</body>
+</html>
+
+<script>
+    var div = document.querySelector('#myDiv')
+
+    // 1、创建元素节点
+    var img1 = document.createElement('img')
+    img1.setAttribute('src','https://img1.doubanio.com/view/photo/l/public/p2609399538.webp')
+
+    // 2、将创建的元素节点添加到指定的容器后面去
+    div.appendChild(img1)
+
+    // 3、将元素节点添加到指定容器前面 insertBefore(插入的元素，哪个元素的前面)
+    var img2 = document.createElement('img')
+    img2.setAttribute('src','https://img1.doubanio.com/view/photo/l/public/p2609399538.webp')
+    div.insertBefore(img2,div.children[0])
+
+    
+
+
+
+
+</script>

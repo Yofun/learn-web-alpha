@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+</head>
+<body>
+    <ul>
+        <li>德玛西亚1</li>
+        <li>德玛西亚2</li>
+        <li>德玛西亚3</li>
+        <li>德玛西亚4</li>
+        <li>德玛西亚5</li>
+    </ul>
+</body>
+</html>
+
+<script>
+    var ul = document.querySelector('ul')
+
+    /**
+    给父元素添加点击事件，然后通过e.target判断具体点击的是哪个子元素，然后对子元素做相应的改变
+    */
+    ul.addEventListener('click',function(e) {
+        var e = e || window.event
+        console.log(e.target);
+        var item = e.target;
+        alert(item.innerText);
+        
+    })
+</script>

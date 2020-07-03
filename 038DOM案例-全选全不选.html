@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全选全不选</title>
+    <style>
+        thead tr {
+            background-color: green;
+            color: white;
+        }
+        tr {
+            padding: 5px 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <table width="500" align="center" border="1" cellspacing="0">
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="checkAll"></th>
+                <th>商品</th>
+                <th>价钱</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>IPhone 8</td>
+                <td>8000</td>
+            </tr>
+
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iPad pro</td>
+                <td>5000</td>
+            </tr>
+
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>iPad Air</td>
+                <td>2000</td>
+            </tr>
+
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Apple Watch</td>
+                <td>2000</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+
+<script>
+    // 获取元素
+    var checkAll = document.getElementById('checkAll');
+    var checkboxs = document.getElementById('tbody').getElementsByTagName('input');
+
+    // 点击事件
+    // 全选/全不选的点击事件
+    checkAll.onclick = function() {
+        for(var i = 0; i < checkboxs.length; i++) {
+            checkboxs[i].checked = this.checked;
+        }
+    }
+    // 
+    for(var i = 0;i < checkboxs.length; i++) {
+        checkboxs[i].onclick = function() {
+            // 每点击一次，检查是否有没有未选中的按钮
+            var flag = true;
+            for (var i = 0; i < checkboxs.length; i++) {
+                // flag = flag && checkboxs[i].checked;
+                if(!checkboxs[i].checked) {
+                    flag = false;
+                    break;
+                }
+            }
+            checkAll.checked = flag;
+        }
+    }
+</script>

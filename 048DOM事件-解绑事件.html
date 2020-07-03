@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解绑事件</title>
+</head>
+<body>
+    <button>传统方式</button>
+    <button>EventListener</button>
+    <button>IE9以下</button>
+</body>
+</html>
+<script>
+    var btns = document.body.children
+
+    /* 
+        1、传统解绑方式
+     */
+    btns[0].onclick = function() {
+        alert('传统方式')
+        // 第二次点击就无效了
+        btns[0].onclick = null
+    }
+
+
+    /* 
+        2、addEventListener
+     */
+    function fn() {
+        alert(22)
+        btns[1].removeEventListener('click',fn)
+    }
+     btns[1].addEventListener('click',fn)
+
+
+    /* 
+        3、IE9以下：detachEvent()
+     */
+</script>

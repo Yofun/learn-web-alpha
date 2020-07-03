@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for循环点击事件</title>
+</head>
+<body>
+    <button>点我1</button>
+    <button>点我2</button>
+    <button>点我3</button>
+    <button>点我4</button>
+    <button>点我5</button>
+    <button>点我6</button>
+</body>
+</html>
+
+<script>
+    var buttons = document.getElementsByTagName('button')
+    for(var i = 0;i < buttons.length; i++) {
+        buttons[i].index = i;
+        buttons[i].onclick = function() {
+            // 把所有的背景颜色去掉
+            for(var k = 0; k < buttons.length; k++){
+                buttons[k].style.backgroundColor = ''
+            }
+            // 让当前的元素背景为pink
+            this.style.backgroundColor = 'pink'
+            
+            // 打印当前的i
+            console.log('您点击了第'+this.index+'个按钮');
+            
+        }
+    }
+</script>

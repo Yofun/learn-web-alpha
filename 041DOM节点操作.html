@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    /**
+        1、父节点 element.parentNode
+            如果找不到则返回null
+    */
+
+    /* 
+        2、子节点集合 element.childNodes
+            包含元素节点、文本节点...
+            可通过节点类型进行判断是否为元素节点  nodeType == 1 则表示元素节点
+     */
+
+    /* 
+        3、子节点集合 element.children
+            只包含元素节点
+     */
+
+
+    /* 
+        4、第一个子节点 element.firstChild/element.lastChild
+            在element.childNodes的基础上获取第一个节点/最后一个节点
+     */
+
+     /* 
+        5、第一个子元素节点 element.firstElementChild/element.lastElementChild
+            在element.chilren的基础上获取第一个子节点/最后一个子节点
+
+            IE9+
+            解决方案:
+                第一个 element.children[0]
+                最后一个 element.children[element.children.length-1]
+      */
+    
+
+    /* 
+        6、下一个兄弟节点 element.nextSibling
+            包含元素节点、文本节点
+     */
+
+     /* 
+        7、上一个兄弟节点 element.previousSibling 
+            同上
+      */
+
+
+
+      /* 
+        8、下一个兄弟元素节点   element.nextElementSibling
+            IE9+
+       */
+
+
+       /* 
+        9、上一个兄弟元素节点   element.previousElementSibling
+            IE9+
+        */
+
+
+</script>

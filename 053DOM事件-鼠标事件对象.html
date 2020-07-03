@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标事件对象</title>
+
+    <style>
+        body {
+            height: 3000px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    document.addEventListener('click', function (e) {
+        // 可视区域的距离坐标
+        console.log('client:' + e.clientX + ',' + e.clientY);
+
+        // 页面的距离坐标
+        console.log('page:' + e.pageX + ',' + e.pageY);
+
+        // 电脑屏幕坐标
+        console.log('screen:' + e.screenX + ',' + e.screenY);
+        
+
+    })
+</script>
