@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东放大镜</title>
+
+    <style>
+        img {
+            width: 100%;
+            vertical-align: middle;
+        }
+
+        .box {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        .box .mask {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            background-color: yellow;
+            opacity: .4;
+            cursor: move;
+        }
+
+        .box .big {
+            display: none;
+            position: absolute;
+            left: 410px;
+            top: 0;
+            width: 500px;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .box .bigImg {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593881968081&di=ceed255e949ae83d3972b2ed2f4f6e54&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201805%2F27%2F20180527142327_hexqj.thumb.700_0.jpg"
+            alt="易烊千玺">
+        <div class="mask"></div>
+        <div class="big">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593881968081&di=ceed255e949ae83d3972b2ed2f4f6e54&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201805%2F27%2F20180527142327_hexqj.thumb.700_0.jpg"
+                alt="易烊千玺" style="width: 800px;" class="bigImg">
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var box = document.querySelector('.box');
+    var mask = document.querySelector('.mask');
+    var big = document.querySelector('.big');
+    var bigImg = document.querySelector('.bigImg');
+
+    box.addEventListener('mouseover', function () {
+        mask.style.display = 'block';
+        big.style.display = 'block';
+    })
+    box.addEventListener('mouseout', function () {
+        mask.style.display = 'none';
+        big.style.display = 'none';
+    })
+
+    box.addEventListener('mousemove', function (e) {
+        // 鼠标在box盒子中的left、top值
+        var x = e.pageX - this.offsetLeft;
+        var y = e.pageY - this.offsetTop;
+
+        // 遮罩的left和top
+        var maskX = x - mask.offsetWidth / 2;
+        var maskY = y - mask.offsetHeight / 2;
+
+        if(maskX < 0) {
+            maskX = 0;
+        }else if((maskX + mask.offsetWidth) > box.offsetWidth){
+            maskX = box.offsetWidth - mask.offsetWidth;
+        }
+
+        if(maskY < 0) {
+            maskY = 0;
+        }else if((maskY + mask.offsetHeight) > box.offsetHeight){
+            maskY = box.offsetHeight - mask.offsetHeight;
+        }
+        
+        mask.style.left = maskX + 'px'
+        mask.style.top = maskY + 'px'
+
+        // 遮罩层最大移动距离
+        var maskMax = box.offsetWidth - mask.offsetWidth;
+        var bigMax =  bigImg.offsetWidth - big.offsetWidth;
+        var bigImgX = maskX * bigMax / maskMax;
+        var bigImgY = maskY * bigMax / maskMax;
+
+        bigImg.style.left = -bigImgX + 'px'
+        bigImg.style.top = -bigImgY + 'px'
+
+    })
+
+
+</script>

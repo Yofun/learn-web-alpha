@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件对象event</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    document.addEventListener('keyup', e => {
+        // 不区分大小写
+        var keycode = e.keyCode;
+        console.log(keycode);
+        // 如果想要区分大小写，需要使用 keypress
+        
+    })
+</script>

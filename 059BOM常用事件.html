@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM浏览器对象模型常用事件</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+    /* 
+        1、页面加载完成
+            load  等页面内容加载完毕，包含页面dom元素 图片 flash css等等加载完毕
+            DOMContentLoaded    是DOM加载完毕，不包含图片、css等就可以执行 触发时机比load早
+     */
+    // 1)原始写法
+    // window.onload = function() {
+    //     alert('页面加载完毕')
+    // }
+    // 2)推荐写法 addEventListener  IE9+
+    window.addEventListener('load',function() {
+        console.log('1111');
+        
+    })
+    window.addEventListener('load',function() {
+        console.log('222');
+        
+    })
+    // 3)DOMContentLoaded
+    window.addEventListener('DOMContentLoaded',function() {
+        console.log('0000');
+    })
+
+
+
+
+    /* 
+        2、窗口变化时间 resize
+     */
+    window.addEventListener('resize',function() {
+        console.log('改变了');
+        // 防抖
+    })
+
+
+</script>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节流和防抖</title>
+</head>
+
+<body>
+    <button>节流测试</button>
+    <button>防抖测试</button>
+</body>
+
+</html>
+<script>
+
+    var btns = document.body.children;
+
+
+    // 节流测试
+    let th = throttle(function(){
+            console.log('节流节流');
+        },1000);
+    btns[0].addEventListener('click',function(){
+        th();
+    })
+
+
+    // 防抖
+    let de = debounce(function(){
+        console.log('防抖防抖');
+    },1000)
+    btns[1].addEventListener('click',function() {
+        de();
+    })
+
+
+    // 节流
+    function throttle(fun, gapTime) {
+        if (typeof fun !== 'function') {
+            throw new TypeError('need a function');
+        }
+        gapTime = +gapTime || 0;
+
+        var lastTime = 0;
+        return function () {
+            var time = +new Date();
+            if (time - lastTime > gapTime) {
+                fun();
+                lastTime = time;
+            }
+        }
+    }
+
+
+    // 防抖
+    function debounce(fun, waitTime) {
+        if (typeof fun !== 'function') {
+            throw new TypeError('need a function');
+        }
+        waitTime = +waitTime || 0;
+
+        return function () {
+            if (fun.timmerId) {
+                clearTimeout(fun.timmerId)
+            }
+            fun.timmerId = setTimeout(() => {
+                fun();
+            }, waitTime);
+        }
+    }
+
+</script>

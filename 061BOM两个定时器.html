@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两个定时器</title>
+</head>
+
+<body>
+    <button>停止setTimeout</button>
+    <button>停止setInterval</button>
+
+    <div id="timeout">
+        5秒后就会改变
+    </div>
+    <div id="interval">
+        0
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    // 获取元素
+    var btns = document.querySelectorAll('button');
+    var timeDiv = document.querySelector('#timeout');
+    var intervalDiv = document.querySelector('#interval');
+
+    // 5s后改变文字
+    var timmer = setTimeout(function () {
+        timeDiv.innerHTML = '时间到了，祝你生日快乐！'
+    }, 5000);
+
+    // 数数
+    var interval = setInterval(function() {
+        intervalDiv.innerText = +intervalDiv.innerText+1;
+    },1000)
+
+    //暂停
+    btns[0].addEventListener('click',function() {
+        clearTimeout(timmer);
+    })
+
+    btns[1].addEventListener('click',function() {
+        clearInterval(interval);
+    })
+
+</script>

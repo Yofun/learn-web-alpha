@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模仿快递查询</title>
+    <style>
+
+        .search{
+            position: relative;
+        }
+
+        .search #mask {
+            display: none;
+            position: absolute;
+            left: 0;
+            bottom: -50px;
+            width: 150px;
+            height: 40px;
+            line-height: 38px;
+            font-size: 16px;
+            border-radius: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            padding: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search">
+        <input id="input" type="text" placeholder="请输入您的快递单号">
+        <span id="mask">ahhahahha</span>
+    </div>
+</body>
+</html>
+
+<script>
+    var input = document.querySelector('#input')
+    var mask = document.querySelector('#mask');
+
+    // 当用户输入的时候，检测值是否为空，如果为空，则隐藏mask，否则显示出来
+    input.addEventListener('keyup',function() {
+        var value = this.value;
+        if (value) {
+            mask.style.display = 'block';
+            mask.innerHTML = value;
+        }else{
+            mask.style.display = 'none';
+        }
+    })
+
+    // 当input获取焦点后且value不为空的时候，就显示mask；否则隐藏
+    input.addEventListener('focus',function() {
+        if(this.value) {
+            // 说明有值，显示mask
+            mask.style.display = 'block';
+        }else {
+            // 隐藏mask
+            mask.style.display = 'none';
+        }
+    })
+
+    // input失去焦点的时候隐藏mask
+    input.addEventListener('blur',function() {
+        mask.style.display = 'none';
+    })
+
+</script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    /* 
+        1、全局作用域或者普通函数中，this指向全局对象-window
+     */
+     function fn () {
+         console.log(this);
+     }
+     fn();  // 打印出window对象
+
+     /* 
+        2、方法调用中，谁调用该方法 this就指向谁
+      */
+     var obj = {
+         name: '这是一个对象',
+         hello: function() {
+             console.log(this);
+         }
+     }
+     obj.hello();   // 打印出obj对象
+
+
+     /* 
+        3、构造函数中this指向构造函数的实例
+      */
+
+      function Star(name,age){
+        this.name = name;
+        this.age = age;
+        this.print = function() {
+            console.log(this);
+        }
+      }
+      var ldh = new Star('刘德华',58);
+      ldh.print(); // 刘德华对象
+
+</script>

@@ -77,3 +77,20 @@ console.log(array10);   // 从数组第0处索引删除2个元素，并在第0�
 ## 6、DOM创建元素的三种方式对比
 
 [DOM创建元素的三种方式对比](./046DOM创建元素的三种方式.html)
+
+## 7、outWidth、clientWidth、offsetWidth
+
+### offsetParent/offsetWidth/offsetTop/offsetLeft
+
+- offset基于父元素带有定位的盒子
+
+- offsetParent，带有定位的父盒子元素对象，如果没有，则返回body对象
+
+- offsetLeft/offsetTop：基于父容器是否有定位，如果父容器有定位，基于父盒子（不包含边框）的左侧/顶部；如果父盒子没有定位，则以body（包含body的边框）为准。
+
+- offsetWidth/offsetHeight：`content+padding+border`
+
+### 222
+
+
+

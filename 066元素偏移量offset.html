@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素偏移量</title>
+
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            border: 10px solid red;
+        }
+
+
+        .father {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+            margin: 0 auto;
+            border: 10px solid black;
+        }
+
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son">
+
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    var father = document.querySelector('.father')
+    var son = document.querySelector('.son');
+
+    /* 
+        offsetParent
+        offsetTop
+        offsetLeft
+            返回元素距离带有定位父亲盒子(父盒子边框也算)的左侧距离，如果父亲没有定位，则以body为基准
+    
+     */
+     console.log('father的offsetParent：',father.offsetParent);
+     console.log('father距离顶部：'+father.offsetTop); //10
+     console.log('father距离左侧：'+father.offsetLeft); // 194
+
+     console.log('son的offsetParent',son.offsetParent); // 父盒子father带有定位，所以为.father的父盒子
+     console.log('son的offsetTop',son.offsetTop); // 0
+     
+
+     /* 
+        offsetWidth         
+            content+padding+border的宽度
+        offsetHeight
+            content+padding+border的高度
+      */
+
+      console.log('father的offsetWidth',father.offsetWidth);
+      console.log('father的offsetHeight',father.offsetHeight);
+      
+     
+     
+
+</script>
