@@ -90,7 +90,47 @@ console.log(array10);   // 从数组第0处索引删除2个元素，并在第0�
 
 - offsetWidth/offsetHeight：`content+padding+border`
 
-### 222
+### client
+
+- clientWidth/clientHeight：`content+padding区域`
+
+- clientTop/clientLeft：`上边框大小、左边框大小`
+
+### scroll
+
+- scrollWidth、scrollHeight：`padding+真实内容大小（含超出部分）`
+
+- scrollTop/scrollLeft：`拖动滚动条，内容顶部——border底部的距离`
+
+## 8、阻止事件冒泡、阻止默认行为
+
+事件传播流程：capture->target->bubble
+
+阻止冒泡
+```javascript
+// 兼容写法
+if(e.stopPropagation) {
+    // 正常
+    e.stopPropagation()
+}else {
+    // IE
+    e.cancelBubble = true;
+}
+```
+
+阻止默认行为
+```javascript
+// 兼容写法
+if(e.preventDefault) {
+    // 正常
+    e.preventDefault();
+}else {
+    // IE
+    e.returnValue = false
+}
+```
+
+
 
 
 

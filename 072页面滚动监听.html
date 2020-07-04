@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面滚动监听</title>
+
+    <style>
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    function getScroll() {
+        return {
+            left: window.pageXOffset || document.documentElement.offsetLeft || document.body.offsetLeft || 0,
+            top: window.pageYOffset || document.documentElement.offsetTop || document.body.offsetTop ||0
+        }
+    }
+
+    window.addEventListener('scroll',function(){
+        console.log('滑动距离',getScroll().top);
+        
+    })
+    
+</script>

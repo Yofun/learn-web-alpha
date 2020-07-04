@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            top: 20px;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>
+
+<script>
+    function animate(obj, target) {
+        clearInterval(obj.timmer)
+        obj.timmer = setInterval(function () {
+            if (obj.offsetLeft >= target) {
+                clearInterval(obj.timmer)
+            }
+            // obj.style.left = obj.offsetLeft + 1 + 'px';
+            
+            // 缓动动画：（target-obj.offsetLeft） / 10
+            var step = (target - obj.offsetLeft) / 10;
+            obj.style.left = obj.offsetLeft + step + 'px';
+        }, 15)
+    }
+
+    var div = document.querySelector('div');
+    animate(div,800)
+</script>

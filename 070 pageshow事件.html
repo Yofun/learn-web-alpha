@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="https://www.baidu.com" target="_self">百度一下</a>
+</body>
+</html>
+<script>
+    /* 
+        load事件和pageshow事件区别
+
+     */
+
+    // 正常浏览器跳转新页面后再返回此页面的时候，还回执行load方法。但是火狐浏览器由于缓存原因不会执行，所以需要使用pageshow事件
+     window.addEventListener('load',function(){
+         alert('load')
+     })
+
+     window.addEventListener('pageshow',function(){
+         alert('pageshow')
+     })
+</script>

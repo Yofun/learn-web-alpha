@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .father {
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+        }
+
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+</html>
+
+
+<script>
+    var father = document.querySelector('.father');
+
+    father.addEventListener('mouseover',function() {
+        console.log('鼠标经过');
+    })
+
+    father.addEventListener('mouseenter',function() {
+        console.log('鼠标进入');
+    })
+
+    /* 
+        mouseover
+            经过内部不同元素的时候都会触发该事件
+
+        mouseenter
+            鼠标经过后只触发一次
+
+        
+        原因：mouseover会冒泡，mouseenter不会冒泡
+     */
+</script>

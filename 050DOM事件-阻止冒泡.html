@@ -48,8 +48,10 @@
 
         // 兼容写法
         if(e.stopPropagation) {
+            // 正常
             e.stopPropagation()
         }else {
+            // IE
             e.cancelBubble = true;
         }
     })

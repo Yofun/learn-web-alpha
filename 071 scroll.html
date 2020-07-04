@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 10px solid red;
+            padding: 20px;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+        我是内容
+    </div>
+</body>
+</html>
+
+<script>
+    var div = document.querySelector('div');
+    /* 
+        scrollWidth、scrollHeight
+            padding+内容大小（含超出部分）
+    
+     */
+    console.log('div的scrollWidth',div.scrollWidth);
+    
+
+    /* 
+        scrollTop/scrollLeft
+            拖动滚动条，内容顶部——border底部的距离
+     */
+
+     div.addEventListener('scroll',function(e) {
+         console.log('滑动了',this.scrollTop);
+     })
+</script>

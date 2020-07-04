@@ -40,9 +40,18 @@
         // 普通浏览器
         e.preventDefault()
         // IE678
-        e.returnValue
+        e.returnValue = false
         // 通用 只限于.onclick方式
         return false;
+
+        // 兼容写法
+        if(e.preventDefault) {
+            // 正常
+            e.preventDefault();
+        }else {
+            // IE
+            e.returnValue = false
+        }
         
         
         

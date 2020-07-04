@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 10px solid red;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>
+
+<script>
+    var div = document.querySelector('div');
+    
+    /* 
+        clientWidth/clientHeight
+            content+padding区域
+     */
+    console.log('div的clientWidth',div.clientWidth);    // 240
+    console.log('div的clientHeight',div.clientHeight);  // 240
+    
+    /* 
+        clientTop/clientLeft
+            上边框大小、左边框大小
+     */
+     console.log('div的clientTop',div.clientTop);
+     console.log('div的clientLeft',div.clientLeft);
+     
+</script>
