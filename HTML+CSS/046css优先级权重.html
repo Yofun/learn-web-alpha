@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css样式权重</title>
+
+    <style>
+      /* 0,0,0,0
+        通配符选择器 *
+      */
+      * {
+      }
+      /* 0,0,0,1
+        标签、伪元素（:::before|:::after）
+      */
+      div {
+      }
+      /* 类和伪类选择器权重：0,0,1,0
+        类、伪类（:hover|:visited|:link|:focus|:active）、属性选择器([class^="xxx"])、结构伪类选择器(:last-of-type|:nth-of-type(n))
+       */
+      .one {
+      }
+      div:hover {
+      }
+      /* ID选择器权重：0,1,0,0 */
+      #two {
+      }
+
+      /* 行内选择器:1,0,0,0 */
+
+      /* !important权重: 无穷大 */
+    </style>
+  </head>
+  <body></body>
+</html>
