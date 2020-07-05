@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .slide {
+            position: absolute;
+            bottom: 100px;
+            right: 0;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .slide span {
+            position: relative;
+            z-index: 1;
+            display: block;
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            background-color: purple;
+        }
+
+        .slide .con {
+            position: absolute;
+            left: 0px;
+            top: 0;
+            width: 120px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <span>←</span>
+        <div class="con">问题反馈</div>
+    </div>
+</body>
+</html>
+
+<script>
+    // 动画
+    function animate(obj,target,callback) {
+        clearInterval(obj.timmer);
+        obj.timmer = setInterval(() => {
+            if(obj.offsetLeft == target){
+                clearInterval(obj.timmer);
+                if(callback && typeof callback == 'function') {
+                    callback();
+                }
+            }
+            var step = (target - obj.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            obj.style.left = obj.offsetLeft + step + 'px';
+        }, 15);
+    }
+
+
+
+    var slide = document.querySelector('.slide');
+    var con = document.querySelector('.con');
+
+    slide.addEventListener('mouseenter',function() {
+        animate(con,-120,()=>{
+            slide.children[0].innerHTML = '→';
+        })
+    })
+
+    slide.addEventListener('mouseleave',function() {
+        animate(con,0,()=>{
+            slide.children[0].innerHTML = '←';
+        })
+    })
+</script>

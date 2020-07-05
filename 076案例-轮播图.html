@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .slider {
+            position: relative;
+            width: 400px;
+            height: 225px;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        .slider_con {
+            position: relative;
+            width: 2000px;
+        }
+
+        .slider_con li {
+            float: left;
+            width: 400px;
+            height: 225px;
+            overflow: hidden;
+        }
+
+        .slider_con li img {
+            width: 100%;
+            vertical-align: middle;
+        }
+
+        .slider_indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .slider_indicator li {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, .4);
+            cursor: pointer;
+        }
+
+        .slider_indicator li.active {
+            background-color: white;
+        }
+
+        .slider_ctrl {
+            display: none;
+            position: absolute;
+            top: 50%;
+            width: 25px;
+            height: 40px;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, .4);
+            cursor: pointer;
+        }
+
+        .slider_ctrl:hover {
+            background-color: rgba(0, 0, 0, .6);
+        }
+
+        .slider_ctrl::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 16px;
+            height: 16px;
+            box-sizing: border-box;
+            border: 3px solid rgba(255, 255, 255, .5);
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .slider_ctrl:hover::after {
+            border-color: rgba(255, 255, 255, .8);
+        }
+
+        .slider_ctrl.left {
+            left: 0;
+        }
+
+        .slider_ctrl.left::after {
+            left: 8px;
+            border-top: none;
+            border-right: none;
+        }
+
+        .slider_ctrl.right {
+            right: 0;
+        }
+
+        .slider_ctrl.right::after {
+            right: 8px;
+            border-bottom: none;
+            border-left: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+        <ul class="slider_con">
+            <li><img src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/imgad/pic/item/9f510fb30f2442a750999faed943ad4bd1130221.jpg"
+                    alt=""></li>
+            <li><img src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/imgad/pic/item/29381f30e924b89914e91b3366061d950b7bf6e0.jpg"
+                    alt=""></li>
+            <li><img src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/imgad/pic/item/9213b07eca806538053ec6189fdda144ac3482e0.jpg"
+                    alt=""></li>
+            <li><img src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/imgad/pic/item/d62a6059252dd42adb9e63a00b3b5bb5c9eab822.jpg"
+                    alt=""></li>
+            <li><img src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/imgad/pic/item/e850352ac65c103851abacc9ba119313b17e89e7.jpg"
+                    alt=""></li>
+            <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593956307442&di=e10e0e12da310147ecee11abd6a39ddc&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Ffront%2F479%2Fw1842h1037%2F20180419%2F4MFA-fzihnep8252795.jpg"
+                    alt=""></li>
+        </ul>
+        <ul class="slider_indicator">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <span class="slider_ctrl left"></span>
+        <span class="slider_ctrl right"></span>
+    </div>
+</body>
+
+</html>
+
+<script>
+    // 动画方法
+    function animate(obj, target, callback) {
+        clearInterval(obj.timmer);
+        obj.timmer = setInterval(() => {
+            if (obj.offsetLeft == target) {
+                clearInterval(obj.timmer)
+                if (callback && typeof callback === 'function') {
+                    callback();
+                }
+            }
+            var step = (target - obj.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            obj.style.left = obj.offsetLeft + step + 'px';
+        }, 15)
+    }
+
+    var currentIndex = 0;   // 当前页的index
+    var slider = document.querySelector('.slider');
+    var arrow_l = document.querySelector('.slider_ctrl.left');
+    var arrow_r = document.querySelector('.slider_ctrl.right');
+    var sliderCon = document.querySelector('.slider_con');
+    var indicatorCon = document.querySelector('.slider_indicator');
+
+    // 设置sliderCon的宽度
+    sliderCon.style.width = (sliderCon.children.length+1) * 400 + 'px';
+
+    // 1、鼠标经过，左右两侧的操作按钮显示，鼠标离开，操作按钮隐藏
+    slider.addEventListener('mouseenter', function () {
+        arrow_l.style.display = 'block';
+        arrow_r.style.display = 'block';
+    })
+
+    slider.addEventListener('mouseleave', function () {
+        arrow_l.style.display = 'none';
+        arrow_r.style.display = 'none';
+    })
+
+    // 2、动态生成indicator
+    indicatorCon.innerHTML = '';
+    for (var i = 0; i < sliderCon.children.length; i++) {
+        var dot = document.createElement('li');
+        if (i == 0) {
+            dot.className = "active";
+        }
+        // 插入到ul中
+        indicatorCon.appendChild(dot);
+    }
+
+    // 3、indicator的点击事件
+    var indicatorArray = indicatorCon.children;
+    for (var j = 0; j < indicatorArray.length; j++) {
+        indicatorArray[j].index = j;
+        indicatorArray[j].addEventListener('click', function () {
+            // 设置当前active
+            setCurrentIndicator(this.index);
+            // 点击位移
+            animate(sliderCon, -400 * this.index);
+            // 设置index
+            currentIndex = this.index;
+        })
+    }
+
+    // 4、点击左右两侧的事件
+    arrow_l.addEventListener('click', function () {
+        // 设置当前页面
+        currentIndex--;
+        if (currentIndex < 0) {
+            currentIndex = sliderCon.children.length - 1;
+        }
+        animate(sliderCon, -400 * currentIndex);
+        // 设置indicator
+        setCurrentIndicator(currentIndex);
+    })
+
+    arrow_r.addEventListener('click', () => {
+        // 设置当前页
+        currentIndex++;
+        if (currentIndex >= sliderCon.children.length) {
+            currentIndex = 0;
+        }
+        animate(sliderCon, -400 * currentIndex);
+        // 设置indicator
+        setCurrentIndicator(currentIndex);
+    });
+
+
+    // 5、自动轮播
+    function autoplay() {
+        // 设置当前页
+        currentIndex++;
+        if (currentIndex >= sliderCon.children.length) {
+            currentIndex = 0;
+        }
+        animate(sliderCon, -400 * currentIndex);
+        // 设置indicator
+        setCurrentIndicator(currentIndex);
+    }
+
+    slider.timmer = setInterval(autoplay, 5000);
+
+
+    // 6、鼠标悬停的时候关闭timmer、鼠标离开再重新开始timmer
+    slider.addEventListener('mouseenter',function() {
+        clearInterval(slider.timmer)
+        console.log('暂停轮播');
+        
+    })
+
+    slider.addEventListener('mouseleave', function () {
+        clearInterval(slider.timmer)
+        slider.timmer = setInterval(autoplay, 5000);
+        console.log('开始轮播');
+        
+    })
+
+
+
+
+    //————————————————————————————————————————————
+    // 设置当前选中的indicator
+    function setCurrentIndicator(index) {
+        var indicatorArray = indicatorCon.children;
+        for (var i = 0; i < indicatorArray.length; i++) {
+            indicatorArray[i].className = '';
+            if(index == i) {
+                indicatorArray[i].className = 'active';
+            }
+        }
+    }
+
+
+
+</script>

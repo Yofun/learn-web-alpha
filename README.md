@@ -131,6 +131,29 @@ if(e.preventDefault) {
 ```
 
 
+## 9、缓动动画
+
+```javascript
+function animate(obj,target,callback) {
+    clearInterval(obj.timmer);
+    obj.timmer = setInterval(() => {
+        // 需要使用等于，否则前进、后退会有问题
+        if(obj.offsetLeft == target){
+            clearInterval(obj.timmer);
+            if(callback && typeof callback == 'function') {
+                callback();
+            }
+        }
+        var step = (target - obj.offsetLeft) / 10;
+        // 如果向前进，则向上取值；如果后退，则向下取值
+        step = step > 0 ? Math.ceil(step) : Math.floor(step);
+        // 结果：当前位置 + step
+        obj.style.left = obj.offsetLeft + step + 'px';
+    }, 15);
+}
+```
+
+
 
 
 

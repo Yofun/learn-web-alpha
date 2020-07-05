@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滚动到顶部</title>
+
+    <style>
+        body {
+            height: 3000px;
+        }
+
+
+        .top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: pink;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    这是对顶部
+    <div class="top">返回顶部</div>
+</body>
+</html>
+
+<script>
+    var topDIV = document.querySelector('.top');
+
+    window.addEventListener('scroll',function() {
+        if(window.pageYOffset > 1000) {
+            topDIV.style.display = 'block';
+        }else {
+            topDIV.style.display = 'none';
+        }
+    })
+
+
+    topDIV.addEventListener('click',function() {
+        // 返回顶部
+        // window.scroll(0,100);
+
+        animate(window,0)
+    })
+
+
+
+
+    // 动画方法
+    function animate(obj, target, callback) {
+        clearInterval(obj.timmer);
+        obj.timmer = setInterval(() => {
+            if (obj.pageYOffset == target) {
+                clearInterval(obj.timmer)
+                if (callback && typeof callback === 'function') {
+                    callback();
+                }
+            }
+            var step = (target - obj.pageYOffset) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            window.scroll(0,obj.pageYOffset + step)
+        }, 15)
+    }
+</script>

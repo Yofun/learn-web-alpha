@@ -25,20 +25,29 @@
 </html>
 
 <script>
-    function animate(obj, target) {
+    function animate(obj, target, callback) {
         clearInterval(obj.timmer)
         obj.timmer = setInterval(function () {
             if (obj.offsetLeft >= target) {
                 clearInterval(obj.timmer)
+                if(typeof callback === 'function') {
+                    callback(obj);
+                }
             }
             // obj.style.left = obj.offsetLeft + 1 + 'px';
             
             // 缓动动画：（target-obj.offsetLeft） / 10
             var step = (target - obj.offsetLeft) / 10;
+            // 往前走   向上取整
+            // 往回走   向下取整
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
             obj.style.left = obj.offsetLeft + step + 'px';
         }, 15)
     }
 
     var div = document.querySelector('div');
-    animate(div,800)
+    animate(div,800,div=>{
+        div.style.backgroundColor = 'purple';
+    })
 </script>
