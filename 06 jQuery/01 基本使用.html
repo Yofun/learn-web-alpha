@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery基本使用</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        /* 
+            页面加载完毕的方法
+        */
+
+        // 与onload对比
+        window.addEventListener('load',function() {
+            console.log('load'); 
+        })
+
+        // 1、使用document.ready
+        $(document).ready(function(){
+            console.log('页面加载完成01');
+        });
+
+        // 2、使用简单写法
+        $(function() {
+            console.log('页面加载完成02');
+        });
+
+
+    </script>
+</head>
+<body>
+    <img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2180997660.webp" alt="">
+    <div>hahahha</div>
+</body>
+</html>

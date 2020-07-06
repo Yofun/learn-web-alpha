@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排他思想</title>
+    <script src="jquery.min.js"></script>
+</head>
+
+<body>
+    <button>我是按钮</button>
+    <button>我是按钮</button>
+    <button>我是按钮</button>
+    <button>我是按钮</button>
+    <button>我是按钮</button>
+    <button>我是按钮</button>
+    <button>我是按钮</button>
+</body>
+
+</html>
+
+<script>
+    /* 
+    排他思想：干掉所有人，只留下自己
+    */
+
+    $(function () {
+        $('button').click(function () {
+            // 当前元素背景颜色改变
+            $(this).css('backgroundColor','purple').siblings('button').css('backgroundColor','');
+            // 让其他所有的兄弟颜色去掉
+            // $(this).siblings('button').css('backgroundColor','');
+        });
+    })
+</script>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            float: left;
+            width: 100px;;
+            list-style: none;
+        }
+
+        ul li {
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        .box {
+            margin: 100px;
+        }
+
+        .content {
+            position: relative;
+            width: 480px;
+            height: 270px;
+            float: left;
+            overflow: hidden;
+        }
+
+        .content img{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul class="nav">
+            <li>女靴</li>
+            <li>雪地靴</li>
+            <li>冬裙</li>
+            <li>呢大衣</li>
+            <li>毛衣</li>
+            <li>棉服</li>
+            <li>女裤</li>
+            <li>羽绒服</li>
+            <li>牛仔裤</li>
+        </ul>
+        <div class="content">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594067272741&di=981b8597b906644c2950606e4d9ec260&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F9%2F53c5e76bc1148.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594067272741&di=c6cb75663a0c1382f78ea6e66f4574eb&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201712%2F16%2F20171216002455_5QBP2.jpeg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594067272741&di=eceb5b2d163b99e532e53021a1483315&imgtype=0&src=http%3A%2F%2Fwww.flybridal.com%2Fhuangse%2FaHR0cDovL2Itc3NsLmR1aXRhbmcuY29tL3VwbG9hZHMvaXRlbS8yMDE2MDcvMjkvMjAxNjA3MjkxMTQxMTFfMkJWZXIuanBlZw%3D%3D.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594067272741&di=80d16283f72062cbf9c282456877ebc6&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201704%2F15%2F20170415080107_det2X.jpeg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594067272741&di=088f36df6688e1be693fb228eeb9e28e&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Fc%2F5461a79f7327e.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594067272740&di=f76f3473c0251a22f23d72bd95dfb330&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F5%2F5487e560150af.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594067272740&di=d4b08239460feae80876e42aa3e1c194&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F1%2F57972975484b3.jpg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594067272740&di=de40564fbbf816cc75d7d4bf2ad53325&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201601%2F04%2F20160104094630_yuJfn.jpeg" alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594067272740&di=1a5b577dd5f1227d4bae497f0ab44a8e&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F0%2F5750ea578ea87.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    $(function() {
+        $('.nav li').mouseover(function() {
+            $(this).css({
+                backgroundColor:'pink',
+                color: '#fff'
+            }).siblings().css({
+                backgroundColor: '',
+                color: ''
+            });
+            $('.content img').eq($(this).index()).show().siblings().hide();
+        });
+    })
+</script>

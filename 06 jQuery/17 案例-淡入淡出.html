@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>淡入淡出案例</title>
+
+    <script src="jquery.min.js"></script>
+</head>
+
+<style>
+    body {
+        background-color: black;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    img {
+        width: 100%;
+        vertical-align: middle;
+    }
+
+    ul {
+        list-style: none;
+        width: 800px;
+        height: 400px;
+        margin: 100px auto;
+        border: 1px solid #fff;
+    }
+
+
+    ul li {
+        float: left;
+        width: 200px;
+        height: 200px;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+</style>
+<body>
+    <ul>
+        <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594071685904&di=7403c013ba9d33cf2120001f7a97072c&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201806%2F20%2F20180620142523_afezm.thumb.700_0.jpg" alt=""></li>
+        <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594071685904&di=265f3b997f5527c8d0c08c84baca6072&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201810%2F06%2F20181006161058_xstuk.jpg" alt=""></li>
+        <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594071685903&di=74cd7a321d7b5f5cab87aa7b4ab606ad&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201709%2F23%2F20170923220013_dL5Be.jpeg" alt=""></li>
+        <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594071685903&di=6f6d8e3432ad5c0bcc7577715c91b408&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201809%2F17%2F20180917232115_mdqve.jpg" alt=""></li>
+        <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594071685903&di=3a94da3ca6903f78d8d8de9550b40b39&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201607%2F12%2F20160712151238_GudaZ.thumb.700_0.jpeg" alt=""></li>
+        <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594071685903&di=976abd816cd4003c5c17456b786c8862&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201710%2F29%2F20171029095549_PCYGM.thumb.700_0.jpeg" alt=""></li>
+        <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594071685903&di=15a23e9230159b7f159991a59b22f1d0&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201710%2F01%2F20171001111902_yLuZw.thumb.700_0.jpeg" alt=""></li>
+        <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594071685902&di=f1ef0478e68057fd0abb1281099ec392&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201710%2F01%2F20171001112105_j4rAa.thumb.700_0.jpeg" alt=""></li>
+    </ul>
+</body>
+</html>
+
+<script>
+    $(function() {
+        $('ul li').hover(function(){
+            $(this).stop().fadeTo('fast',1).siblings().stop().fadeTo('fast',0.3)
+        })
+    })
+</script>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <video src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" controls muted></video>
+</body>
+</html>
+<script>
+    // 1、Dom对象转换为jQuery对象
+    // 1）直接使用$(选择器)
+    $('video');
+
+    // 2）$(dom对象) 参数直接为原生dom获取的对象
+    $(document.querySelector('video'));
+
+
+    // 2、jQuery对象转换为原生DOM对象
+    // $('video')[0].play();
+    $('video').get(0).play();
+</script>

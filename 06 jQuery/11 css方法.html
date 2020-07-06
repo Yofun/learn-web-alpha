@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
+
+<script>
+    $(function(){
+        // 1、修改css
+        // 1）css('属性名','属性值')
+        $('div').css('width','200px');
+
+        // 2）css({})
+        $('div').css({
+            height: 200,
+            border: '1px solid red'
+        });
+
+        // 2、获取属性值
+        console.log($('div').css('height'));
+        
+    })
+</script>

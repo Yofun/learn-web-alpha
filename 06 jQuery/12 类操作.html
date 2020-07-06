@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid pink;
+        }
+
+        .active {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <button>添加类</button>
+    <button>删除类</button>
+    <button>toggleClass</button>
+
+    <div></div>
+</body>
+</html>
+
+<script>
+    $(function() {
+        $('button').eq(0).click(function(){
+            //添加
+            $('div').addClass('active')
+        })
+
+        $('button').eq(1).click(function(){
+            //删除
+            $('div').removeClass('active')
+        })
+
+        $('button').eq(2).click(function(){
+            //toggleClass
+            $('div').toggleClass('active')
+        })
+    })
+</script>

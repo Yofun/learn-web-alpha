@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <div class="yeye">
+        <div class="father">
+            <div class="son"></div>
+        </div>
+    </div>
+
+
+    <ul>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <ol>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li class="zhongjian">1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+    </ol>
+</body>
+</html>
+
+<script>
+    $(function(){
+        // 查找父级
+        $('.son').parent();
+
+        // 查找儿子.children(selector) selector可填可不填,不填写表示选择全部子元素
+        $('ul').children('li').css('color','red')
+
+        // find(selector)查找子节点
+        $('ul').find('.active').css('color','green')
+
+        // siblings(selector)    兄弟节点，不包含自己
+        $('ul .active').siblings().css('color','purple')
+
+        // 当前元素之后的所有兄弟元素，除了自己
+        $('ol .zhongjian').nextAll().css('color','red')
+
+        // 当前元素之前的所有兄弟元素，除了自己
+        $('ol .zhongjian').prevAll().css('color','green')
+
+        // eq
+        $('ol li').eq(2).css('color','purple')
+
+
+        // 判断是否有某个类
+        console.log($('ol li').eq(3).hasClass('zhongjian')); // true
+        
+    })
+</script>

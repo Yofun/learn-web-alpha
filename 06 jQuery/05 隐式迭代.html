@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>
+
+<script>
+    /* 
+        隐式迭代：就是把匹配的所有元素内部进行遍历循环，给每个元素添加css方法
+    */
+
+    $(function() {
+        $('div').css({
+            // backgroundColor:'red',
+            width: '200px',
+            height: '200px',
+            border: '1px solid red',
+            margin: '10px'
+        });
+    })
+</script>

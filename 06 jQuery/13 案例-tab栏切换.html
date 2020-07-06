@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+
+    <style>
+        .active {
+            background-color: pink;
+        }
+
+        .content div {
+            display: none;
+        }
+
+        /* 默认第一个显示 */
+        div.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <button class="active">1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+
+    <div class="content">
+        <div class="show">1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </div>
+</body>
+</html>
+
+<script>
+    $(function() {
+        $('button').click(function() {
+            $(this).addClass('active').siblings('button').removeClass('active');
+            $('.content div').eq($(this).index()).show().siblings().hide();
+        });
+    })
+</script>

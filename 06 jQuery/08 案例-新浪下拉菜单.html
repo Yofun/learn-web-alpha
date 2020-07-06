@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新浪下拉菜单</title>
+    <script src="jquery.min.js"></script>
+
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .nav {
+            margin: 100px;
+        }
+
+        .nav>li {
+            position: relative;
+            float: left;
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            margin: 5px;
+            background-color: pink;
+            /* pointer,move,default,not-allowed,text,help,wait */
+            cursor: pointer;
+        }
+
+        .nav>li>ul {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 40px;
+            width: 100%;
+            text-align: center;
+            background-color: purple;
+        }
+
+        .nav>li>ul>li {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>
+            微博
+            <ul>
+                <li>你</li>
+                <li>我</li>
+                <li>他</li>
+                <li>@我</li>
+            </ul>
+        </li>
+
+        <li>
+            微博
+            <ul>
+                <li>你</li>
+                <li>我</li>
+                <li>他</li>
+                <li>@我</li>
+            </ul>
+        </li>
+
+
+
+        <li>
+            微博
+            <ul>
+                <li>你</li>
+                <li>我</li>
+                <li>他</li>
+                <li>@我</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+</html>
+
+<script>
+    $(function () {
+        // $('.nav>li').mouseenter(function() {
+        //     console.log('进来了');
+        //     console.log(this); // dom对象
+        //     $(this).children('ul').show();
+        // }).mouseleave(function(){
+        //     console.log('出来了');
+        //     $(this).children('ul').hide();
+        // });
+
+
+
+        // $('.nav>li').hover(function () {
+        //     console.log('进来了');
+        //     console.log(this); // dom对象
+        //     $(this).children('ul').slideDown();
+        // }, function () {
+        //     console.log('出来了');
+        //     $(this).children('ul').slideUp();
+        // });
+
+
+        $('.nav>li').hover(function () {
+            // stop()方法防止动画排队，避免多次触发，实现只执行最后一个动画
+            // 注意：stop（）方法需要写在执行动画之前
+
+            $(this).children('ul').stop().slideToggle();
+        });
+    })
+</script>

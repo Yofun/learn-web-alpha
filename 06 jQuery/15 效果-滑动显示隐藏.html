@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滑入滑出</title>
+
+    <script src="jquery.min.js"></script>
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>切换</button>
+
+    <div></div>
+</body>
+</html>
+
+<script>
+    $(function() {
+
+        /* 
+            显示与隐藏：slideDown、slideUp、slideToggle
+            他们都有三个参数：速度、运动曲线(默认swing)、执行完回调
+        */
+
+
+        $('button').eq(0).click(function() {
+            // 参数：'slow'|'normal'|'fast'|number
+            $('div').slideDown(1000,function(){
+                alert('显示了')
+            });
+        })
+
+        $('button').eq(1).click(function() {
+            // 参数：'slow'|'normal'|'fast'|number
+            $('div').slideUp(1000,function() {
+                alert('隐藏了')
+            });
+        })
+
+        $('button').eq(2).click(function() {
+            // 参数：'slow'|'normal'|'fast'|number
+            $('div').slideToggle('fast');
+        })
+    })
+</script>

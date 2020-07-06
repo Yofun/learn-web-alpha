@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <ul>
+        <li>encode解密 这方法对于网页源代码有经过加密的有用</li>
+        <li>encode解密 这方法对于网页源代码有经过加密的有用</li>
+        <li>encode解密 这方法对于网页源代码有经过加密的有用</li>
+        <li>encode解密 这方法对于网页源代码有经过加密的有用</li>
+        <li>encode解密 这方法对于网页源代码有经过加密的有用</li>
+        <li>encode解密 这方法对于网页源代码有经过加密的有用</li>
+        <li>encode解密 这方法对于网页源代码有经过加密的有用</li>
+        <li>encode解密 这方法对于网页源代码有经过加密的有用</li>
+    </ul>
+
+    <ol>
+        <li>利用论坛和blog的发帖模式 这方法简单实用</li>
+        <li>利用论坛和blog的发帖模式 这方法简单实用</li>
+        <li>利用论坛和blog的发帖模式 这方法简单实用</li>
+        <li>利用论坛和blog的发帖模式 这方法简单实用</li>
+        <li>利用论坛和blog的发帖模式 这方法简单实用</li>
+        <li>利用论坛和blog的发帖模式 这方法简单实用</li>
+        <li>利用论坛和blog的发帖模式 这方法简单实用</li>
+        <li>利用论坛和blog的发帖模式 这方法简单实用</li>
+    </ol>
+</body>
+</html>
+
+<script>
+    $(function() {
+        // 选择ul第一个li
+        $('ul li:first').css('color','red');
+
+        // 选择ul中的最后一个li
+        $('ul li:last').css('color','red');
+
+        // 选择ul中的第n个,索引从0开始
+        $('ul li:eq(1)').css('color','green');
+
+        // 索引号基数行
+        $('ol li:odd').css('color','red')
+
+        // 索引号偶数行
+        $('ol li:even').css('color','green')
+    })
+</script>
