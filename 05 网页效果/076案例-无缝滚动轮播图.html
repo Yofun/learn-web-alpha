@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无缝滚动的轮播图</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .slider {
+            position: relative;
+            width: 400px;
+            height: 225px;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        .slider_con {
+            width: 200%;
+            height: 100%;
+        }
+
+        .slider_con li {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 400px;
+            height: 225px;
+            overflow: hidden;
+        }
+
+        .slider_con li img {
+            width: 100%;
+            vertical-align: middle;
+        }
+
+        .slider_indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .slider_indicator li {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, .4);
+            cursor: pointer;
+        }
+
+        .slider_indicator li.active {
+            background-color: white;
+        }
+
+        .slider_ctrl {
+            display: none;
+            position: absolute;
+            top: 50%;
+            width: 25px;
+            height: 40px;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, .4);
+            cursor: pointer;
+        }
+
+        .slider_ctrl:hover {
+            background-color: rgba(0, 0, 0, .6);
+        }
+
+        .slider_ctrl::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 16px;
+            height: 16px;
+            box-sizing: border-box;
+            border: 3px solid rgba(255, 255, 255, .5);
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .slider_ctrl:hover::after {
+            border-color: rgba(255, 255, 255, .8);
+        }
+
+        .slider_ctrl.left {
+            left: 0;
+        }
+
+        .slider_ctrl.left::after {
+            left: 8px;
+            border-top: none;
+            border-right: none;
+        }
+
+        .slider_ctrl.right {
+            right: 0;
+        }
+
+        .slider_ctrl.right::after {
+            right: 8px;
+            border-bottom: none;
+            border-left: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+        <ul class="slider_con">
+            <li><img src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/imgad/pic/item/9f510fb30f2442a750999faed943ad4bd1130221.jpg"
+                    alt=""></li>
+            <li><img src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/imgad/pic/item/29381f30e924b89914e91b3366061d950b7bf6e0.jpg"
+                    alt=""></li>
+            <li><img src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/imgad/pic/item/9213b07eca806538053ec6189fdda144ac3482e0.jpg"
+                    alt=""></li>
+            <li><img src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/imgad/pic/item/d62a6059252dd42adb9e63a00b3b5bb5c9eab822.jpg"
+                    alt=""></li>
+            <li><img src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/imgad/pic/item/e850352ac65c103851abacc9ba119313b17e89e7.jpg"
+                    alt=""></li>
+            <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593956307442&di=e10e0e12da310147ecee11abd6a39ddc&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Ffront%2F479%2Fw1842h1037%2F20180419%2F4MFA-fzihnep8252795.jpg"
+                    alt=""></li>
+        </ul>
+        <ul class="slider_indicator">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <span class="slider_ctrl left"></span>
+        <span class="slider_ctrl right"></span>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    /**
+        封装多个运动属性
+    */
+    function animate(obj, json, callback) {
+        // 获取属性
+        function getStyle(obj, attr) {
+            if (obj.currentStyle) {
+                return obj.currentStyle[attr];
+            } else {
+                return window.getComputedStyle(obj, null)[attr];
+            }
+        }
+
+
+        clearInterval(obj.timmer);
+        obj.timmer = setInterval(() => {
+            var flag = true;
+            for (var k in json) {
+                var current = parseInt(getStyle(obj, k));
+                var step = (json[k] - current) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                obj.style[k] = current + step + 'px';
+                if (current != json[k]) {
+                    flag = false;
+                }
+            }
+            // 说明执行完毕
+            if (flag) {
+                clearInterval(obj.timmer);
+                callback && typeof callback === 'function' && callback();
+            }
+
+        }, 15);
+    }
+
+
+
+    // 1、找到对象
+    var slider = document.querySelector('.slider');
+    var w = slider.offsetWidth;
+    var sliderCon = document.querySelector('.slider_con');
+    var arrow_l = document.querySelector('.slider_ctrl.left');
+    var arrow_r = document.querySelector('.slider_ctrl.right');
+    var sliderIndicCon = document.querySelector('.slider_indicator');
+
+    var currentIndex = 0;   // 当前图片的索引
+    var timmer = null;  // 轮播的timmer
+
+
+
+    // 2、鼠标进入显示上一张下一张,离开后隐藏
+    slider.addEventListener('mouseenter', function () {
+        arrow_l.style.display = 'block';
+        arrow_r.style.display = 'block';
+
+        // 停止轮播
+        clearInterval(timmer);
+    })
+
+    slider.addEventListener('mouseleave', function () {
+        arrow_l.style.display = 'none';
+        arrow_r.style.display = 'none';
+
+        // 开始轮播
+        clearInterval(timmer);
+        timmer = setInterval(autoPlay, 3000);
+    })
+
+    // 3、除了第一张图，其他所有图都在窗口后面
+    for (var i = 1; i < sliderCon.children.length; i++) {
+        sliderCon.children[i].style.left = w + 'px';
+    }
+
+    // 4、上一张下一张点击事件
+    // 点击上一张
+    arrow_l.addEventListener('click', function () {
+        // 把当前图片滑动到右侧
+        animate(sliderCon.children[currentIndex], { left: w });
+        // 设置当前索引号。如果-1后的索引号小于0，则让当前索引变为最后一个索引；否则什么都不做，即0
+        --currentIndex < 0 ? currentIndex = sliderCon.children.length - 1 : 0;
+        // 把上一张图片立即放在slider的左侧
+        sliderCon.children[currentIndex].style.left = -w + 'px';
+        // 上一张图片慢慢随着当前图片的离开进入
+        animate(sliderCon.children[currentIndex], { left: 0 });
+        // 设置indicator
+        setIndicator();
+    })
+    // 点击下一张
+    arrow_r.addEventListener('click', function () {
+        // 把当前图片慢慢移动到最左侧
+        animate(sliderCon.children[currentIndex], { left: -w });
+        // 设置当前索引号。如果+1后的索引号超过了当前最大索引，则让当前索引为0；否则什么都不做，即0
+        ++currentIndex > sliderCon.children.length - 1 ? currentIndex = 0 : 0;
+        // 把下一张图片立即放在后面
+        sliderCon.children[currentIndex].style.left = w + 'px';
+        // 下一张图片慢慢进入视野
+        animate(sliderCon.children[currentIndex], { left: 0 });
+        // 设置indicator
+        setIndicator();
+    })
+    // 设置indicator方法
+    function setIndicator() {
+        for (var i = 0; i < sliderIndicCon.children.length; i++) {
+            sliderIndicCon.children[i].className = '';
+        }
+        sliderIndicCon.children[currentIndex].className = 'active';
+    }
+
+    // 5、indicator的点击事件
+    for (var j = 0; j < sliderIndicCon.children.length; j++) {
+        sliderIndicCon.children[j].index = j;
+        sliderIndicCon.children[j].onclick = function () {
+            var index = this.index;
+            if (index > currentIndex) {
+                // 把当前图片慢慢移动到最左侧
+                animate(sliderCon.children[currentIndex], { left: -w });
+                // 把下一张图片立即放在后面
+                sliderCon.children[index].style.left = w + 'px';
+            } else {
+                // 说明是上一张
+                // 把当前图片慢慢移动到最右侧
+                animate(sliderCon.children[currentIndex], { left: w });
+                // 把下一张图片立即放在左侧
+                sliderCon.children[index].style.left = -w + 'px';
+            }
+            // 当前索引设置为目标索引
+            currentIndex = index;
+            // 下一张图片慢慢进入视野
+            animate(sliderCon.children[currentIndex], { left: 0 });
+            // 设置indicator
+            setIndicator();
+        }
+    }
+
+    // 6、自动轮播
+    function autoPlay() {
+        // 把当前图片慢慢移动到最左侧
+        animate(sliderCon.children[currentIndex], { left: -w });
+        // 设置当前索引号。如果+1后的索引号超过了当前最大索引，则让当前索引为0；否则什么都不做，即0
+        ++currentIndex > sliderCon.children.length - 1 ? currentIndex = 0 : 0;
+        // 把下一张图片立即放在后面
+        sliderCon.children[currentIndex].style.left = w + 'px';
+        // 下一张图片慢慢进入视野
+        animate(sliderCon.children[currentIndex], { left: 0 });
+        // 设置indicator
+        setIndicator();
+    }
+    timmer = setInterval(autoPlay, 3000);
+
+
+
+</script>
