@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无缝滚动的图片</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            width: 100%;
+            vertical-align: middle;
+        }
+
+
+        .slider {
+            width: 400px;
+            height: 225px;
+            margin: 100px auto;
+            background-color: pink;
+            overflow: hidden;
+        }
+
+        .slider ul {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 2400px;
+        }
+
+        .slider li {
+            float: left;
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+        <ul>
+            <li><img
+                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594025259319&di=b4ef8e04bb18c7b8b863e0573613ffe6&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D4074052957%2C2753247874%26fm%3D214%26gp%3D0.jpg"></img>
+            </li>
+            <li><img
+                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594025256067&di=24bd9223f4fca422eaf9c197b2c7ed74&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F7%2F5801cfa0f266a.jpg"></img>
+            </li>
+            <li><img
+                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594025256067&di=bec26508069df92dd6f915338b6116c1&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201612%2F10%2F20161210203447_YLPmj.jpeg"></img>
+            </li>
+            <li><img
+                    src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=443327947,71053443&fm=26&gp=0.jpg"></img>
+            </li>
+            <li><img
+                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594025256065&di=6268cdeb62c35dd651d6d6d108e53746&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201612%2F10%2F20161210202119_PHruA.jpeg"></img>
+            </li>
+            <li><img
+                    src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594025259319&di=b4ef8e04bb18c7b8b863e0573613ffe6&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D4074052957%2C2753247874%26fm%3D214%26gp%3D0.jpg"></img>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var ul = document.querySelector('.slider ul');
+
+    var timmer = setInterval(autoPlay, 15);
+
+    var num = 0;
+    function autoPlay() {
+        num--;
+        num <= -2000 ? num = 0 : num;
+        ul.style.left = num + 'px';
+    }
+</script>

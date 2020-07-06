@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../00 libs/js/flexible.js"></script>
+    <title>Document</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            width: 100%;
+            vertical-align: middle;
+        }
+
+        .slider {
+            position: relative;
+            height: 5.613333rem;
+            overflow: hidden;
+        }
+
+        .slider .slider_con {
+            width: 1000%;
+            height: 100%;
+            margin-left: -100%;
+        }
+
+        .slider .slider_con li {
+            float: left;
+            width: 10rem;
+        }
+
+        .slider_indict {
+            position: absolute;
+            bottom: .133333rem;
+            right: .533333rem;
+        }
+
+        .slider_indict li {
+            display: inline-block;
+            width: .133333rem;
+            height: .133333rem;
+            margin: .04rem;
+            transition: all .5s;
+            background-color: rgba(255, 255, 255, .4);
+            border-radius: .066667rem;
+        }
+
+        .slider_indict li.active {
+            width: .4rem;
+            background-color: rgba(255, 255, 255, .8);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+        <ul class="slider_con">
+            <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594026516879&di=bb47ca26c5496ecf7c046106097ed622&imgtype=0&src=http%3A%2F%2Fimg.idol001.com%2Forigin%2F2016%2F10%2F07%2F73d6f5a23efc6a46bd2b7cd9a74a10001475836218_watermark.jpg"
+                    alt=""></li>
+            <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594026454620&di=9b8112744656310fc37f17f7ffcbfebc&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201505%2F18%2F20150518210220_vcWzU.jpeg"
+                    alt=""></li>
+            <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594026464425&di=ec529fccee7940a28587019a27f67d6a&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D2785744982%2C551852657%26fm%3D214%26gp%3D0.jpg"
+                    alt=""></li>
+            <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594026454618&di=50d77645230b56524b80387e5525afa9&imgtype=0&src=http%3A%2F%2Fimg3.doubanio.com%2Fview%2Fphoto%2Fl%2Fpublic%2Fp2192478071.jpg"
+                    alt=""></li>
+            <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594026454617&di=aac82c9fe5bc12484c6205343c7cb0d7&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F12%2F20180212105306_fkbnp.jpg"
+                    alt=""></li>
+            <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594026516879&di=bb47ca26c5496ecf7c046106097ed622&imgtype=0&src=http%3A%2F%2Fimg.idol001.com%2Forigin%2F2016%2F10%2F07%2F73d6f5a23efc6a46bd2b7cd9a74a10001475836218_watermark.jpg"
+                    alt=""></li>
+            <li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594026454620&di=9b8112744656310fc37f17f7ffcbfebc&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201505%2F18%2F20150518210220_vcWzU.jpeg"
+                    alt=""></li>
+        </ul>
+
+        <ul class="slider_indict">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+    // 1、获取元素
+    var slider = document.querySelector('.slider');
+    var sliderCon = document.querySelector('.slider .slider_con');
+    var sliderIndicCon = document.querySelector('.slider_indict');
+
+    var w = slider.offsetWidth;
+
+    // 2、利用定时器自动轮播图片
+    var index = 0;
+
+    function autoPlay() {
+        index++;
+        var translateX = -index * w;
+        sliderCon.style.transition = 'all .3s';
+        sliderCon.style.transform = 'translateX(' + translateX + 'px)';
+    }
+
+    var timmer = setInterval(autoPlay, 2000);
+
+    // 过度事件完毕
+    sliderCon.addEventListener('transitionend', function () {
+        if (index >= sliderCon.children.length - 2) {
+            index = 0;
+            // 快速跳转回来
+            sliderCon.style.transition = 'none';
+            var translateX = -index * w;
+            sliderCon.style.transform = 'translateX(' + translateX + 'px)';
+        } else if (index < 0) {
+            index = sliderCon.children.length - 2 - 1;
+            // 快速跳转回来
+            sliderCon.style.transition = 'none';
+            var translateX = -index * w;
+            sliderCon.style.transform = 'translateX(' + translateX + 'px)';
+        }
+        // 
+        sliderIndicCon.querySelector('.active').classList.remove('active');
+        sliderIndicCon.children[index].classList.add('active')
+
+    })
+
+    // 3、indicator联动
+
+
+    // 4、手指滑动轮播图
+    var startX = 0;
+    var moveX = 0;
+    sliderCon.addEventListener('touchstart', function (e) {
+        clearInterval(timmer)
+        startX = e.targetTouches[0].pageX;
+    })
+
+    sliderCon.addEventListener('touchmove', function (e) {
+        // 移动距离
+        moveX = e.targetTouches[0].pageX - startX;
+        // 移动盒子：盒子原来的位置 + 手指移动的距离
+        var translateX = -index * w + moveX;
+        // 手指拖动的时候不需要动画效果
+        sliderCon.style.transition = 'none';
+        sliderCon.style.transform = 'translateX(' + translateX + 'px)';
+    })
+
+    sliderCon.addEventListener('touchend', function (e) {
+        if (Math.abs(moveX) > 50) {
+            if (moveX > 0) {
+                // 右滑
+                index--;
+            } else {
+                index++;
+            }
+        }
+        var translateX = -index * w;
+        sliderCon.style.transition = 'all .3s';
+        sliderCon.style.transform = 'translateX(' + translateX + 'px)'
+        
+
+        // 重新开始轮播
+        clearInterval(timmer)
+        timmer = setInterval(autoPlay, 2000);
+    })
+
+
+</script>

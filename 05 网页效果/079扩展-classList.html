@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>classList使用</title>
+</head>
+<body>
+
+    <button>切换类</button>
+    <div class="one"></div>
+</body>
+</html>
+
+<script>
+    /* 
+        classList
+            h5新增的节点对象
+            支持 IE10+
+    */
+
+
+    var div = document.querySelector('div');
+    var button = document.querySelector('button');
+
+
+    // 查看类名
+    console.log(div.classList);
+
+    // 增加类名
+    div.classList.add('two')
+
+    // 删除类名
+    div.classList.remove('one')
+
+    // toggle类名
+    button.addEventListener('click',function() {
+        div.classList.toggle('three');
+    })
+
+
+    
+    
+</script>

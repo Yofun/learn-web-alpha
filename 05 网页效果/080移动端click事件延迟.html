@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    /* 
+        移动端click事件会有300ms的延时，原因是移动端屏幕双击会缩放（double tap to zoom）页面
+
+            解决：
+                1）禁止缩放。<meta name="viewport" content="user-scalable=no">
+                2）利用touch时间自己封装这个事件
+                3）fastclick插件解决
+    */
+
+    // 第二种方法解决点击
+    function tab(obj, callback) {
+        var isMove = false;
+        var startTime = 0;
+        obj.addEventListener('touchstart', function () {
+            startTime = +new Date();
+        });
+        obj.addEventListener('touchmove', function () {
+            isMove = true;
+        })
+        obj.addEventListener('touchend', function () {
+            if (!isMove && (Date.now() - startTime) < 150) {
+                callback && typeof callback === 'function' && callback();
+            }
+            isMove = false;
+            startTime = 0;
+        })
+    }
+
+    tab(document.documentElement, function () {
+        console.log('点击了');
+    })
+</script>
