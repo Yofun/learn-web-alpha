@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件</title>
+    <script src="jquery.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>
+
+<script>
+    $(function() {
+        // 1、事件写法。只能写一种事件
+        $('div').click(function(){
+            console.log('click:::div被点击了1');
+        })
+        // 可以设置多个同类型事件，不会被覆盖
+        $('div').click(function(){
+            console.log('click:::div被点击了2');
+        })
+
+
+
+        // 2、使用on()来进行绑定多个事件
+        // 1）on()绑定一个事件写法
+        $('div').on('click',function() {
+            console.log('on一个事件:::div被点击了3');  
+        });
+        // 2）on()绑定多个事件
+        $('div').on({
+            mouseenter:function() {
+                console.log('on多个事件:::鼠标进来了');
+            },
+            mouseleave:function() {
+                console.log('on多个事件:::鼠标离开了');
+            },
+            click:function() {
+                console.log('on一个事件:::div被点击了4');  
+            }
+        });
+
+        // 3）on()多个事件触发一个函数
+        $('div').on('mouseenter mouseleave',function(){
+            console.log('mouseenter mouseleave');
+        })
+    })
+</script>

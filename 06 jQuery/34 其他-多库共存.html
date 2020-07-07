@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多库共存</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    // 解决$符号和其他变量命名冲突
+
+    // 1、使用jQuery全称解决问题
+    jQuery(function() {
+
+    })
+    // 2、更改jQuery的使用方法
+    var sb = jQuery.noConflict();   // 这个时候sb就相当于是$符号或者jQuery了
+    console.log(sb(document));
+    
+
+</script>

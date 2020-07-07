@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发布微博</title>
+
+    <script src="jquery.min.js"></script>
+
+    <style>
+        .box {
+            width: 400px;
+            border: 1px solid #333;
+            padding: 10px;
+        }
+
+        .box ul li {
+            border-bottom: 2px dashed #cccccc;
+            padding: 5px 0;
+        }
+
+        .box ul li span {
+            float: right;
+            color: blue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        发布微博
+        <textarea></textarea>
+        <button>发布</button>
+
+        <ul>
+            <!-- <li>第一条信息 <span>删除</span></li> -->
+        </ul>
+    </div>
+</body>
+
+</html>
+
+<script>
+    $(function () {
+        $('.box button').click(function () {
+            var val = $('.box textarea').val();
+            if (val.trim().length == 0) {
+                alert('发布内容不能为空');
+                return;
+            }
+            // 内容不为空，说明可以发布
+            $('.box ul').prepend($('<li>' + val + '<span>删除</span></li>'));
+        });
+
+        // 删除已经发布的微博内容
+        $('.box ul').on('click','span', function() {
+            $(this).parent().slideUp(function(){
+                $(this).remove();
+            })
+        })
+
+
+    })
+</script>

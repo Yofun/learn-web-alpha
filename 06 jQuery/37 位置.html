@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>位置</title>
+    <script src="jquery.min.js"></script>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            height: 3000px;
+        }
+
+
+        .father {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+            margin: 100px;
+        }
+
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+        }
+
+        .back {
+            display: none;
+            position: fixed;
+            right: 0;
+            bottom: 40px;
+            padding: 10px;
+            background-color: pink;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+    <div class="back">返回顶部</div>
+</body>
+</html>
+
+<script>
+    $(function() {
+        // 1、offset    获取的是基于文档位置的坐标
+
+        // 获取
+        console.log($('.father').offset())  // {top: 100, left: 100}
+        console.log($('.son').offset())  // {top: 100, left: 100}
+
+        // 修改
+        $('.son').offset({top:200,left:200})
+
+
+
+        // 2、position()  获取带有定位父级的偏移坐标，相当于DOM中的offsetLeft、offsetTop
+        console.log($('.son').position());
+
+
+        // 3、scrollTop()、scrollLeft()  相当于DOM中的 ele.scrollTop、ele.scrollLeft
+        $(window).on('scroll',function(){
+            var top = $(this).scrollTop();
+            var sonTop = $('.son').offset().top;
+            if(top > sonTop) {
+                // 显示返回
+                $('.back').show();
+            }else {
+                $('.back').hide();  
+            } 
+        })
+
+        // 带动画返回顶部
+        $('.back').on('click',function() {
+            // 这样不带动画
+            // $(window).scrollTop(0);
+
+            // 使用animate带动画的
+            $('body,html').stop().animate({
+                scrollTop: 0
+            });
+        })
+
+    })
+</script>

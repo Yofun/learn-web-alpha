@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象拷贝</title>
+    <script src="jquery.min.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    $(function() {
+        // 对象拷贝：会覆盖原来对象中的数据，原来对象中的数据不变
+
+        // 1) 浅拷贝
+        // var target = {
+        //     name: '张三',
+        //     name2: 'name2'
+        // };
+        // var obj = {
+        //     name: 'pink老师',
+        //     age: 27,
+        //     height: 168,
+        //     msg: {
+        //         title: 'pink老师来消息了~'
+        //     }
+        // }
+        // // 开始拷贝
+        // $.extend(target,obj);
+        // // 如果改变原来对象中msg对象中的值
+        // obj.msg.title = 'pink老师说今晚不回去！';
+        // // 打印原来的
+        // console.log('obj',obj);      // 结果：msg.title = pink老师说今晚不回去！
+        // // 打印现在的
+        // console.log('target',target);   // 结果：msg.title = pink老师说今晚不回去！
+
+
+        // 2) 深拷贝
+        var target = {
+            name: '张三',
+            name2: 'name2'
+        };
+        var obj = {
+            name: 'pink老师',
+            age: 27,
+            height: 168,
+            msg: {
+                title: 'pink老师来消息了~'
+            }
+        }
+        // 开始拷贝
+        $.extend(true, target,obj);
+        // 如果改变原来对象中msg对象中的值
+        obj.msg.title = 'pink老师说今晚不回去！';
+        // 打印原来的
+        console.log('obj',obj); // 结果：msg.title = pink老师说今晚不回去！
+        // 打印现在的
+        console.log('target',target);   // 结果：msg.title = pink老师来消息了~
+
+    })
+</script>

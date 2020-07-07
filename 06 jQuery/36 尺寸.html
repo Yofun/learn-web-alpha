@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>尺寸和位置</title>
+    <script src="jquery.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            /* background-color: pink; */
+            background-image: url(https://img3.doubanio.com/view/photo/l/public/p2529147072.webp);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-origin: content-box;
+            border: 10px solid red;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>
+
+<script>
+    $(function() {
+        // 1、width() 和 height() 用法      content
+        // 获取大小 width() 
+        console.log($('div').width());   // 200 
+        console.log($('div').height());   // 200 
+        
+        // 设置大小
+        $('div').width(300)
+        $('div').height(300)
+
+
+        // 2、innerWidth() 和 innerHeight()    content + padding
+        console.log($('div').innerWidth());     // 340
+        console.log($('div').innerHeight());    // 340
+
+
+        // 3、outerWidth() 和 outerHeight()     content + padding + border
+        console.log($('div').outerWidth()); // 360
+        console.log($('div').outerHeight());    // 360
+
+
+        // 4、outerWidth(true)   content + padding + border + margin
+        console.log($('div').outerWidth(true)); // 400
+
+    })
+</script>

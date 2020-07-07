@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="jquery.min.js"></script>
+
+</head>
+
+<body>
+    <ul>
+        <li>这是第1个li</li>
+        <li>这是第2个li</li>
+        <li>这是第3个li</li>
+        <li>这是第4个li</li>
+        <li>这是第5个li</li>
+    </ul>
+
+    <ol>
+
+    </ol>
+</body>
+
+</html>
+
+<script>
+
+    // 1、事件委派：给子元素身上的事件绑定在父元素身上，就是把事件委派给父元素
+    $(function () {
+        $('ul').on('click', 'li', function () {
+            console.log(this);
+        })
+    })
+
+
+
+    // 2、on()的事件委托 可以给动态创建的元素绑定事件
+    // 使用click()绑定事件
+    $('ol li').click(function () {
+        console.log('click>>>>您点击了ol下的li');   // 未触发点击方法
+    })
+
+    // 使用on()的事件委托
+    $('ol').on('click', 'li', function () {
+        console.log('on>>>>您点击了ol下的li');      // 点击方法被触发了
+    })
+
+
+    // 创建元素
+    $('ol').append($('<li>我是ol动态创建的li</li>'));
+
+
+</script>

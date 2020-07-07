@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象</title>
+
+    <script src="jquery.min.js"></script>
+
+    <style>
+        .father {
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+        }
+
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://www.baidu.com">这是一个链接</a>
+
+
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+</html>
+
+
+<script>
+    // jQuery事件对象：event
+
+    // 1、阻止默认行为
+    // 1) 使用e.preventDefault()方法
+    $('a').click(function(e) {
+        e.preventDefault();
+    })
+    // 2) 使用return false方法
+    $('a').click(function(e) {
+        return false;
+    })
+
+    // 2、阻止事件冒泡
+    $('.father').click(function() {
+        console.log('点击了::::father');
+    })
+
+    $('.son').click(function(e) {
+        // 阻止冒泡
+        e.stopPropagation()
+        console.log('点击了::::son');
+    })
+
+
+</script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件解绑</title>
+    <script src="jquery.min.js"></script>
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>
+
+<script>
+    $(function() {
+        // 添加事件
+        $('div').on({
+            click:function() {
+                console.log('鼠标点击了');
+            },
+            mouseover:function() {
+                console.log('鼠标经过了');
+            }
+        });
+
+
+        // 1、事件解绑 off() 解除所有事件
+        // $('div').off();
+
+        // 2、解除某个事件类型
+        $('div').off('click mouseover')
+        
+
+    })
+</script>
