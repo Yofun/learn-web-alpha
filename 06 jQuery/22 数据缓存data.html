@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据缓存data</title>
+    <script src="jquery.min.js"></script>
+
+</head>
+<body>
+    <span data-custom="我是自定义的data属性"></span>
+</body>
+</html>
+<script>
+    // data()  中的值存放在元素对象的内存中，无法看的出来。也可以获取H5中data-开头的属性值
+
+    $(function() {
+        // 存储自定义的值
+        $('span').data('hello','我是存储的值');
+
+        // 获取存储的值
+        var hello = $('span').data('hello');
+        console.log(hello);
+        
+
+        // 获取HTML5中的data-自定义属性
+        var custom = $('span').data('custom');
+        console.log(custom);
+        
+    })
+    
+</script>

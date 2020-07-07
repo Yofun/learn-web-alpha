@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <a href="https://www.baidu.com" custom-attr="自定义属性">百度一下，你就知道</a>
+</body>
+</html>
+
+<script>
+    $(function() {
+        // 获取自带属性
+        var href = $('a').attr('href');
+        console.log(href);
+
+
+        // 获取自定义属性
+        var custom = $('a').attr('custom-attr');
+        console.log(custom);
+
+        // 设置自定义属性
+        $('a').attr('custom-attr','我是被修改过的自定义属性');
+        
+    })
+</script>

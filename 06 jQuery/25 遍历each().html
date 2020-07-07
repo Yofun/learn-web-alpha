@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>each()遍历</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</body>
+</html>
+
+<script>
+    $(function() {
+
+        // 1、遍历元素
+
+        $('div').each(function(index,ele){
+            console.log(ele);
+        })
+
+        // 2、遍历任何对象
+        $.each([1,2,3],function(index,value) {
+            console.log(index,value);
+        })
+
+        $.each({name:'pink'},function(index,value) {
+            console.log(index,value);   // name pink
+        })
+    })
+</script>

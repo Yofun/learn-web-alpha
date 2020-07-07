@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车全选</title>
+    <script src="jquery.min.js"></script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <table width="500" align="center" cellspacing='0' cellpadding="10" border="1">
+        <caption>请操作您的购物车</caption>
+
+        <thead>
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>商品名称</th>
+                <th>商品价格</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>IPhone 6</td>
+                <td>3000</td>
+            </tr>
+
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>IPhone 6s</td>
+                <td>3500</td>
+            </tr>
+
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>IPhone 6s PLUS</td>
+                <td>4000</td>
+            </tr>
+
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>IPhone 8</td>
+                <td>4500</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
+
+<script>
+    $(function () {
+        // 1、全选 全不选
+        $('thead input').click(function () {
+            var status = $(this).prop('checked');
+            $('tbody input').prop('checked', status);
+        })
+
+
+        // 
+        $('tbody input').click(function () {
+            var num = $('tbody input:checked').length;
+            $('thead input').prop('checked', num == $('tbody input').length)
+        });
+
+    })
+</script>

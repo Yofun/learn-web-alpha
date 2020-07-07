@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素增删改查</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <ul>
+        <li>我是已近存在的</li>
+    </ul>
+
+    <div class="myDiv">我是已经存在的div</div>
+
+
+   
+</body>
+</html>
+
+<script>
+    $(function() {
+        // 1、内部添加
+        // 在最后面添加元素
+        $('ul').append($('<li>我是在后面添加的li</li>'));
+        // 在最前面添加
+        $('ul').prepend($('<li>我是在前面添加的li</li>'));
+
+        // 2、外部添加
+        // 后面
+        $('.myDiv').after($('<div>我是你后边的兄弟</div>'));
+        // 前面
+        $('.myDiv').before($('<div>我是你前边的哥哥</div>'));
+
+
+        // 3、删除元素
+        // empty() 清空子元素
+        // remove() 移除自己
+        // html('') 清空子元素
+
+    })
+</script>

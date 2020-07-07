@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        img{
+            width: 200px;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <img src="123" alt="">
+    <br />
+    <label>请选择: <input type="checkbox"></label>
+</body>
+</html>
+
+<script>
+    $(function() {
+        /* 
+            prop()
+                获取元素的固有属性
+        */
+
+
+
+        // 获取属性
+        var src = $('img').prop('src');
+        console.log(src);
+
+        $('input').change(function() {
+            console.log($(this).prop('checked'));
+        })
+
+        // 设置属性
+        $('img').prop('src','https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1594110466643&di=d5ed20de2d47ce122d4b30faf6d2a9ce&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201805%2F23%2F20180523185151_xnz4i.jpeg')
+        
+
+    })
+</script>

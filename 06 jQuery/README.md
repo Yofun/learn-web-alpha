@@ -85,3 +85,33 @@ $('ol li').eq(2).css('color','purple')
 - removeClass('类名')：移除类
 - toggleClass('类名')：切换
 
+
+## 操作属性
+
+```js
+// 1、prop()    获取标签元素的自带属性，如：href、src、id...
+// 1）获取属性
+$(this).prop('src');
+// 2）设置属性
+$(this).prop('src','123445');
+
+
+
+// 2、attr()    获取标签元素的自带属性和自定义属性
+// 1）获取属性
+$(this).attr('custom');
+// 2）设置属性
+$(this).attr('custom','123445');
+
+
+
+// 3、data() 获取HTML5中的data-开头的属性值，获取和设置存储在元素对象上的值
+ // 存储自定义的值
+$('span').data('hello','我是存储的值');
+// 获取存储的值
+var hello = $('span').data('hello');
+console.log(hello);
+// 获取HTML5中的data-自定义属性
+var custom = $('span').data('custom');
+console.log(custom);
+```
