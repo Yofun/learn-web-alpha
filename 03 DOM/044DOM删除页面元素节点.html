@@ -8,16 +8,16 @@
 <body>
     <button>删除</button>
     <ul>
-        <li>熊大</li>
-        <li>熊二</li>
-        <li>光头强</li>
+        <li>熊大<a href="#">删除</a></li>
+        <li>熊二<a href="#">删除</a></li>
+        <li>光头强<a href="#">删除</a></li>
     </ul>
 </body>
 </html>
 
 <script>
     var ul = document.querySelector('ul')
-    // 删除节点  removeChild(childNode)
+    // 1. 删除节点(父元素删除)  removeChild(childNode)
 
     var btn = document.querySelector('button')
     btn.onclick = function() {
@@ -27,4 +27,18 @@
             this.disabled = true
         }
     }
+
+    // 2. 删除节点（自己删除） remove()
+    var as = ul.querySelectorAll('a');
+    for(var i = 0; i < as.length; i++) {
+        as[i].onclick = function(e) {
+            // 阻止默认事件
+            e.preventDefault();
+            // 删除节点
+            this.parentNode.remove();
+        }
+    }
+
+
+
 </script>

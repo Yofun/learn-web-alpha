@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>super关键字</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    /* 
+        super关键字调用父类普通函数和属性
+            super.父亲的函数名()
+    */
+
+
+    class Father {
+        constructor() {
+            this.name = 'father';
+        }
+
+        sayName(){
+            console.log('我是' + this.name);
+        }
+    }
+
+    class Son extends Father {
+        constructor(){
+            // 子类构造函数中的super()方法必须写在子类构造函数this的前面
+            super();
+        }
+
+        sayName(){
+            // 访问父类的属性
+            console.log(super.name);    // undefined
+            // 调用父类的方法
+            super.sayName();      // 我是father
+        }
+    }
+
+
+    var son = new Son();
+    son.sayName();
+</script>

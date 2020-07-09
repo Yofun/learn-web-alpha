@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类中添加方法</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    class Star{
+        // 构造方法
+        constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }
+
+        // 方法
+        // 1) 类中的所有函数不需要写function
+        // 2) 多个函数方法之间不需要添加逗号分隔
+        sing(word){
+            console.log(word);
+        }
+    }
+
+    var ldh = new Star('刘德华',18);
+    ldh.sing('冷冷的冰雨在脸上胡乱的拍~')
+</script>
