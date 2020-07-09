@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象新增方法</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    var obj = {
+        name: '刘德华',
+        age: 18,
+        job: '歌手',
+        height: 178
+    }
+
+    // 1. Object.keys(obj) // 对象key集合 返回一个数组
+    console.log(Object.keys(obj));   // ['name','age','job','height']
+
+
+    // 2. Object.values(obj) 对象value的集合
+    console.log(Object.values(obj));
+    
+
+    // 3. Object.defineProperty(obj, prop, des) 定义对象中新属性或修改原有的属性
+    // 1) 以前对象修改方式
+    obj.age = 19;
+    console.log(obj);
+    // 2) 使用Object.defineProperty()
+    Object.defineProperty(obj, 'age', {
+        value: 20,  // 要修改的value
+        writable: false, // 是否可以重写,默认false      // 无法使用obj.属性名=xxx来修改
+        enumerable: false, // 目标属性是否可以被枚举。 默认false    // 无法被遍历出来
+        configurable: false // 目标属性是否可以被删除或是可以再次修改特性   // delete obj.属性 无法被删除
+    })
+    obj.age = 21;   // 无法被修改
+    console.log(Object.keys(obj));   // ["name", "job", "height"] 可以看出age属性没有被遍历出来
+    delete obj.age; // 没有被删除
+    console.log(obj);
+ 
+</script>

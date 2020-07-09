@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    function Star(name) {
+        this.name = name;
+    }
+    // 如果指定prototype为一个对象，此时原型对象中就没有构造方法了
+    // Star.prototype = {
+    //     sing: function() {
+    //         console.log('我会唱歌');
+    //     },
+    //     movie: function() {
+    //         console.log('我会演电影');
+    //     }
+    // }
+    // var ldh = new Star('刘德华');
+    // console.log(ldh.__proto__);
+    // console.log(Star.prototype);
+
+
+    // 为了解决以上问题，我们需要手动指定原型对象
+    Star.prototype = {
+        construtor: Star,
+        sing: function() {
+            console.log('我会唱歌');
+        },
+        movie: function() {
+            console.log('我会演电影');
+        }
+    }
+    var ldh = new Star('刘德华');
+    console.log(ldh.__proto__);
+    console.log(Star.prototype);
+    
+
+</script>

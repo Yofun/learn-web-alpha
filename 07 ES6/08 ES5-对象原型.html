@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象原型</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /* 
+        方法查找规则，以sing方法为例
+            1）首先看对象身上是否有sing方法，如果有就执行这个对象上的sing
+            2）如果没有sing这个方法，因为该对象有__proto__的存在，又因为__prop__指向的是构造函数的原型对象，所以就会在构造函数的原型对象上去找sing方法，如果有就执行该方法，如果没有，就会报sing is not a function的错误
+    
+    */
+
+
+
+    function Star() {
+    }
+    var ldh = new Star();
+    // 对象的原型 === 构造函数的原型对象
+    console.log(ldh.__proto__ === Star.prototype);
+    console.log(ldh);
+    
+
+    
+</script>

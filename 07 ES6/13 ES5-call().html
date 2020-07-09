@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES5 继承</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    /* 
+        call()
+            调用这个函数，并且修改函数运行时的this指向
+        func.call(thisArg, arg1, arg2...)，第一个参数是this指向的对象，其他参数是function的普通参数
+    */
+
+
+   // 1. call() 调用函数,呼叫函数，呼叫本身函数
+   function fn() {
+       console.log('打印了');
+   }
+   fn.call();
+
+
+   // 2. 修改this指向
+   var obj = {
+       name: '刘德华',
+       fn: function(){
+            console.log(this);
+       }
+   }
+   // 普通执行
+   obj.fn(); // {name: "刘德华", fn: ƒ}   this指向的是obj
+   // 使用call修改this指向
+   obj.fn.call(window); // 此时打印出的是window，this指向的就是window了
+
+</script>

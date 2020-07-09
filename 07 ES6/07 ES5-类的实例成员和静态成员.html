@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实例成员和静态成员</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+    /* 
+        实例成员 
+            是构造函数内部通过this添加的成员
+            是通过实例对象来访问的
+        静态成员 
+            在构造函数本身上添加的成员
+            通过构造函数来访  问
+    */
+
+
+    function Star (name){
+        // 这个就是实例成员
+        this.name = name;  
+    }
+    // 这个属性就是静态成员
+    Star.sex = '男';
+
+    console.log(Star.sex);
+
+    Star.prototype.sing = function() {
+        console.log('我的名字是' + this.name); 
+    }
+
+    var ldh = new Star('刘德华');
+    ldh.sing();
+    var zxy = new Star('张学友');
+    zxy.sing();
+    
+
+
+
+</script>

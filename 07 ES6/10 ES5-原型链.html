@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES5 原型链</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    function Star(name) {
+        this.name = name;
+    }
+    var ldh = new Star('刘德华');
+
+    // ldh的原型对象，它的构造函数是Star
+    console.log('ldh的原型对象', ldh.__proto__);
+    console.log(ldh.__proto__ === Star.prototype);
+    
+
+    // ldh的原型对象的__prop__，它的构造函数是Object
+    console.log('Star的prototype的原型对象', ldh.__proto__.__proto__);
+    console.log(ldh.__proto__.__proto__ === Object.prototype);
+    
+
+    // 再往上，就是null
+    console.log('Star的prototype的原型对象的原型对象', ldh.__proto__.__proto__.__proto__);
+
+    
+</script>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES5新增方法</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    // 1. 数组方法
+    // 1) foreach遍历
+    var arr = [1, 2, 3, 4, 5, 6];
+    arr.forEach(function (value, index, arr) {
+        console.log(value, index, arr);
+    });
+
+    // 2) map方法 返回一个重组的新数组
+    var arrN = arr.map(v => v * 2);
+    console.log(arrN); // [2, 4, 6, 8, 10, 12]
+
+
+    // 3) filter(function(currentValue, index, arr){}) 数组过滤,返回一个新数组
+    var arrF = arr.filter(function (v) {
+        // 筛选出偶数
+        return v % 2 == 0;
+    })
+    console.log(arrF); // [2, 4, 6]
+
+
+    // 4) reduce(function(result, currentValue, currentIndex, arr), initialValue)
+    // 用法：统计数组中的数字的出现次数，并按照次数的从高到底进行排序
+    var ar = [1, 4, 5, 5, 2, 3, 4, 4, 2, 4, 5, 3, 3, 5, 5]
+    var arrO = ar.reduce(function (reslut, value) {
+        reslut[value] = (reslut[value] || 0) + 1;
+        return reslut;
+    }, {});
+    var arrResult = Object.entries(arrO).sort((a, b) => b[1] - a[1]);
+    console.log(arrResult);
+
+
+
+    // 5) some(function(currentValue, index, arr))  返回值：Boolean
+    var arrS = arr.some(function(value, index, arr){
+        // 是否有大于5的值
+        return value > 5;
+    })
+    console.log(arrS); // true
+
+
+</script>

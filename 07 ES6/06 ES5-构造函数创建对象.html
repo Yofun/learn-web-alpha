@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数创建对象</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+
+    /* 
+        构造函数
+            是一种特殊的函数，主要用来初始化对象，即为对象成员变量赋初始值，它总与new一起使用。我们可以把对象中一些公共的属性和方法抽取出来，然后封装在这个函数里面。
+
+        new在执行时会做四件事情
+            1）在内存中创建一个新的空对象。
+            2）让this指向这个新的对象。
+            3）执行构造函数里面的代码，给这个新对象添加属性和方法。
+            4）返回这个新对象（所以构造函数里面不需要return）。
+    */
+
+    function Star(name, age) {
+        this.name = name;
+        this.age = age;
+        this.sing = function (song) {
+            console.log('我会唱' + song);
+        }
+    }
+    var ldh = new Star('刘德华',18);
+    ldh.sing('冰雨');
+    var zxy = new Star('张学友',20);
+    zxy.sing('李香兰');
+
+</script>

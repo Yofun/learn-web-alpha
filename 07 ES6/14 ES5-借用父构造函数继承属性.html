@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>借用父构造函数继承属性</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    /* 
+        利用call()方法修改父构造函数中的this指向子实例对象 
+            只能继承实例成员，this关键字添加的成员。
+            不能继承原型对象的属性和方法
+    */
+    function Father(name, age) {
+        this.name = name;
+        this.age = age;
+        this.sing = function() {
+            console.log('唱歌~');
+        }
+    }
+    Father.prototype.money = 1000;
+    Father.prototype.song = function() {
+        console.log('我是爸爸，我会唱歌');
+    }
+    function Son(name, age) {
+        Father.call(this, name, age);
+    }
+    var son = new Son('刘德华', 18);
+    console.log(son);   // Son {name: "刘德华", age: 18, sing: ƒ}
+    console.log(son.sing());    // 唱歌~
+    console.log(son.money); // undefined
+    console.log(son.song());    // TypeError:song is not a function
+
+</script>

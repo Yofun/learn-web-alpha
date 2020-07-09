@@ -39,3 +39,68 @@
 - `super.父类属性`会返回undefined
 
 
+## 使用new关键字创建类做的事情
+
+1. 在内存中创建一个新的空对象。
+2. 让this指向这个新的对象。
+3. 执行构造函数里面的代码，给这个新对象添加属性和方法。
+4. 返回这个新对象（所以构造函数里面不需要return）。
+
+
+## 构造函数的实例成员和静态成员
+
+- 实例成员：在构造函数中通过`this`关键字添加的成员。需要使用构造函数的实例对象来进行访问的。
+
+- 静态成员：使用构造函数本身添加的成员，如`Persion.sex`。只能有构造函数本身来访问。
+
+
+## 对象的原型、构造函数的原型对象
+
+- 每个构造函数、普通函数和Function都有自己的prototype属性
+- 每个构造函数、普通函数和Function的prototype.contructor指向的是构造函数本身
+- 每个实例的__proto__指向构造函数的prototype
+- Object对象是Function创建的
+- Function.proto指向Object.prototype,Object.prototype的proto指向null
+
+## ES5继承
+
+- 利用call()方法修改父构造函数中的this指向子实例对象，可以使子构造函数继承父亲的实例成员。缺点：无法继承prototype的属性和方法
+
+- 为了解决以上问题：
+    ```js
+    // 子类原型对象设置为父构造函数的实例
+    Son.prototype = new Father();
+    // 利用construtor再指向原来的构造函数s
+    Son.prototype.construtor = Son;
+    ```
+
+完整的继承代码如下
+```js
+function Father(name, age) {
+    this.name = name;
+    this.age = age;
+    this.sing = function () {
+        console.log('唱歌~');
+    }
+}
+Father.prototype.money = 1000;
+Father.prototype.song = function () {
+    console.log('我是爸爸，我会唱歌');
+}
+function Son(name, age) {
+    Father.call(this, name, age);
+}
+// 子类原型对象设置为父构造函数的实例
+Son.prototype = new Father();
+// 利用construtor再指向原来的构造函数s
+Son.prototype.construtor = Son;
+var son = new Son('刘德华', 18);
+console.log(son);
+console.log(son.sing());
+console.log(son.money);
+console.log(son.song());
+```
+
+
+
+

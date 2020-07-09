@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    /* 
+        利用父类的构造函数实例继承父类的原型对象
+    */
+    function Father(name, age) {
+        this.name = name;
+        this.age = age;
+        this.sing = function () {
+            console.log('唱歌~');
+        }
+    }
+    Father.prototype.money = 1000;
+    Father.prototype.song = function () {
+        console.log('我是爸爸，我会唱歌');
+    }
+    function Son(name, age) {
+        Father.call(this, name, age);
+    }
+    // 子类原型对象设置为父构造函数的实例
+    Son.prototype = new Father();
+    // 利用construtor再指向原来的构造函数s
+    Son.prototype.construtor = Son;
+    var son = new Son('刘德华', 18);
+    console.log(son);
+    console.log(son.sing());
+    console.log(son.money);
+    console.log(son.song());
+</script>
