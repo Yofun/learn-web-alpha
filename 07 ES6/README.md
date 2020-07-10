@@ -102,5 +102,57 @@ console.log(son.song());
 ```
 
 
+## 数组中的遍历方法
+
+- forEach() 方法对数组的每个元素执行一次给定的函数。
+    ```js
+    var arr = [1,2,3,4,5];
+    // forEach(当前值，当前索引，数组)
+    arr.forEach(function(value, index, arr) {
+    });
+    ```
+
+- map() 方法创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值。
+    ```js
+    var arr = [1,2,3,4];
+    var newArr = arr.map(function(value, index, arr) {
+        return value * 2;
+    })
+    console.log(newArr); // [2,4,6,8]
+    ```
+
+- filter() 方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素。
+    ```js
+    var arr = [1,2,3,4];
+    var newArr = arr.filter(function(value, index, arr) {
+        return value > 3;
+    })
+    console.log(newArr); // [4]
+    ```
+
+- reduce() 方法对数组中的每个元素执行一个由您提供的reducer函数(升序执行)，将其结果汇总为单个返回值。
+    ```js
+    // 用法：统计数组中的数字的出现次数，并按照次数的从高到底进行排序
+    var ar = [1, 4, 5, 5, 2, 3, 4, 4, 2, 4, 5, 3, 3, 5, 5]
+    var arrO = ar.reduce(function (reslut, value) {
+        reslut[value] = (reslut[value] || 0) + 1;
+        return reslut;
+    }, {});
+    var arrResult = Object.entries(arrO).sort((a, b) => b[1] - a[1]);
+    console.log(arrResult);
+    ```
+
+- some() 方法测试数组中是不是至少有1个元素通过了被提供的函数测试。它返回的是一个Boolean类型的值。
+    ```js
+    // 通常用于检测数组中是否包含某一元素
+    // 例如：判断数组中是否有 >10 的数
+    var arr = [1,2,3,13];
+    var flag = arr.some(function(value, index, arr) {
+        return value > 10;
+    });
+    console.log(flag); // true  // 数组中有大于10的数——13，所以返回true
+    ```
+
+
 
 

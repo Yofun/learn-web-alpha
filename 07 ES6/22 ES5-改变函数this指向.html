@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>改变函数this的指向</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    /* 
+        1. call(thisArg,参数1，参数2...)
+            作用
+                改变this指向
+                调用函数
+                实现继承
+    */
+    var o1 = {
+        name: '刘德华'
+    }
+    function f1() {
+        console.log(this);
+    }
+    f1();    // window
+    // 指定this指向为o并执行函数
+    f1.call(o1); // o1对象
+
+
+
+    /* 
+        2. apply(thisArg, [argsArray])
+            作用
+                改变this指向
+                调用函数
+        和call不同：第二个参数以数组的方式传递
+    */
+    // 1) 改变this指向
+    var o2 = {
+        name: '刘德华'
+    }
+    function f2(arr) {
+        console.log(this, arr);
+    }
+    f2([1, 2, 3]);    // window
+    // 指定this指向为o并执行函数
+    f2.call(o2, [4, 5, 6]); // o2对象
+
+    // 2) 利用apply借助于Math内置对象求最大值
+    // 本来Math.max()中的参数形式为 参数1，参数2，参数3，...  利用apply可以将数组转化为max正确的参数
+    var arr2 = [1, 66, 3, 99, 4];
+    console.log(Math.max.apply(Math, arr2)); // 99
+
+
+
+    /* 
+        3. bind(thisArg,arg1,arg2)   返回原函数的拷贝
+            改变函数this指向
+    */
+    var o3 = {
+        name: '刘德华'
+    };
+    function f3(){
+        console.log(this);
+    }
+    f3(); // window
+    // 需要手动调用
+    (f3.bind(o3))(); // {name: "刘德华"}
+
+
+</script>

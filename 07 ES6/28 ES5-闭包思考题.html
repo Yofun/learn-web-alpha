@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包思考</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+
+    // 1.
+    // var name = 'this window';
+    // var obj = {
+    //     name: 'obj',
+    //     getName: function () {
+    //         // var name = this.name;
+    //         return function () {
+    //             return this.name; // 这里的this指向的window
+    //         }
+    //     }
+    // }
+    // console.log(obj.getName()());
+
+
+
+    // 2.
+    var name = 'this window';
+    var obj = {
+        name: 'obj',
+        getName: function () {
+            var that = this;
+            return function () {
+                return that.name; // 实现了闭包
+            }
+        }
+    }
+    console.log(obj.getName()());   // obj
+
+    
+
+
+</script>

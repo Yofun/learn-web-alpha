@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包案例</title>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>内容1</li>
+        <li>内容2</li>
+        <li>内容3</li>
+        <li>内容4</li>
+    </ul>
+</body>
+
+</html>
+
+<script>
+    // 1. 闭包应用-点击li输出当前li的索引号
+    // 1) 动态添加属性的方式
+    var lis = document.querySelector('.nav').children;
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].index = i;
+        lis[i].addEventListener('click', function () {
+            console.log('动态属性', this.index);
+        });
+    }
+    // 2) 使用闭包的立即执行函数实现
+    for (var i = 0; i < lis.length; i++) {
+        (function (j) {
+            lis[j].addEventListener('click', function () {
+                console.log('匿名函数', j);
+            })
+        })(i);
+    }
+
+
+    // 2. 闭包应用-3s后打印li里的内容
+    for (var i = 0; i < lis.length; i++) {
+        (function (j) {
+            setTimeout(function () {
+                console.log(lis[j].innerHTML);
+            }, 2000);
+        })(i);
+    }
+
+
+    // 3. 闭包应用-计算打车价格
+    ; var car = (function () {
+        var start = 13;
+        var total = 0;
+        return {
+            // 正常的总价
+            price: function (n) {
+                if (n <= 3) {
+                    total = start;
+                } else {
+                    total = start + (Math.ceil(n) - 3) * 5;
+                }
+                return total;
+            },
+            // 拥堵的费用
+            yd: function (n, flag) {
+                total = this.price(n);
+                return flag ? total + 10 : total;
+            }
+        }
+    })();
+    console.log(car.price(2)); // 13
+    console.log(car.price(3.5)); // 18
+
+    // 如果拥堵了
+    console.log(car.yd(2,true));    // 23
+    console.log(car.yd(3.5,true));  // 28
+    
+
+</script>

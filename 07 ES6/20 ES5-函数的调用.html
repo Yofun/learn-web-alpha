@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的调用</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 1. 普通函数
+    function fn(){}
+    fn()  // 或者  fn.call();
+
+
+    // 2. 对象的方法
+    var obj = {
+        fn: function(){}
+    }
+    obj.fn();
+
+
+    // 3. 构造函数
+    function Person(){}
+    new Person();
+
+
+    // 4. 绑定事件函数
+    document.onclick = function(){}
+    // 点击事件源就能调用
+
+
+    // 5. 定时器函数
+    // 每个x秒会自动调用
+
+
+    // 6. 立即执行函数 注意
+    // 1) 第一种写法
+    ;(function(){console.log('立即执行函数')})();
+    // 2）第二种写法
+    ;(function(){}());
+
+
+</script>

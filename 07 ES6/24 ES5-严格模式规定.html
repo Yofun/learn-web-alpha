@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    'use strict';
+
+    // 1. 变量必须先声明
+    // num = 10; // num is not defined
+
+
+    // 2. 不能删除变量
+    // var num = 10;
+    // delete num; // SyntaxError: Delete of an unqualified identifier in strict mode.
+
+
+    // 3. this 指向问题 严格模式下，全局作用域中函数this指向的是undefined
+    // function f() {
+    //     console.log(this);  // undefined
+    // }
+    // f(); // 如果未指定调用者，this为undefined
+    // window.f(); // 指定window为调用者，this指向的是window
+
+
+
+    // 4. 严格模式下，定时器中的this指向的还是window
+
+
+
+    // 5. 不允许有重名的函数参数
+
+
+
+    // 6. 不允许在非函数代码块中写函数，如if  for中
+</script>

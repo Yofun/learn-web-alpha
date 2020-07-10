@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>递归</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    /* 
+        递归：函数内部调用自己的函数叫做递归函数
+    */
+    // 递归打印数字
+    var num = 6;
+    function print() {
+        console.log(num);
+        num--;
+        if (num >= 0) {
+            print();
+        }
+    }
+
+
+    // 1. 求1~n的阶乘
+    function fact(n) {
+        return n == 1 ? 1 : n * fact(n - 1);
+    }
+    console.log(fact(5));
+
+
+    // 2. 打印斐波那契数列
+    function fb(n) {
+        if(n == 1 || n == 2){
+            return 1;
+        }
+        return fb(n - 1) + fb(n - 2);
+    }
+    console.log(fb(20));
+    
+    
+</script>
