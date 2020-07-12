@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展运算符</title>
+</head>
+
+<body>
+    <div>这是第1个div</div>
+    <div>这是第2个div</div>
+    <div>这是第3个div</div>
+    <div>这是第4个div</div>
+    <div>这是第5个div</div>
+    <div>这是第6个div</div>
+</body>
+
+</html>
+<script>
+    // 1. 扩展运算符可以将数组拆分为以逗号分隔的参数序列
+    // let arr = [1,2,3]
+    // console.log(...arr);
+    //案例-使用Math函数求最大值
+    // console.log(Math.max(...[1, 2, 3, 4, 5])); // 5
+
+
+    // 2. 扩展运算符应用
+    // 1) 数组合并
+    // let arr1 = [1, 2, 3];
+    // let arr2 = [4, 5, 6];
+    // let newArray = [...arr1, ...arr2];
+    // console.log(newArray);  // [1, 2, 3, 4, 5, 6]
+
+    // 2) 数组复制
+    // let arr = [1, 2, 3];
+    // let newArray = [...arr];
+    // console.log(newArray);  // [1, 2, 3]
+
+    // 3) push
+    // let arr1 = [1, 2, 3];
+    // let arr2 = [4, 5, 6];
+    // arr1.push(...arr2);
+    // console.log(arr1);
+
+
+
+    // 3. 可以将伪数组转换为真正的数组
+    // var divs = document.querySelectorAll('div');
+    // console.log(divs);
+    // // 转换为真数组
+    // console.log([...divs]);
+    // // 打印所有标签
+    // console.log([...divs].map(v=>v.nodeName));
+    
+    
+    
+    
+
+
+</script>

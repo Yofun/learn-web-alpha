@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剩余参数</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    // 箭头函数中，由于arguments不存在，所以有了剩余参数
+    // ES5
+    // function fn() {
+    //     console.log(arguments);
+    // }
+    // fn(1, 2, 3, 4, 5);
+
+    // ES6
+    // let fn = ()=>{
+    //     console.log(arguments); // arguments is not defined
+    // }
+    // fn(1, 2, 3, 4, 5);
+
+
+    // 剩余参数
+    // let fn = (...args)=>{
+    //     console.log(args); // 数组：[1, 2, 3, 4, 5]
+    // }
+    // fn(1, 2, 3, 4, 5);
+
+
+    // 案例：计算和
+    // let fn = (...args) => {
+    //     let sum = 0;
+    //     for (let i = 0; i < args.length; i++) {
+    //         sum += args[i];
+    //     }
+    //     return sum;
+    // }
+    // console.log(fn(10,20));
+    
+
+</script>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 1. 边界符   ^ 开头    $ 结尾
+    // var rg = /abc/;
+    // console.log(rg.test('abc')); // true
+    // console.log(rg.test('abcd')); // true
+    // console.log(rg.test('1111abc')); // true
+    // console.log(rg.test('123abcd')); // true
+
+    // var rg = /^abc/;    // 表示以abc开头
+    // console.log(rg.test('abc')); // true
+    // console.log(rg.test('abcd')); // true
+    // console.log(rg.test('1111abc')); // false
+    // console.log(rg.test('123abcd')); // false
+
+    // var rg = /abc$/;    // 表示以abc结尾
+    // console.log(rg.test('abc')); // true
+    // console.log(rg.test('abcd')); // false
+    // console.log(rg.test('1111abc')); // true
+    // console.log(rg.test('123abcd')); // false
+
+    // var rg = /^abc$/;    // 必须是abc 精确匹配
+    // console.log(rg.test('abc')); // true
+    // console.log(rg.test('abcd')); // false
+    // console.log(rg.test('1111abc')); // false
+    // console.log(rg.test('123abcd')); // false
+
+
+
+    // 2. 字符类 [] 表示有一系列字符可供选择，只要匹配其中一个就可以了
+    // var rg = /[abc]/;  // 只要有a或者b或者c就能匹配到
+    // console.log(rg.test('a')); // true
+    // console.log(rg.test('b')); // true
+    // console.log(rg.test('c')); // true
+    // console.log(rg.test('abc')); // true
+    // console.log(rg.test('hhilnna')); // true
+    // console.log(rg.test('hhhh')); // false
+    // var rg = /^[abc]$/;  // 满足的有：a、b、c
+
+    // var rg = /[a-z]/    // a~z 26个小写英文字母
+    // var rg = /[A-Z]/    // a~z 26个大写英文字母
+    // var rg = /[0-9]/    // 0~9 数字
+    // var rg = /[a-zA-Z0-9_-]/;   // 26 个大小写英文字母 + 数字 + _ -
+    // console.log(rg.test('a')); // true
+    // console.log(rg.test('A')); // true
+    // console.log(rg.test('1')); // false
+
+    // var reg = /^[^a-z]$/  // []中的^符号表示取反，不能包含
+    // console.log(reg.test('a')); // false
+    // console.log(reg.test('b')); // false
+    // console.log(reg.test('A')); //true
+    // console.log(reg.test('B')); // true
+
+
+    // 3. 量词符 用来设定某个模式出现的次数
+    // 1) * 相当于 >= 0  可以出现0次或者多次
+    // var reg = /^a*$/  // a出现0次或者多次  即 所有都匹配
+    // console.log(reg.test('')); // true
+    // console.log(reg.test('a')); // true
+    // console.log(reg.test('aaa')); // true
+
+    // 2) + 相当于 >= 1  可以出现1次或者多次
+    // var reg = /^a+$/  // a出现1次或者多次  即 所有都匹配
+    // console.log(reg.test('')); // false
+    // console.log(reg.test('a')); // true
+    // console.log(reg.test('aaa')); // true
+
+    // 3) ? 相当于 0|1  出现0次或者1次
+    // var reg = /^a?$/  // a出现1次或者多次  即 所有都匹配
+    // console.log(reg.test('')); // true
+    // console.log(reg.test('a')); // true
+    // console.log(reg.test('aaa')); // false
+
+    // 4) {3} 相当于 ==3  只出现3次
+    // var reg = /^a{3}$/  // 
+    // console.log(reg.test('')); // false
+    // console.log(reg.test('a')); // false
+    // console.log(reg.test('aaa')); // true
+    // console.log(reg.test('aaaa')); // false
+
+    // 5) {3,} 相当于 >= 3  出现3次及以上
+    // var reg = /^a{3,}$/  // 
+    // console.log(reg.test('')); // false
+    // console.log(reg.test('a')); // false
+    // console.log(reg.test('aaa')); // true
+    // console.log(reg.test('aaaa')); // true
+
+
+    // 6) {0,3} 相当于 0次~3次 
+    // var reg = /^a{0,3}$/  // 
+    // console.log(reg.test('')); // true
+    // console.log(reg.test('a')); // true
+    // console.log(reg.test('aaa')); // true
+    // console.log(reg.test('aaaa')); // false
+
+    // var reg = /^abc{3}$/; // 表示c出现3次结尾
+    // console.log(reg.test('abc')); // false
+    // console.log(reg.test('abcabcabc')); // false
+    // console.log(reg.test('abccc')); // true
+
+    // var reg = /^(abc){3}$/; // 表示c出现3次结尾
+    // console.log(reg.test('abc')); // false
+    // console.log(reg.test('abcabcabc')); // true
+    // console.log(reg.test('abccc')); // false
+
+
+
+    // 4. 预定义类
+    // 1) \d  等价于[0-9]
+    // 2) \D  等价于[^0-9] 0-9以外
+    // 3) \w  等价于[A-Za-z0-9_] 字母、数字、下划线
+    // 4) \W  等价于[^A-Za-z0-9_] 非字母、数字、下划线
+    // 5) \s  匹配空格
+    // 6) \S  匹配非空格
+
+
+</script>

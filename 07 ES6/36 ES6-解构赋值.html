@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>结构赋值</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    // 1. 数组解构。数组解构允许我们按照一一对应的关系从数组中提取值，然后将值赋值给变量
+    // 1) 变量和解构的值一一对应
+    // let [a, b, c] = [1, 2, 3];
+    // console.log(a, b, c);
+
+    // 2) 变量和解构的值不对应
+    // let [a, b, c, d, e] = [1, 2, 3];
+    // console.log(a, b, c, d, e); // d e都是undefined
+
+
+
+    // 2. 对象解构
+    // 对应
+    // let person = {
+    //     name: '刘德华',
+    //     age: 20
+    // }
+    // let { name, age } = person;
+    // console.log(name, age);
+    // 不对应
+    // let person = {
+    //     name: '刘德华',
+    //     age: 20
+    // }
+    // let { name, age, height } = person;
+    // console.log(name, age, height); // height找不到解构的值，所以height为undefined
+
+
+
+    // 3. 对象解构2
+    // let person = {
+    //     name: '刘德华',
+    //     age: 20
+    // }
+    // // 左侧表示对象的属性，右侧表示声明的变量
+    // let { name: myName, age: myAge } = person;
+    // console.log(myName, myAge);
+
+
+
+    // 4. 剩余参数结构
+    // let students = ['1','2','3','4'];
+    // let [a,...b] = students;
+    // console.log(a); // 1
+    // console.log(b); // ['2','3','4']
+    
+
+
+</script>

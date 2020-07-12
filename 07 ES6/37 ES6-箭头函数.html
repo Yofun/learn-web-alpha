@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    // ()=>{}
+
+    // 1. 箭头函数写法以及调用
+    // let fn = ()=>{
+    //     console.log(123);
+    // }
+    // // 调用
+    // fn();
+
+
+
+    // 2. 箭头函数的函数体重只有一句代码，切代码的执行结果就是返回值，那么可以省略大括号{}
+    // let sum = (n1, n2) => n1 + n2;
+    // console.log(sum(1, 2)); // 3
+
+
+
+    // 3. 箭头函数如果形参只有一个，可以省略形参的小括号
+    // let fn = v => alert(v);
+    // fn(20);
+
+
+
+    // 4. 箭头函数的this指向  箭头函数不绑定this，箭头函数没有自己的this，如果箭头函数中使用this关键字，this指向的是箭头函数定义位置中的this
+    // var obj = {
+    //     name: '刘德华'
+    // }
+    // function fn(){
+    //     console.log(this);  // obj
+    //     return ()=>{
+    //         console.log(this);  // obj
+    //     }
+    // }
+    // let resfn = fn.call(obj);
+    // resfn();
+
+
+    // var obj = {
+    //     name: '刘德华',
+    //     say: ()=> {
+    //         console.log(this);  // window
+    //     },
+    //     eat: function() {
+    //         console.log(this);  // 调用者 obj
+    //     }
+    // }
+    // obj.say();
+    // obj.eat();
+
+</script>

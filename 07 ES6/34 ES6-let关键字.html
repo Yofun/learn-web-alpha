@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let关键字</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    /* 
+        ES6之前，作用域只分为 全局作用域和局部作用域
+        ES6中，新增块级作用域，使用{}也可以被称为是作用域
+            变量在作用域中才能生效
+
+        let
+            let 声明的变量，没有变量提升
+    */
+
+    // 1. let声明的变量只能在指定的作用域中生效
+    // ES5 
+    // if (true) {
+    //     var a = '123';
+    // }
+    // if (false) {
+    //     var b = '456';
+    // }
+
+    // console.log(a);   // 可以访问到a   123
+    // console.log(b);  // undefined
+
+    // ES6
+    // if (true) {
+    //     let a = '123';
+    // }
+    // if (false) {
+    //     let b = '456';
+    // }
+    // console.log(a);  // a is not defined
+    // console.log(b);  // b is not defined
+
+
+
+    // 2. let防止循环变量变成全局变量
+    // ES5
+    // for (var i = 0; i < 5; i++) {
+    // }
+    // console.log(i); // 此时的i为5  因为循环中声明的变量会提升到作用域顶部，所以i在全局作用域中能访问到，所以在循环之外依然能访问到变量i
+
+    // ES6
+    // for (let i = 0; i < 5; i++) { }
+    // console.log(i); // i is not defined  因为i变量在for循环的作用域中才能起作用，在for循环之外是访问不到的，所以报错
+
+
+
+
+    // 3. let 声明的变量不存在变量提升
+    // ES5
+    // console.log(a); // undefined
+    // var a = '123';
+    // console.log(a); // 123
+
+
+    // ES6
+    // console.log(a); // a is not defined
+    // let a = '123';
+    // console.log(a); // 123
+
+
+
+    // 4. 暂时性死区
+    // var a = '123';
+    // if(true) {
+    //     console.log(b);
+    //     console.log(a); // a is not defined
+    //     let a = '123';
+    //     var b = '456';
+    // }
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+</script>

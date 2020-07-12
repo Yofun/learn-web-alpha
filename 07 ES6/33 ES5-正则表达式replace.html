@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式替换</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    var str = 'hdasdia123ihdhahs123kdmkas';
+
+    var reg = /123/;
+    console.log(str.replace(reg, '替换了')); // 此处只会替换第一个123
+
+
+    // 1. g  全局替换
+    var reg1 = /123/g;
+    console.log(str.replace(reg1, '替换了')); // 所有的123都会被替换
+
+
+    // 2. i  忽略大小写
+
+
+    // 3. 全局替换和忽略大小写 gi
+
+
+
+
+
+
+</script>

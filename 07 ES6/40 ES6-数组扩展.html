@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组扩展</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    /* 
+        伪数组：具有数值型索引和length属性的对象
+    */
+
+    // 1. Array.of() 使用Array.of()传入的参数，都作为数组的元素
+    // ES5 当构造函数的参数是一个数值型时，那么就相当于数组的长度
+    // let arr1 = new Array(2);
+    // console.log(arr1.length);  // 2
+    // console.log(arr1[0]);   // undefined
+    // console.log(arr1[1]);   // undefined
+    // let arr2 = new Array(2, 3);
+    // console.log(arr2.length);  // 2
+    // console.log(arr2[0]);   // 2
+    // console.log(arr2[1]);   // 3
+
+    // ES6  
+    // let arr1 = Array.of(2);
+    // console.log(arr1.length);   // 1
+    // console.log(arr1[0]); // 2
+
+
+    // 2. Array.from()  将伪数组转换为真数组
+    // let arrayLike = {
+    //     '0': 'a',
+    //     '1': 'b',
+    //     '2': 'c',
+    //     length: 3
+    // }
+    // // ES5转换
+    // console.log(Array.prototype.slice.call(arrayLike));
+    // // ES6转换
+    // console.log(Array.from(arrayLike)); //  ["a", "b", "c"]
+
+
+
+    // 3. find(函数)方法 查找数组第一个符合条件的元素，如果没有找到 返回undefined  找到了就返回
+    // let arr = [1,2,3,4];
+    // console.log(arr.find(function(value,index) {
+    //     console.log(value);
+    //     console.log(index);
+    //     return value == 2;
+    // }));
+
+
+
+    // 4. findIndex(函数) 查找第一个复合条件的索引
+    // let arr = [1, 2, 3, 4, 5];
+    // console.log(arr.findIndex(function (value, index) {
+    //     return value > 2;
+    // }));
+
+
+
+    // 5. includes(查找元素)  返回值 boolean
+    // let arr = [1, 2, 3, 4];
+    // console.log(arr.includes(2)); // true
+    // console.log(arr.includes(5)); // false
+    
+
+
+
+
+
+</script>
