@@ -136,10 +136,6 @@ HTML5
 | 行内式 | style="" | 1，0，0，0 |
 | !important | !important | +∞ |
 
-## box-shadow
-
-- 盒子阴影：水平阴影 垂直阴影 模糊距离 阴影尺寸(可省略) 阴影颜色 内/外阴影
-
 ## 浮动
 
 - 子元素浮动，会浮动在父元素的`content`中，不含`border`和`padding`
@@ -468,4 +464,49 @@ div {
 */
 ```
 
-## 
+## border-radius、box-shadow、linear-gradient
+
+border-radius
+
+```css
+div {
+    /* 四个大小一样的圆角 */
+    border-radius:10px
+
+    /* 左上角10  右上角15  右下角10  左下角5 */
+    border-radius:10px 15px 10px 5px;
+
+    /* 左上、右下10  右上、左下15 */
+    border-radius:10px 15px;
+
+    /* 左上  右上、左下  右下 */
+    border-radius:10px 15px 5px;
+
+    /* 斜杠前面的一组四个值分别表示四个角的水平半径；斜杠后面的一组四个值分别表示四个角的垂直半径 */
+    border-radius:10px 20px 30px 40px/20px 50px 30px 10px;
+}
+```
+
+box-shadow:X轴偏移量 Y轴偏移量 模糊半径 扩散半径 颜色 [inset]
+
+```css
+div {
+    /* x偏移量 | y偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+```
+
+linear-gradient()
+
+```css
+/* 渐变轴为45度，从蓝色渐变到红色 */
+linear-gradient(45deg, blue, red);
+
+/* 从右下到左上、从蓝色渐变到红色 */
+linear-gradient(to left top, blue, red);
+
+/* 从下到上，从蓝色开始渐变、到高度40%位置是绿色渐变开始、最后以红色结束 */
+linear-gradient(0deg, blue, green 40%, red);
+```
+
+
