@@ -8,32 +8,106 @@
     <title>去除图片空白缝隙</title>
 
     <style>
-
-        /**
-        解决1： 给图片设置vertical-align除了baseline的值以外的值
-        解决2： 将图片转换为 块级元素
-         */
         div {
+            width: 200px;
+            overflow: hidden;
             border: 1px solid red;
-            margin-bottom: 20px;
+            margin: 10px auto;
+        }
+        div img{
+            width: 100%;
+        }
+        p{
+            text-align: center;
         }
 
-        img {
-            width: 200px;
+
+        /* 
+            解决图片底部空白间隙的6中方法
+        */
+        /* 第一种：将图片转换为块级元素 */
+        div:nth-of-type(2) img{
+            display: block;
         }
+
+        /* 第二种：vertical-align */
+        div:nth-of-type(3) img{
+            vertical-align: middle;
+        }
+
+        /* 第三种：父级fontsize = 0 */
+        div:nth-of-type(4){
+            font-size: 0;
+        }
+
+        /* 第四种：指定父级和图片的宽高 */
+        div:nth-of-type(5){
+            width: 200px;
+            height: 250px;
+            overflow: hidden;
+        }
+        div:nth-of-type(5) img{
+            width: 200px;
+            height: 250px;
+        }
+
+        /* 第五种：给图片添加浮动 */
+        div:nth-of-type(6){
+            zoom: 1;
+        }
+        div:nth-of-type(6)::after{
+            content: '';
+            display: table;
+            height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+        div:nth-of-type(6) img{
+            float: left;
+        }
+
+        /* 第六种：设置父级行高为0 */
+        div:nth-of-type(7){
+            line-height: 0;
+        }
+
+
     </style>
 </head>
 <body>
     <div>
         <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592418283421&di=a029e8bb4d1efa18baf2a7ae19512f7b&imgtype=0&src=http%3A%2F%2Fdingyue.nosdn.127.net%2FvsmucyzC7R6yp1GDxm9saZvDPtb6FKV52Ig55TIcYkQAJ1511313754672compressflag.jpg" alt="">
     </div>
+    <p>问题：可以清楚的看到有空白间隙</p>
 
     <div>
-        <img style="vertical-align: middle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592418283421&di=a029e8bb4d1efa18baf2a7ae19512f7b&imgtype=0&src=http%3A%2F%2Fdingyue.nosdn.127.net%2FvsmucyzC7R6yp1GDxm9saZvDPtb6FKV52Ig55TIcYkQAJ1511313754672compressflag.jpg" alt="">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592418283421&di=a029e8bb4d1efa18baf2a7ae19512f7b&imgtype=0&src=http%3A%2F%2Fdingyue.nosdn.127.net%2FvsmucyzC7R6yp1GDxm9saZvDPtb6FKV52Ig55TIcYkQAJ1511313754672compressflag.jpg" alt="">
     </div>
+    <p>解决1：图片转为块级元素</p>
 
     <div>
-        <img style="display: block" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592418283421&di=a029e8bb4d1efa18baf2a7ae19512f7b&imgtype=0&src=http%3A%2F%2Fdingyue.nosdn.127.net%2FvsmucyzC7R6yp1GDxm9saZvDPtb6FKV52Ig55TIcYkQAJ1511313754672compressflag.jpg" alt="">
+        <img  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592418283421&di=a029e8bb4d1efa18baf2a7ae19512f7b&imgtype=0&src=http%3A%2F%2Fdingyue.nosdn.127.net%2FvsmucyzC7R6yp1GDxm9saZvDPtb6FKV52Ig55TIcYkQAJ1511313754672compressflag.jpg" alt="">
     </div>
+    <p>解决2：图片设置vertical-align属性</p>
+
+    <div>
+        <img  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592418283421&di=a029e8bb4d1efa18baf2a7ae19512f7b&imgtype=0&src=http%3A%2F%2Fdingyue.nosdn.127.net%2FvsmucyzC7R6yp1GDxm9saZvDPtb6FKV52Ig55TIcYkQAJ1511313754672compressflag.jpg" alt="">
+    </div>
+    <p>解决3：父级设置font-size=0</p>
+
+
+    <div>
+        <img  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592418283421&di=a029e8bb4d1efa18baf2a7ae19512f7b&imgtype=0&src=http%3A%2F%2Fdingyue.nosdn.127.net%2FvsmucyzC7R6yp1GDxm9saZvDPtb6FKV52Ig55TIcYkQAJ1511313754672compressflag.jpg" alt="">
+    </div>
+    <p>解决4：指定父级和图片的宽高，父级添加overflow属性</p>
+
+
+    <div>
+        <img  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592418283421&di=a029e8bb4d1efa18baf2a7ae19512f7b&imgtype=0&src=http%3A%2F%2Fdingyue.nosdn.127.net%2FvsmucyzC7R6yp1GDxm9saZvDPtb6FKV52Ig55TIcYkQAJ1511313754672compressflag.jpg" alt="">
+    </div>
+    <p>解决5：给图片添加浮动属性</p>
+
+    <div><img  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592418283421&di=a029e8bb4d1efa18baf2a7ae19512f7b&imgtype=0&src=http%3A%2F%2Fdingyue.nosdn.127.net%2FvsmucyzC7R6yp1GDxm9saZvDPtb6FKV52Ig55TIcYkQAJ1511313754672compressflag.jpg"></div>
+    <p>解决6：修改父级行高为0</p>
 </body>
 </html>

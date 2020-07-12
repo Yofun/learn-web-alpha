@@ -2,13 +2,13 @@
 
 ## HTML和XHTML的区别
 
-- XHTML 指的是可扩展超文本标记语言
-- XHTML 与 HTML 4.01 几乎是相同的
-- XHTML 是更严格更纯净的 HTML 版本
-- XHTML 是以 XML 应用的方式定义的 HTML
-- XHTML 是 2001 年 1 月发布的 W3C 推荐标准
-- XHTML 得到所有主流浏览器的支持
-- XHTML 元素是以 XML 格式编写的 HTML 元素。XHTML是严格版本的HTML，例如它要求标签必须小写，标签必须被正确关闭，标签顺序必须正确排列，对于属性都必须使用双引号等。
+1. 所有的标记都必须要有一个相应的结束标记
+2. 所有标签的元素和属性的名字都必须使用小写
+3. 所有的XML标记都必须合理嵌套
+4. 所有的属性必须用引号""括起来
+5. 把所有<和&特殊符号用编码表示【比如<用<代替，>用>代替等】
+6. 给所有属性赋一个值
+7. 图片必须有说明文字 【每个图片标签都必须有ALT说明文字】
 
 ## 文本格式标签
 
@@ -48,7 +48,7 @@
 
 合并单元格，设置在`th`|`td`中的属性
 - rowspan：合并行。一个列占n行
-- colspab：合并列。一个行占n列
+- colspan：合并列。一个行占n列
 
 ## 列表
 
@@ -116,7 +116,7 @@ HTML5
 - background-image：背景图片
 - background-position：背景位置
 - background-clip：背景裁剪，如设为`content-box`，只显示content这块区域的背景，裁剪只显示content区域的背景
-- background-origin：背景显示范围
+- background-origin：背景图片的显示范围
 - background-repeat：平铺
 
 ## 盒子塌陷解决办法
@@ -129,7 +129,7 @@ HTML5
 
 | 名称 | 示例 | 权重 |
 | - | - | - |
-| 通配符 | * | 0，0，0，0 |
+| 通配 | * | 0，0，0，0 |
 | 标签、伪元素 | div、::before、::after | 0，0，0，1 |
 | 类、伪类、属性、结构伪类 | .class、div:hover、div[type='']、:nth-child() | 0，0，1，0 |
 | ID | #myDiv | 0，1，0，0 |
@@ -201,6 +201,8 @@ HTML5
 - move：十字准心移动
 - text：文本
 - not-allowed：不允许，禁止
+- wait:等待
+- help:帮助
 
 
 ## 几个css技巧
@@ -223,3 +225,247 @@ overflow:hidden;
 - 设置图片的浮动属性
 - 取消图片标签和其父对象的最後一个结束标签之间的空格。
 
+
+## HTML5语义化标签
+
+- header
+- nav
+- article
+- section
+- aside
+- footer
+
+## 选择器
+
+### 通配选择器
+```css
+*{
+    padding:0;
+    margin:0;
+}
+```
+
+### 元素选择器
+
+```css
+h1 {}
+div {}
+p {}
+```
+
+### 伪元素选择器
+```css
+p::before {}
+p::after {}
+```
+注：伪元素必须要使用`content:''`才会生效。
+
+### 类选择器
+
+```css
+.clearfix {}
+.title {}
+.nav {}
+```
+
+### 属性选择器
+
+- `[class]`：含有class属性的标签
+- `[属性名^='n']`：以n开头的属性
+- `[属性值$='n']`：以n结尾的属性
+- `[属性值*='n']`：属性值包含有n的标签
+- `[属性值~='n']`：表示带有以 attr 命名的属性的元素，并且该属性是一个以空格作为分隔的值列表。如：`[class~='icon']`选中的是`class='icon icon-help'`
+
+### 伪类选择器
+```css
+/* 链接文字 */
+a:link {}
+
+/* 链接点击过后的状态 */
+a:visited {}
+
+/* 鼠标悬浮的时候 */
+a:hover {}
+
+/* 鼠标点击的状态 */
+a:active {}
+```
+
+### 结构为类选择器
+```css
+/* 第一个为div的孩子 */
+div:first-child {}
+
+/* 最后一个为div的孩子 */
+div:last-child {}
+
+/* 第n个为div的孩子 */
+div:nth-child(n) {}
+
+/* 第n个为div的孩子 */
+div:nth-of-type(n) {}
+```
+
+## 过度transition
+
+```css
+div{
+    /* 过渡属性，一般填写all */
+    transition-property: width|all;
+    /* 过渡时间 取值：s|ms*/
+    transition-duration: 1s|300ms;
+    /* 过渡延迟 */
+    transition-delay: 1s|300ms;
+    /* 过渡曲线 */
+    transition-timing-function: ease;
+
+    /* 通用写法 transition: 属性 时间 曲线 延迟 */
+    transition: all 1s ease 300ms;
+    /* 通用多个属性,多个属性使用逗号分隔 */
+    transition: width 2s ease 200ms,height 2s ease 200ms;
+}
+```
+
+## 变换transform
+```css
+div {
+    /* 多个属性用空格分隔 */
+    transform: translateX(100px) translateY(100px) translateZ(100px) translate(100px,200px) scale(0.3) scaleX(0.5) scaleY(0.5) scaleY(0.5) scale3d(0.5,0.5,0.5) rotate(30deg) rotateX(30deg) rotateY(30deg) rotateZ(30deg);
+}
+```
+
+## 动画
+```css
+div {
+    /* 动画名称 */
+    animation-name: move;
+    /* 动画时间 */
+    animation-duration: 2s;
+    /* 动画曲线 */
+    animation-timing-function: linear;
+    /* 动画延迟 */
+    animation-delay: 1s;
+    /* 动画播放次数
+        默认值为 1，如果想不断重复播放，可使用值：infinite
+    */
+    animation-iteration-count: infinite;
+    /* 动画播放方向
+            normal 正方向
+            alternate 正方向一次，反方向一次
+            reverse 反方向
+    */
+    animation-direction: alternate;
+    /* 动画保持结束
+        默认值：backwards
+        保持最后状态：forwards
+    */
+    animation-fill-mode: forwards;
+
+    /* 简写 */
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: move 2s linear 1s infinite alternate backwards;
+}
+
+div:hover {
+    /* 动画暂停 */
+    animation-play-state: paused;
+}
+
+/* 动画名称 */
+@keyframes move {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(800px, 0);
+    }
+
+    50% {
+        transform: translate(800px, 500px);
+    }
+
+    75% {
+        transform: translate(0, 500px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+```
+`animation-timing-function`也可以取值`step(n)`表示分步动画，
+
+## 3D设置
+- perspective:500 : 开启3D透视。设置此属性，会开启3D的视觉效果
+- transform-style: preserve-3d; 变换样式，让子元素保持立体空间。一般设置在父级元素上
+
+## viewport
+
+```html
+<meta name="viewport" content="width=device-width;user-scalable=no;initial-scale=1.0;minimum-scale=1.0;maximum-scale=1.0">
+```
+
+## Flex布局
+
+父级常见属性
+```css
+div {
+    display: flex;
+    width: 80%;
+    height: 800px;
+    background-color: pink;
+    /* 默认主轴方向 */
+    /* flex-direction: row; */
+    /* 主轴翻转 */
+    /* flex-direction: row-reverse; */
+    /* 改变主轴方向 */
+    /* flex-direction: column; */
+    /* flex-direction: column-reverse; */
+
+    /* 主轴子元素排列位置 */
+    /* 默认左侧对齐 */
+    /* justify-content: flex-start; */
+    /* 右侧对齐 顺序不变 */
+    /* justify-content: flex-end; */
+    /* 居中对齐 */
+    /* justify-content: center; */
+    /* 平分剩余空间 */
+    /* justify-content: space-around; */
+    /* 先两边贴边，再分配剩余的空间 */
+    /* justify-content: space-between; */
+
+    /* flex换行:默认为nowrap 不换行，会缩小子每个元素的宽度 */
+    flex-wrap: wrap;
+
+    /* 侧轴位置 */
+    /* 侧轴居中 */
+    /* align-items: center; */
+    /* 默认值 开始 */
+    /* align-items: flex-start; */
+    /* align-items: flex-end; */
+    /* 不给盒子高度，会沿着侧轴方向拉伸 */
+    /* align-items: stretch; */
+
+
+    /* 侧轴多行内容位置 */
+    align-content: flex-start;
+    align-content: flex-end;
+    align-content: center;
+    align-content: space-around;
+    align-content: space-between;
+}
+```
+
+子级常见属性
+```css
+/* 
+    子项常见属性
+        flex 子项目占的份数
+        align-self  控制子项自己在侧轴的排列顺序
+        order  属性定义子项的排列顺序
+*/
+```
+
+## 
