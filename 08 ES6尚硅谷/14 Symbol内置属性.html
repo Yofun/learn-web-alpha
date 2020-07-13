@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内置属性</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    // 1. symbol.hasInstance    当其他对象使用instanceof运算符，判断是否为该对象的实例时，会调用这个方法
+    class Person {
+        // 立即执行  相当于java中类只要一加载就会被执行
+        // 可控制检测类型检测
+        static [Symbol.hasInstance]() {
+            console.log('我被用来检测类型了');
+            return true;
+        }
+    }
+    console.log('' instanceof Person); // 如果定义返回true说明就是一样的
+
+
+    // 2. Symbol.isConcatSpreadable  属于一种布尔值，表示该对象用于Array.prototype.concat()时，是否可以展开
+    const arr1 = [1, 2, 3];
+    const arr2 = [4, 5, 6];
+    // 如果添加了这个属性, arr2就会被当做一个元素追加到arr1中
+    arr2[Symbol.isConcatSpreadable] = false;
+    console.log(arr1.concat(arr2));
+    console.log(arr1);
+    
+
+
+
+
+
+
+
+</script>

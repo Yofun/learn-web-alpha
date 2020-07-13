@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器函数实例</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 1. 1s 后控制台输出111  2s后输出222   3s后输出333
+    // function one(){
+    //     setTimeout(() => {
+    //         console.log(111);
+    //         iterator.next();
+    //     }, 1000);
+    // }
+
+    // function two(){
+    //     setTimeout(() => {
+    //         console.log(222);
+    //         iterator.next();
+    //     }, 2000);
+    // }
+
+
+    // function three(){
+    //     setTimeout(() => {
+    //         console.log(333);
+    //         iterator.next();
+    //     }, 3000);
+    // }
+
+
+    // function * gen(){
+    //     yield one();
+    //     yield two();
+    //     yield three();
+    // }
+
+    // // 调用生成器函数
+    // let iterator = gen();
+    // iterator.next();
+
+
+
+    // 2. 模拟获取  用户数据  订单数据  商品数据  （按照顺序）
+
+    function getUser() {
+        setTimeout(() => {
+            let data = '用户数据';
+            // 调用next方法，将data传入
+            iterator.next(data);
+        }, 1000);
+    }
+
+    function getOrders() {
+        setTimeout(() => {
+            let data = '订单数据';
+            iterator.next(data);
+        }, 1000);
+    }
+
+    function getGoods() {
+        setTimeout(() => {
+            let data = '商品数据';
+            iterator.next(data);
+        }, 1000);
+    }
+
+    // 生成器函数
+    function* gen() {
+        let user = yield getUser();
+        console.log(user);
+        let order = yield getOrders();
+        console.log(order);
+        let goods = yield getGoods();
+        console.log(goods);
+    }
+
+    let iterator = gen();
+    iterator.next();
+
+
+
+</script>

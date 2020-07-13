@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let 练习</title>
+</head>
+
+<body>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+</body>
+
+</html>
+<script>
+    var buttons = document.querySelectorAll('button');
+
+    // 修改点击的按钮的背景颜色
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = function() {
+            buttons[i].style.background = 'pink';
+        }
+    }
+</script>

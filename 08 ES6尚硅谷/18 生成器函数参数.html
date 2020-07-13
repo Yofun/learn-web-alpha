@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器函数参数</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    function * gen(arg) {
+        console.log(arg);
+        let one = yield 111;
+        console.log(one);
+        let two = yield 222;
+        console.log(two);
+        yield 333;
+    }
+
+    let iterator = gen('aaa');
+    console.log(iterator.next());
+    console.log(iterator.next('bbb'));
+    console.log(iterator.next('ccc'));
+    
+
+
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数参数默认值</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    // 1. 形参初始值
+    function add(a = 0, b = 0, c = 0) {
+        console.log(a + b + c);
+    }
+    add(1, 2); // 3
+
+
+
+    // 2. 与解构赋值结合
+    // function connect({ host = 'default', username = 'username', password = 'password', port = 8080 }) {
+    //     console.log(host, username, password, port);
+    // }
+
+    // connect({
+    //     host: 'localhost',
+    //     username: 'root',
+    //     password: 'root',
+    //     port: '3306'
+    // })
+</script>

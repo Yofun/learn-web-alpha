@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let声明变量</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    // 声明变量
+    let a;
+    let b,c,d;
+    let e = 100;
+    let f = 521,g = 'i love u', h = [];
+
+    // 1. 变量不能重复声明
+    // let star = '罗志祥';
+    // let star = '小猪'; // SyntaxError: Identifier 'star' has already been declared
+
+
+    // 2. 块级作用域
+    // ES5中：全局作用域、函数作用域、eval作用域（严格模式下）
+    // if else for while中也是一个单独的作用域
+    // {
+    //     let girl = '妹妹'; // 该变量只能在此作用域中能访问
+    // }
+    // console.log(girl); // ReferenceError: girl is not defined
+
+
+
+    // 3. 不存在变量提升
+    // console.log(song); // undeifined
+    // let song = '恋爱达人'
+
+
+
+    // 4. 不影响作用域链
+    {
+        let school = '学校';
+        function fn() {
+            console.log(school);  // 该作用域中没有，会向上级作用域中查找
+        }
+        fn();
+    }
+
+    
+</script>
+

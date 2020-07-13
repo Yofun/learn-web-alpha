@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义迭代器对象</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /* 
+        本来一个对象是不能进行for...of...遍历的，如果需要遍历，对象自身必须提供一个可遍历的接口，遍历的内容可以自己定义，但是要按照遍历的规范来
+    */
+    const cla = {
+        name: '终极一班',
+        students: [
+            'xiaoming',
+            'xiaohu',
+            'xiaoning',
+            'xiaotian',
+            'knight'
+        ],
+        // 自定义迭代器
+        [Symbol.iterator]() {
+            let index = 0;
+            let that = this;
+            return {
+                next: function () {
+                    if (index < that.students.length) {
+                        return { value: that.students[index++], done: false }
+                    } else {
+                        return { value: undefined, done: true }
+                    }
+                }
+            }
+        }
+    };
+
+    // 遍历这个对象
+    for (let v of cla) {
+        console.log(v);
+    }
+</script>

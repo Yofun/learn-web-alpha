@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    // ES6 允许使用箭头函数
+    // 声明一个函数
+    // let fu = function() {};
+
+    // let fun = ()=>{};
+
+
+    // 1. this 是静态的，this始终指向函数声明时所在作用域下的this的值
+    // function getName1(){
+    //     console.log(this);
+    // }
+
+    // let getName2 = ()=>{
+    //     console.log(this);
+    // }
+
+    // let obj = {
+    //     name: '刘德华'
+    // }
+
+    // // 正常调用
+    // getName1(); // window
+    // getName2(); // window
+
+    // // 改变this调用
+    // getName1.call(obj); // {name: "刘德华"}
+    // getName2.call(obj); // window
+
+
+    // 2. 不能作为构造函数实例化对象
+    // let Person = (name, age)=>{
+    //     this.age = age;
+    //     this.name = name;
+    // }
+    // let p = new Person(); // TypeError: Person is not a constructor
+
+
+
+    // 3. 不能使用arguments变量
+    // let fun = ()=>{
+    //     console.log(arguments); // ReferenceError: arguments is not defined
+    // }
+    // fun(1,2,3);
+
+
+    // 4. 箭头函数如果只有一个参数，那么参数（）可以省略
+    // let fn = v=>{
+    //     console.log(v);
+    // }
+    // fn(111);
+
+
+    // 5. 箭头函数的函数体如果就是函数的返回值，那么大括号{}也可以省略
+    // let fn = (a, b) => a+b;
+    // console.log(fn(10, 20)); // 30
+    
+
+</script>

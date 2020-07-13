@@ -25,15 +25,15 @@
 
     // 1. let声明的变量只能在指定的作用域中生效
     // ES5 
-    // if (true) {
-    //     var a = '123';
-    // }
-    // if (false) {
-    //     var b = '456';
-    // }
+    if (true) {
+        var a = '123';
+    }
+    if (false) {
+        var b = '456';
+    }
 
-    // console.log(a);   // 可以访问到a   123
-    // console.log(b);  // undefined
+    console.log(a);   // 可以访问到a   123
+    console.log(b);  // undefined
 
     // ES6
     // if (true) {

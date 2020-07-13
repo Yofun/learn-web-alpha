@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器函数</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 生成器其实就是一个特殊的函数
+    // 异步编程  纯回调函数
+
+    // yield 函数代码的分隔符
+    function * say(){
+        console.log(000);
+        console.log(111);
+        yield '一直没有耳朵';
+        console.log(222);
+        yield '一直没有眼睛';
+        console.log(333);
+        yield '正奇怪';
+        console.log(444);
+    }
+    let iterator = say(); // 生成一个迭代器对象
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+
+    console.log('============');
+    for(let v of say()){
+        console.log(v);
+    }
+    
+</script>

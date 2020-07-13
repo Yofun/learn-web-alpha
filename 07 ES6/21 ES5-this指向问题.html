@@ -73,5 +73,12 @@
     })();
 
 
+    function fn(){
+        (function(){
+            console.log(this);
+        })()
+    }
+    fn();
+
 
 </script>

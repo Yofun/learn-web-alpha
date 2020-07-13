@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据类型</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    /* 
+        Symbol
+            1) symbol 的值是惟一的，用来解决命名冲突的问题
+            2）symbol 值不能与其他数据进行计算
+            3）symbol定义的对象属性不能使用for...in...循环遍历，但是可以使用Reflect.ownKeys来获取对象的所有键名
+
+    */
+
+
+    // 1. 创建symbol
+    let s = Symbol();
+    console.log(s, typeof s);
+    let s2 = Symbol('这是一个描述性文字'); // 添加描述字符串
+    console.log(s2);
+    let s3 = Symbol.for('这厮一个试试看'); // 使用函数方式创建
+    let s4 = Symbol.for('这厮一个试试看'); // 使用函数方式创建
+    console.log(s3);
+    console.log(s3 === s4); // true  使用Symbol.for()创建的symbol对象，只要描述性信息一样，那就是同一个对象
+    console.log(Symbol.for() === Symbol.for()); // true
+    
+
+    // 2. 不能运算
+
+
+
+    // js的数据类型：string number boolean null undefined symbol object
+    // USONB
+    // u  undefined
+    // S  string symbol
+    // O  object
+    // n  null number
+    // b  boolean
+
+
+</script>

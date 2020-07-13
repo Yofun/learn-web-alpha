@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迭代器</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /* 
+        迭代器
+            迭代器是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署Iterator接口，就可以完成遍历操作
+
+        1) ES6创造了一种新的遍历命令for...of...循环，iterator接口主要供for...of消费
+        2) 原生具备iterator接口的数据有
+            Array
+            arguments
+            set
+            map
+            string
+            TypedArray
+            NodeList
+        3）工作原理
+            a) 创建一个指针对象，指向当前数据结构的起始位置
+            b) 第一次调用对象的next方法，指针自动指向数据结构的第一个成员
+            c) 接下来一直调用next方法不断指向下一个成员，直到最后一个为止
+            d) 每次调用next方法返回一个包含value和done属性的对象
+    */
+
+
+    const xiyou = ['唐僧', '孙悟空', '猪八戒', '沙僧', '白龙马'];
+
+    let iterator = xiyou[Symbol.iterator]();
+    console.log(iterator);
+
+    console.log(iterator.next());
+    
+    
+
+
+    // 使用for...of...循环
+    // for(let v of xiyou){
+    //     console.log(v);
+    // }
+
+
+</script>
