@@ -154,5 +154,44 @@ console.log(son.song());
     ```
 
 
+## 节流和防抖
+
+```js
+// 节流
+function throttle(fun, gapTime) {
+    if (typeof fun !== 'function') {
+        throw new TypeError('need a function');
+    }
+    gapTime = +gapTime || 0;
+
+    var lastTime = 0;
+    return function () {
+        var time = +new Date();
+        if (time - lastTime > gapTime) {
+            fun();
+            lastTime = time;
+        }
+    }
+}
+
+
+// 防抖
+function debounce(fun, waitTime) {
+    if (typeof fun !== 'function') {
+        throw new TypeError('need a function');
+    }
+    waitTime = +waitTime || 0;
+
+    return function () {
+        if (fun.timmerId) {
+            clearTimeout(fun.timmerId)
+        }
+        fun.timmerId = setTimeout(() => {
+            fun();
+        }, waitTime);
+    }
+}
+
+```
 
 

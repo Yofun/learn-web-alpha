@@ -12,18 +12,18 @@
 <script>
     // 1、键盘按下事件  不松开会一直触发
     document.addEventListener('keydown',function(e) {
-        console.log('键盘按下了>>>>',e);
+        console.log('键盘按下了keydown>>>>',e);
     })
 
 
-    // 2、键盘弹起事件
+    // 2、键盘弹起事件 不区分大小写
     document.addEventListener('keyup',function(e) {
-        console.log('键盘弹起了>>>>',e);
+        console.log('键盘弹起了keyup>>>>',e);
     })
 
-    // 3、键盘按下的时候触发    不能识别功能键如 ctrl shift
+    // 3、键盘按下的时候触发    不能识别功能键如 ctrl shift  区分大小写
     document.addEventListener('keypress',function(e) {
-        console.log('键盘按下了>>>>',e);
+        console.log('键盘按下了keypress>>>>',e);
     })
 
 

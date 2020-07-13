@@ -6,7 +6,7 @@
     <title>location对象</title>
 </head>
 <body>
-    
+    <button>跳转</button>
 </body>
 </html>
 
@@ -15,11 +15,36 @@
     // location.href  跳转页面
     // location.search 页面后的参数
     
-
+    var button = document.querySelector('button');
     /* 
         location的方法
             location.assign(url)    和href一样，可以跳转页面（也称为重定向页面），可以实现后退功能
             location.replace()   替换当前页面，因为不记录历史，所以不能后退页面
             location.reload(true/false)    重新加载页面，相当于刷新或者F5，如果参数设置为true，则表示强制刷新
      */
+
+    const url = 'https://www.baidu.com';
+    // 1 location.href  // 可以后退
+    // button.addEventListener('click',function() {
+    //     location.href = url;
+    // })
+
+    // 2. location.assign(url) // 可以后退
+    // button.addEventListener('click',function() {
+    //     location.assign(url);
+    // })
+
+
+    // 3. location.replace(url) // 不能后退，替换了当前网页
+    // button.addEventListener('click',function(){
+    //     location.replace(url);
+    // })
+
+
+    // 4. location.reload(true);
+    button.addEventListener('click',function(){
+        location.reload(true);
+    })
+
+
 </script>
