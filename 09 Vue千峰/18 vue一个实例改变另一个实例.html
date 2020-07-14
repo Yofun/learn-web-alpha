@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一个vue实例改变另一个vue实例</title>
+    <script src="vue2-6-11.js"></script>
+
+</head>
+<body>
+    <div id="app1">
+        <p>{{msg}}</p>
+        <p><input type="text" v-model="msg"></p>
+        <button @click="say">say()</button>
+        <button @click="clickUpdate">修改app2</button>
+    </div>
+    <div id="app2">
+        <p>{{msg}}</p>
+        <p><input type="text" v-model="msg"></p>
+        <button @click="say">say()</button>
+        <button @click="clickUpdate">修改app1</button>
+    </div>
+</body>
+</html>
+
+<script>
+    var v1 = new Vue({
+        el: '#app1',
+        data() {
+            return {
+                msg: '我是app1'
+            }
+        },
+        methods: {
+            say: function() {
+                console.log(this.msg);
+            },
+            // 点击修改app2
+            clickUpdate: function(){
+                v2.update(this.msg);
+            },
+            update:function(text) {
+                this.msg = text;
+            }
+        },
+    });
+
+    var v2 = new Vue({
+        el: '#app2',
+        data() {
+            return {
+                msg: '我是app2'
+            }
+        },
+        methods: {
+            say: function() {
+                console.log(this.msg);
+            },
+            // 点击修改app1
+            clickUpdate: function(){
+                v1.update(this.msg);
+            },
+            update:function(text) {
+                this.msg = text;
+            }
+        },
+    });
+</script>

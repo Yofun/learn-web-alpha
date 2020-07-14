@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mount使用</title>
+    <script src="vue2-6-11.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+    </div>
+</body>
+</html>
+
+<script>
+    var vue = new Vue({
+        data() {
+            return {
+                msg: 'hello world！'
+            }
+        },
+    })
+    // 使用mount绑定vue
+    vue.$mount('#app')
+</script>

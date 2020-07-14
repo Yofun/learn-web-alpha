@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue2-6-11.js"></script>
+
+
+    <style>
+        .father {
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+        }
+
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="click">点击</button>
+        <button @mouseover="mouseover">鼠标经过</button>
+        <button @mouseout="mouseout">鼠标离开 </button>
+        <button @mouseenter="mouseenter">鼠标进入enter </button>
+        <button @mouseleave="mouseleave">鼠标进入leave </button>
+
+        <br />
+        <button @click="sayHi('hello')">sayHi</button>
+        <button @click="event('hello',$event)">event</button>
+        <br />
+        <div class="father" @click="clickFather">
+            <div class="son" @click.stop="clickSon"></div>
+        </div>
+
+        <br />
+        <a href="https://www.baidu.com" @click.prevent="clickToBD">跳转到百度网页</a>
+        <button @click.left="clickLeft">鼠标左键</button>
+        <button @click.right="clickRight">鼠标右键</button>
+        <button @click.middle="clickMiddle">鼠标中键</button>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                count: 0,
+                step: 1
+            }
+        },
+        methods: {
+            // 1. 点击事件
+            click: function () {
+                console.log('鼠标点击了');
+            },
+            mouseover: function () {
+                console.log('鼠标经过了');
+            },
+            mouseout: function () {
+                console.log('鼠标离开了');
+            },
+            mouseenter: function () {
+                console.log('鼠标enter');
+            },
+            mouseleave: function () {
+                console.log('鼠标leave');
+            },
+
+
+
+            // 2. 内联处理器中的方法
+            sayHi: function (message) {
+                alert(message)
+            },
+            // 有时也需要在内联语句处理器中访问原始的 DOM 事件。可以用特殊变量 $event 把它传入方法
+            event: function (message, event) {
+                console.log(message, event);
+            },
+
+
+            // 3. 事件修饰符
+            // .stop
+            // .prevent
+            // .capture
+            // .self
+            // .once
+            // .passive
+            // 1) .stop  阻止事件冒泡。如果给孩子的事件添加了@click.stop修饰符，那么父级就不会收到传递过来的事件了
+            clickFather: function () {
+                console.log('点击了father');
+            },
+            clickSon: function () {
+                console.log('点击了Son');
+            },
+
+
+            // 2) .prevent  阻止默认事件
+            // 由于添加了.prevent修饰符，此时点击a链接时，就不会跳转到页面了
+            clickToBD: function () { 
+                console.log('跳转到百度网页');
+            },
+
+
+            // 4. 鼠标按键修饰符
+            clickLeft: function() {
+                console.log('点击了鼠标左键');
+            },
+            clickRight: function() {
+                console.log('点击了鼠标右键');
+            },
+            clickMiddle: function() {
+                console.log('点击了鼠标中键');
+            },
+
+
+        },
+    });
+</script>

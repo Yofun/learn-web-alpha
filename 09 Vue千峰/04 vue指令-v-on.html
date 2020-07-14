@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-on</title>
+    <script src="vue2-6-11.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="msg" v-on:input="onInput" v-on:click="onClick(event)" />
+        <button @click="click2">点击我</button>
+    </div>
+</body>
+
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello world'
+        },
+        methods: {
+            onInput: function (e) {
+                console.log(e);
+            },
+            onClick: function (arg) {
+                console.log(arg);
+            },
+            click2:function() {
+                alert(222)
+            }
+        },
+    });
+</script>

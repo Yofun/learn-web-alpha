@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$ref的使用</title>
+    <script src="vue2-6-11.js"></script>
+
+    <style>
+        #app div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div ref="div1"></div>
+        <button @click="fun1">按钮1</button>
+    </div>
+</body>
+</html>
+<script>
+    var vue = new Vue({
+        el: '#app',
+        data() {
+            return {
+                
+            }
+        },
+        methods: {
+            fun1:function() {
+                console.log(vue);
+                
+                // 通过vue的实例属性$refs可以获取页面中的某个元素对象
+                console.log(this.$refs.div1);
+                this.$refs.div1.innerHTML = '我是div1';
+            }
+        },
+    });
+</script>

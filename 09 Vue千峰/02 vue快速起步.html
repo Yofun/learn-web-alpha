@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue快速起步</title>
+    <script src="vue2-6-11.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        你好，年龄是{{age}}的{{name}}!
+        <br/>
+        {{sayHi()}}
+    </div>
+</body>
+
+</html>
+<script>
+    // 构造函数传入json格式的对象，里边存放键值对，在js中键没有引号，多个键值对之间，使用，分割
+    new Vue({
+        el: '#app',
+        // 数据哪里来?
+        data: {
+            name: '小明', // 以后，数据就是通过ajax请求来获得的
+            age: 18
+        },
+        methods: {
+            sayHi: function() {
+                console.log('hello vue~!');
+                return 'hello vue~!';
+            }
+        },
+    });
+</script>

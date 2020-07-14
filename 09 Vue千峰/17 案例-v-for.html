@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for的案例</title>
+    <script src="vue2-6-11.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <table border="1" cellspacing="0" cellpadding="20" align="center">
+            <caption>学生列表</caption>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>电话</th>
+            </tr>
+            <tr v-for="(user,i) in users" :key="i">
+                <td>{{i + 1}}</td>
+                <td v-for="(value,key,index) in user">{{value}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                users: [
+                    {
+                        name: '小明',
+                        age: 20,
+                        tel: '188888888'
+                    },
+                    {
+                        name: '小花',
+                        age: 18,
+                        tel: '133333333'
+                    },
+                    {
+                        name: '小红',
+                        age: 25,
+                        tel: '144444444'
+                    }
+                ]
+            }
+        },
+    });
+</script>

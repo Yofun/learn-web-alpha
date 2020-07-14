@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue的生命周期</title>
+    <script src="vue2-6-11.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    var vue = new Vue({
+        el: '#app',
+        data: {
+            msg: ''
+        },
+        beforeCreate() {
+            console.log('beforeCreate');
+        },
+        created() {
+            console.log('created');
+        },
+        beforeMount() {
+            console.log('beforeMount');
+        },
+        mounted() {
+            console.log('mounted');
+            // 改变下数据
+            this.msg = '哈哈哈';
+        },
+        beforeUpdate() {
+            console.log('beforeUpdate');
+        },
+        updated() {
+            console.log('updated');
+        },
+        activated() {
+            console.log('activated');
+        },
+        deactivated() {
+            console.log('deactivated');
+        },
+        beforeDestroy() {
+            console.log('beforeDestroy');
+        },
+        destroyed() {
+            console.log('destroyed');
+        }
+    });
+
+
+    vue.$destroy();
+</script>

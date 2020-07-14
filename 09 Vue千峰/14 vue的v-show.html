@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-show</title>
+    <script src="vue2-6-11.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <div v-if="show">我出现了if</div>
+        <div v-show="show">我出现了show</div>
+        <button @click="show=!show">点我切换</button>
+    </div>
+</body>
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                show: true
+            }
+        },
+    })
+</script>

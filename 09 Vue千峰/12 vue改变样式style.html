@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通过:style改变样式</title>
+    <script src="vue2-6-11.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div :style="{backgroundColor:'red',width:width+'px',height:height+'px'}"></div>
+        <div :style="myStyle"></div>
+        <div :style="[myStyle1,myStyle2]"></div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                width: 400,
+                height: 400,
+                myStyle1: {
+                    backgroundColor: 'green'
+                }
+            }
+        },
+        computed: {
+            myStyle: function () {
+                return {
+                    backgroundColor: 'pink',
+                    width: '200px',
+                    height: '200px'
+                }
+            },
+            myStyle2: function() {
+                return {
+                    width: '200px',
+                    height: '200px'
+                }
+            }
+        },
+    });
+</script>

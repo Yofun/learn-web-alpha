@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>改变样式</title>
+    <script src="vue2-6-11.js"></script>
+
+    <style>
+        .mydiv{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            margin: 10px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="mydiv" :class="{red: flag}"></div>
+        <div class="mydiv" :class="{yellow: flag}"></div>
+        <div class="mydiv" :class="{green: flag}"></div>
+        <div class="mydiv" :class="['red','yellow','green']"></div>
+        <div class="mydiv" :class="myclass"></div>
+
+        <div class="mydiv" :class="value"></div>
+        <input type="text" v-model="value">
+        <button @click="flag=!flag">点我切换颜色</button>
+    </div>
+</body>
+</html>
+
+<script>
+    /* 
+        1. 通过 :class="{样式1: 属性控制1, 样式2: 属性控制2}" 可以设置元素的class
+        2. 通过计算属性返回一个class对象，动态的控制class的值
+        3. :class可以接受
+     */
+
+
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                flag: true,
+                value:''
+            }
+        },
+        methods: {
+            
+        },
+        computed: {
+            myclass: function() {
+                return {
+                    red: this.flag
+                }
+            }
+        },
+    });
+</script>

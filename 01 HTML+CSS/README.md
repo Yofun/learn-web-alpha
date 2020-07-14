@@ -509,4 +509,8 @@ linear-gradient(to left top, blue, red);
 linear-gradient(0deg, blue, green 40%, red);
 ```
 
+## display:none和visibility: hidden的区别
 
+- 二者都会渲染在dom树中
+- `display: none`隐藏后不占据页面的位置，后边的元素和顶上去
+- `visibility: hidden`隐藏后依然占据着页面中的位置，后面的元素不会顶上去
