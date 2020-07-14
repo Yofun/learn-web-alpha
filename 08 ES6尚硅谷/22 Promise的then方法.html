@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise的then方法</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 创建promise
+    // const p = new Promise(function (resolve, reject) {
+    //     setTimeout(() => {
+    //         resolve('获取用户数据');
+    //         reject('出错了');
+    //     }, 1000);
+    // })
+
+
+    // 调用then方法 then方法的返回结果是promise对象，对象状态由回调函数的执行结果决定
+    // 1. 如果回调函数中返回结果是非promise类型的属性，状态为成功，返回值为对象的成功值
+
+
+    // 2. 链式调用
+    new Promise(function (resolve, reject) {
+        setTimeout(() => {
+            resolve(000);
+        }, 1000);
+    })
+        .then(res => {
+            console.log(res);
+            return new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    resolve(111);
+                }, 1000);
+            })
+        })
+        .then(res => {
+            console.log(res);
+            return new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    resolve(222);
+                }, 1000);
+            })
+        })
+        .then(res => {
+            console.log(res);
+            return new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    resolve(333);
+                }, 1000);
+            })
+        })
+        .then(res=>{
+            console.log(res);
+        });
+
+
+</script>

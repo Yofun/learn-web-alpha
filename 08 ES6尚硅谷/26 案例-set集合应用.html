@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set集合应用</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    let arr = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+
+    // 1. 数组去重 
+    console.log(new Set(arr).size);
+    console.log([...new Set(arr)]); // [1, 2, 3, 4, 5]
+
+
+    // 2. 交集
+    let arr2 = [4, 5, 6, 5, 6];
+    console.log([...new Set(arr2)].filter(function (item, index) {
+        let a = new Set(arr);
+        return a.has(item);
+    })); // [4, 5]
+
+
+    // 3. 并集 
+    console.log([...new Set([...arr, ...arr2])]); // [1, 2, 3, 4, 5, 6]
+
+    // 4. 差集
+    console.log([...new Set(arr2)].filter(function (item, index) {
+        let a = new Set(arr);
+        return !a.has(item);
+    })); // [6]
+
+
+
+    // 5. 打印手机号码出现数字的次数，按照出现次数顺序排列
+    {
+        const phone = '18738079950';
+        let result = Object.entries(phone.split('').reduce((res, key) => { res[key] = (res[key] || 0) + 1; return res; }, {})).map(v => ({ number: v[0], count: v[1] })).sort((a, b) => b.count - a.count);
+        console.log(result);
+    }
+
+
+</script>

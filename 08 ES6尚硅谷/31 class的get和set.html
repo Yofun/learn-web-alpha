@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get 和 set</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    class Phone{
+        get price(){
+            console.log('您属性被读取了');
+            return 'love';
+        }
+
+        set price(newVal){
+            console.log('属性被修改了>>>>'+newVal);
+        }
+    }
+
+
+    let s = new Phone();
+    console.log(s.price); // 如果对象的get方法有返回值，那么就返回；如果没有，则返回undefined
+    s.price = '2300';
+
+    
+</script>

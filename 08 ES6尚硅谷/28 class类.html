@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // ES5
+    // function Phone(brand, price) {
+    //     this.brand = brand;
+    //     this.price = price;
+    // }
+    // // 添加方法
+    // Phone.prototype.call = function (num) {
+    //     console.log('我正在拨打电话>>>>' + num);
+    // }
+    // let hw = new Phone('华为', 5999);
+    // hw.call(110);
+    // console.log(hw);
+
+
+
+    // ES6
+    class Phone {
+        // 构造方法，名字不能修改
+        constructor(brand, price) {
+            this.brand = brand;
+            this.price = price;
+        }
+        // 方法必须使用该语法，不能使用es5 函数声明方法
+        call(num) {
+            console.log('我正在拨打电话>>>' + num);
+        }
+    }
+
+    let op = new Phone('1加','3899');
+    op.call(120);
+    console.log(op);
+    
+
+
+
+</script>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map数据结构</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    /* 
+        Map
+            本质上是键值对的集合（Hash结构）
+    */
+
+
+    // 1. 声明一个Map
+    let m = new Map();
+    console.log(m);
+    
+
+    // 2. size属性
+    console.log(m.size); // 0
+
+
+    // 3. 新增、修改元素
+    m.set('name','刘德华');
+    m.set('age',18);
+    m.set('height',178);
+    m.set('height',180); // 后面设置一样的key则会覆盖前面的
+    console.log(m);
+
+    // 4. 删除
+    m.delete('height');
+    console.log(m);
+
+    // 5. 判断是否包含,判断键名
+    console.log(m.has('name')); // true
+    console.log(m.has('love')); // false
+
+    // 6. 根据key获取某个值
+    console.log('name=>',m.get('name'));
+    
+
+
+    // 7. 清空
+    m.clear();
+    console.log(m);
+ 
+
+</script>

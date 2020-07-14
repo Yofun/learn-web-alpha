@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发送ajax请求</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 接口地址：https://api.apiopen.top/getJoke
+    // // 1. 创建对象
+    // const xhr = new XMLHttpRequest();
+
+    // // 2. 初始化
+    // xhr.open('GET','https://api.apiopen.top/getJoke');
+
+    // // 3. 发送
+    // xhr.send();
+
+    // // 4. 绑定事件，处理响应结果
+    // xhr.onreadystatechange = function() {
+    //     if(xhr.readyState === 4) {
+    //         // 判断响应码状态
+    //         if(xhr.status >= 200 && xhr.status < 300) {
+    //             // 输出结果
+    //             console.log(xhr.response);
+    //         }else {
+    //             console.log('调用失败');
+    //         }
+    //     }
+    // }
+
+
+
+    // 使用Promise封装
+    const p = new Promise(function (resolve, reject) {
+        const xhr = new XMLHttpRequest();
+
+        // 2. 初始化
+        xhr.open('GET', 'https://api.apiopen.top/getJoke');
+
+        // 3. 发送
+        xhr.send();
+
+        // 4. 绑定事件，处理响应结果
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                // 判断响应码状态
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    // 输出结果
+                    // console.log(xhr.response);
+                    resolve(xhr.response);
+                } else {
+                    // console.log('调用失败');
+                    reject(xhr.status)
+                }
+            }
+        }
+    });
+
+    p.then(function(res) {
+        console.log(res);
+    },function(err) {
+        console.error(err);
+    })
+
+</script>

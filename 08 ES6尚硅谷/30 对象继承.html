@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象继承</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    // ES5
+    // function Father(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.say = function () {
+    //         console.log('我是>>>>' + this.name);
+    //     }
+    // }
+
+    // Father.prototype.walk = function () {
+    //     console.log('我会走路啦...');
+    // }
+
+    // function Son(name, age) {
+    //     Father.call(this, name, age);
+    //     this.name = name;
+    //     this.age = age;
+    // }
+
+    // // 设置子级构造函数原型
+    // Son.prototype = new Father;
+    // // 设置子级的构造函数指向子级
+    // Son.prototype.contrustor = Son;
+    // let son = new Son('儿子', 18);
+    // console.log(son);
+    // son.say(); // 继承了父亲的方法
+    // son.walk();
+
+
+    // ES6
+    class Phone {
+        constructor(brand, price) {
+            this.brand = brand;
+            this.price = price;
+        }
+
+        call() {
+            console.log('我可以打电话');
+        }
+    }
+
+
+    class SmartPhone extends Phone {
+        constructor(brand, price, color, size) {
+            super(brand, price);
+            this.brand = brand;
+            this.price = price;
+            this.color = color;
+            this.size = size;
+        }
+
+        self() {
+            console.log(this.brand, this.price, this.color, this.size);
+        }
+
+        call(){
+            // super.call();
+            console.log('我可以进行视频通话...');
+        }
+    }
+
+
+    let xiaomi = new SmartPhone('小米',3999,'黑色','4.7英寸');
+    console.log(xiaomi);
+    xiaomi.call()
+
+
+</script>

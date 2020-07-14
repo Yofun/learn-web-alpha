@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set数据结构</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    /* 
+        ES6提供了新的数据结构Set，它类似于数组，但是成员的值都是唯一的，没有重复的值
+    */
+
+    // 1. Set构造参数可以接收数组为参数，会自动去除数组中重复的元素
+    let arr = ['pink老师', 1, 2, 3, 3, 'pink老师'];
+    console.log(new Set(arr));
+
+    // 2. set转换数组
+    {
+        let set = new Set([1, 2, 3, 4, 4]);
+        console.log(set);
+        console.log(Array.from(set));  // 使用Array.from()
+        console.log([...set]);  // 使用扩展运算符的方式转换为数组
+    }
+
+
+    // 3. set的方法
+    {
+        let set = new Set();
+        // 1) add(元素) 新增
+        set.add(1);
+        set.add(1); // 如果重复添加，set中只有一个元素
+        set.add(2);
+        set.add(3);
+        set.add(5);
+        set.add('pink');
+        console.log(set);
+
+        // 2) delete(元素) 删除
+        console.log(set.delete('pink'));  // 找到并删除成功  返回true
+        console.log(set.delete('p'));   // 没找到并删除失败  返回false
+        console.log(set);
+
+
+        // 3) has(元素) 判断set中是否有某个值
+        console.log(set.has(1));    // 有则返回true
+        console.log(set.has(10));   // 没有则返回false
+
+
+        // 4) clear() 清除set内容
+        console.log(set.clear());   // 没有返回值，直接清空了set内容
+        console.log(set);
+
+    }
+
+
+    // 4. set遍历
+    {
+        // forEach遍历
+        let set = new Set([1, 2, 3, 46, 7, 8]);
+        set.forEach(function (value, index, set) {
+            console.log(value, set);
+        })
+    }
+
+    {
+        // for...of...遍历
+        let set = new Set([1, 2, 3, 46, 7, 8]);
+        for(let v of set) {
+            console.log(v);
+        }
+    }
+
+</script>

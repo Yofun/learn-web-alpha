@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象方法扩展</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    // 1. Object.is(arg1, arg2)  判断两个对象是否相等
+    // console.log(Object.is(1, 2)); // false
+    // console.log(Object.is(NaN, NaN)); // true   和Symbol.for()一样
+    // console.log(NaN === NaN); //false
+    // console.log(Symbol(NaN) === Symbol(NaN)); // false
+    // console.log(Symbol.for(NaN) === Symbol.for(NaN)); // true
+
+
+
+    // 2. Object.assign()  对象合并。可以实现对象浅拷贝
+
+
+
+
+    // 3. Object.setPrototypeOf 设置原型对象  、 Object.getPrototypeof
+
+    const obj = {};
+    console.log(Object.getPrototypeOf(obj)); // 获取到的是原型对象
+
+
+</script>
