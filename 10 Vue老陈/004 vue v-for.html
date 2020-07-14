@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for列表渲染</title>
+    <script src="vue2.6.11.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 循环遍历数组 -->
+        <ul>
+            <li v-for="(item,index) in stars">{{item}}</li>
+        </ul>
+
+        <!-- 循环遍历对象 -->
+        <ul>
+            <li v-for="item in students">
+                <h4>{{item.name}}</h4>
+                <p>年龄：{{item.age}}-----学校：{{item.school}}</p>
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(item,index) in students">
+                <h4>{{index}} - {{item.name}}</h4>
+                <p>年龄：{{item.age}}-----学校：{{item.school}}</p>
+            </li>
+        </ul>
+        <!-- 循环对象 -->
+        <ul>
+            <li v-for="(value, key, index) in student">
+                序号{{index}} -- 键：{{key}} -- 值：{{value}}
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                stars: ['蔡徐坤', '苏有朋', '赵薇', '范冰冰', '李晨'],
+                students: [
+                    {
+                        name: '小明',
+                        age: 16,
+                        school: '清华'
+                    },
+                    {
+                        name: '小红',
+                        age: 18,
+                        school: '北大'
+                    },
+                    {
+                        name: '小黄',
+                        age: 20,
+                        school: '华中科技大'
+                    }
+                ],
+                student: {
+                    name: '小明',
+                    age: 16,
+                    school: '清华'
+                }
+            }
+        },
+        methods: {
+
+        },
+    })
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>用户名：{{username}}</h1>
+        <h3 v-if="isVip">用户类型：VIP</h3>
+        <!-- v-if和v-else中间不能有其他的元素 -->
+        <h3 v-else>用户类型：普通用户</h3>
+
+        <h1>用户登录时间</h1>
+        <h3 v-if="age<14">允许4小时登录</h3>
+        <h3 v-else-if="age<18">允许8小时登录</h3>
+        <h3 else>允许24小时登录</h3>
+    </div>
+</body>
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                username: '小明',
+                isVip: false,
+                age: 6
+            }
+        },
+    });
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 一般情况下 -->
+        <h1>{{firstname + lastname}}</h1>
+        <h1>{{fullname}}</h1>
+
+        <input type="text" v-model="word">
+        <p>{{reverseWord}}</p>
+    </div>
+</body>
+
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                firstname: '李',
+                lastname: '四',
+                word: 'hello world'
+            }
+        },
+        computed: {
+            fullname: function () {
+                // 会将计算的结果进行缓存
+                return this.firstname + this.lastname;
+            },
+            reverseWord: {
+                set: function (val) {
+                    console.log(val);
+                },
+                get: function () {
+                    return this.word.split('').reverse().join('');
+                }
+            }
+        },
+    });
+</script>

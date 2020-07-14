@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单输入绑定</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{username}}</p>
+        <!-- 单行文本输入框 -->
+        <h1>单行文本输入框</h1>
+        <input type="text" v-model.lazy="username">
+        <h1>多行文本输入框</h1>
+        <textarea v-model="username"></textarea>
+        <h1>复选框:选择喜欢的水果</h1>
+        <label v-for="item in fruits"><input type="checkbox" name="fruit" v-model="checkFruits" :value="item">{{item}}
+        </label>
+        <br />
+        {{checkFruits}}
+
+        <h1>单选框:选择喜欢的水果</h1>
+        <label v-for="item in fruits"><input type="radio" name="zfruit" v-model="likeFruit" :value="item">{{item}}
+        </label>
+        <br />
+        {{likeFruit}}
+
+        <h1>选项框:选择你喜欢的城市？</h1>
+        <select v-model="currentCity">
+            <option v-for="item in citys" :value="item">{{item}}</option>
+        </select>
+        <br />
+        {{currentCity}}
+
+        <h1>选项框:选择你喜欢的城市？（多选）</h1>
+        <select v-model="currentCitys" multiple>
+            <option v-for="item in citys" :value="item">{{item}}</option>
+        </select>
+        <br />
+        {{currentCitys}}
+
+
+        <h1>将字符串变为数字获取</h1>
+        <input type="text" v-model.number="age">
+    </div>
+</body>
+
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                username: '小明',
+                fruits: [
+                    '苹果',
+                    '雪梨',
+                    '香蕉',
+                    '葡萄'
+                ],
+                checkFruits: [],
+                likeFruit: '',
+                citys: [
+                    '北京',
+                    '上海',
+                    '南京',
+                    '广州'
+                ],
+                currentCity: '',
+                currentCitys: [],
+                age: 21
+            }
+        },
+        watch: {
+            age:function(n,o){
+                console.log(n,o);
+                
+            }
+        },
+    });
+</script>

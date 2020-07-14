@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-html和v-text</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+<body>
+    <div id="app">
+        v-html
+        <div v-html="msg"></div>
+        v-text
+        <div v-text="msg"></div>
+    </div>
+</body>
+</html>
+
+<script>
+    new Vue({
+        el:'#app',
+        data() {
+            return {
+                msg: '<h1>Hello World！</h1>'
+            }
+        },
+    })
+</script>

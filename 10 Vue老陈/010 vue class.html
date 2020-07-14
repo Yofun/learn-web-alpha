@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:class</title>
+    <script src="vue2.6.11.js"></script>
+
+    <style>
+        .width {
+            width: 200px;
+            margin: 10px;
+        }
+
+        .height {
+            height: 200px;
+        }
+
+        .pink {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 设置对象 -->
+        <div :class="class1"></div>
+
+        <!-- 设置数组 -->
+        <div :class="class2"></div>
+
+        <!-- 数组对象混合 -->
+        <div :class="class3"></div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                class1: {
+                    width: true,
+                    height: true,
+                    pink: true
+                },
+                class2: ['width', 'height', 'pink'],
+                class3: ['width', { height: true }, { pink: true }]
+            }
+        },
+    })
+</script>

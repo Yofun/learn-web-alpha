@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件</title>
+    <script src="vue2.6.11.js"></script>
+    <style>
+        .father {
+            width: 200px;
+            height: 200px;
+            margin-top: 20px;
+            background-color: pink;
+        }
+
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>事件和传参</h1>
+        <button @click="count++">可以使用表达式{{count}}</button>
+        <button @click="click">点击获取时间对象{{count}}</button>
+        <button @click="clickSend('这是传来的参数')">事件传参</button>
+        <button @click="clickWidthEvent('这是传来的参数',$event)">事件传参(携带事件对象)</button>
+
+        <h1>事件修饰符</h1>
+        <div class="father" @click="clickFather">
+            <div class="son" @click="clickSon"></div>
+        </div>
+        <div class="father" @click="clickFather">
+            <div class="son" @click.stop="clickSon"></div>
+        </div>
+
+        <a href="https://www.baidu.com" @click.prevent>跳转不到百度</a>
+
+        <button @click.once="count++">只执行一次</button>
+
+
+        <button @click.left="console.log('鼠标左键')">鼠标左键</button>
+        <button @click.right.prevent="console.log('鼠标右键')">鼠标右键</button>
+    </div>
+</body>
+</html>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                count:0
+            }
+        },
+        methods: {
+            click:function(e){
+                console.log(e);
+                console.log(this); // this是当前vue对象
+                this.count--;
+            },
+            clickSend:function(message){
+                console.log(message);
+            },
+            clickWidthEvent:function(message,event){
+                console.log(message);
+                console.log(event);
+            },
+            clickFather: function(){
+                console.log('点击father');
+            },
+            clickSon:function(){
+                console.log('点击Son');  
+            }
+        },
+    })
+</script>
