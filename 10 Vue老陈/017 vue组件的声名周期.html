@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件中的生命周期</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="show=!show">显示、隐藏组件</button>
+
+
+        <hello-world v-if="show"></hello-world>
+        <hello-world v-show="show"></hello-world>
+
+        <!-- 防止重复渲染 -->
+        <keep-alive>
+            <hello-world v-if="show"></hello-world>
+            <hello-world v-show="show"></hello-world>
+        </keep-alive>
+    </div>
+</body>
+
+</html>
+<script>
+    let helloWorld = {
+        name: 'hello-world',
+        template: '<div><h1>{{msg}}</h1><button @click="update">修改msg</button></div>',
+        data() {
+            return {
+                msg: 'hello world'
+            }
+        },
+        methods: {
+            update: function () {
+                this.msg = '我是组件：Hello World！'
+            }
+        },
+        // 生命周期钩子函数
+        beforeCreate() {
+            console.log('beforeCreate');
+        },
+        created() {
+            console.log('created');
+        },
+        beforeMount() {
+            console.log('beforeMount');
+        },
+        mounted() {
+            console.log('mounted');
+        },
+        beforeUpdate() {
+            console.log('beforeUpdate');
+        },
+        updated() {
+            console.log('updated');
+        },
+        activated() {
+            console.log('activated');
+        },
+        deactivated() {
+            console.log('deactivated');
+        },
+        beforeDestroy() {
+            console.log('beforeDestroy');
+        },
+        destroyed() {
+            console.log('destroyed');
+        }
+    };
+
+
+    new Vue({
+        el: '#app',
+        components: {
+            'hello-world': helloWorld
+        },
+        data() {
+            return {
+                show: true
+            }
+        },
+    });
+</script>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todolist</title>
+    <link rel="stylesheet" href="animate.min.css">
+    <script src="vue2.6.11.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>TODO List</h1>
+        <h2>添加事件</h2>
+        <div>
+            <input type="text" v-model="event"><button @click="addEvent" :disabled="!event">添加事件</button>
+        </div>
+        <h2>正在进行中</h2>
+        <ul>
+            <transition-group enter-active-class="animate__animated animate__bounceInLeft" leave-active-class="animate__animated animate__backOutRight">
+                <li v-for="(item,index) in doingList" :key="item.id"><input type="checkbox"
+                        v-model="item.done">{{item.title}} <button @click="deleteItem(item.id)">删除</button></li>
+            </transition-group>
+        </ul>
+        <h2>已完成</h2>
+        <ul>
+            <li v-for="(item,index) in doneList" :key="item.id"><input type="checkbox"
+                    v-model="item.done">{{item.title}}</li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                event: '',
+                todoList: []
+            }
+        },
+        computed: {
+            // 通过过滤数据
+            doingList: function () {
+                return this.todoList.filter(item => !item.done);
+            },
+            doneList: function () {
+                return this.todoList.filter(item => item.done);
+            }
+        },
+        methods: {
+            // 新增
+            addEvent: function () {
+                let value = this.event;
+                this.todoList.unshift({ title: value, done: false, id: this.todoList.length });
+                this.event = '';
+            },
+            // 删除
+            deleteItem: function (id) {
+                // 先查找到此id在todolist中的位置
+                let index = -1;
+                for (let i = 0; i < this.todoList.length; i++) {
+                    if (this.todoList[i].id == id) {
+                        index = i;
+                        break;
+                    }
+                }
+                // 如果找到了 就在todolist中进行删除
+                if (index != -1) {
+                    this.todoList.splice(index, 1);
+                }
+            }
+        },
+    });
+</script>

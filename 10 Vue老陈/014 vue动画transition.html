@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition动画</title>
+    <link rel="stylesheet" href="animate.min.css">
+    <script src="vue2.6.11.js"></script>
+
+    <style>
+        #app div {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 10px;
+            background-color: pink;
+        }
+
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity .5s;
+        }
+
+        .fade-enter, .fade-leave-to{
+            opacity: 0;
+        }
+
+        .slide-enter-active, .slide-leave-active {
+            transition: all .5s;
+        }
+
+        .slide-enter, .slide-leave-to {
+            margin-left: -250px;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="show=!show">切换显示内容</button>
+
+        <!-- 动画类名 -->
+        <transition name="fade">
+            <div v-show="show">这是内容</div>
+        </transition>
+
+        <transition name="slide">
+            <div v-show="show">这是内容</div>
+        </transition>
+
+        <!-- 自定义动画类名 -->
+        <transition enter-active-class="animate__animated animate__backInDown" leave-active-class="animate__animated animate__backOutRight">
+            <div v-show="show">这是内容</div>
+        </transition>
+
+        <transition enter-active-class="animate__animated animate__bounceIn" leave-active-class="animate__animated animate__fadeOutDown">
+            <div v-show="show">这是内容</div>
+        </transition>
+    </div>
+</body>
+
+</html>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                show: true
+            }
+        },
+    });
+</script>

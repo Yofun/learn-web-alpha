@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤器</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="msg">
+        <p>{{msg | toUppercase}}</p>
+        <p>{{msg | toLowerCase}}</p>
+    </div>
+</body>
+</html>
+
+<script>
+
+    // 全局过滤器
+    Vue.filter('toLowerCase',function(val){
+        return val.toLowerCase();
+    });
+
+
+    new Vue({
+        el:'#app',
+        // 局部过滤器
+        filters: {
+            toUppercase:function(val){
+                return val.toUpperCase();
+            }
+        },
+        data() {
+            return {
+                msg: ''
+            }
+        },
+    });
+</script>

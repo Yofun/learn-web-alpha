@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue组件传值props</title>
+    <script src="vue2.6.11.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .movie {
+            width: 200px;
+            text-align: center;
+        }
+
+        .movie img {
+            display: block;
+            width: 100%;
+        }
+
+        .movie .title {
+            font-size: 18px;
+            color: #333;
+            margin-top: 5px;
+        }
+
+        .movie .score {
+            color: #747474;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <template id="pro">
+        <a href="javascript:;">
+            <div class="movie" v-if="proItem">
+                <img :src="proItem.post" :alt="proItem.name" :title="proItem.name">
+                <p class="title">{{proItem.name}}</p>
+                <p class="score">评分:{{proItem.score}}</p>
+            </div>
+        </a>
+    </template>
+
+    <div id="app">
+        <pro-list v-for="(item,index) in proList" :key="index" :pro-item="item"></pro-list>
+    </div>
+</body>
+
+</html>
+
+<script>
+    let proList = {
+        template: '#pro',
+        props: {
+            proItem: {
+                type: Object,
+                required: true,
+                default: undefined
+            }
+        },
+        data() {
+            return {
+            }
+        },
+    }
+
+
+    new Vue({
+        el: '#app',
+        components: {
+            proList
+        },
+        data() {
+            return {
+                proList: [
+                    {
+                        post: 'https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2591289975.jpg',
+                        name: '灰猎犬号',
+                        score: 8.3
+                    },
+                    {
+                        post: 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2603657253.jpg',
+                        name: '永生守卫',
+                        score: 6.3
+                    },
+                    {
+                        post: 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2605116792.jpg',
+                        name: '棕榈泉',
+                        score: 6.7
+                    },
+                    {
+                        post: 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2577799411.jpg',
+                        name: '假面病房',
+                        score: 6.1
+                    },
+                    {
+                        post: 'https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2581064876.jpg',
+                        name: '希望沟壑',
+                        score: 7.6
+                    }
+                ]
+            }
+        },
+    });
+</script>

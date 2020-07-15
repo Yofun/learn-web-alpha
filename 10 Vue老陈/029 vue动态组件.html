@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue动态组件</title>
+    <script src="vue2.6.11.js"></script>
+    <style>
+        .active {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button v-for="(item, index) in tabs" :key="index" :class="{active: current==index}"
+            @click="current=index">{{item.title}}</button>
+        {{tabs[current]}}
+        <div>
+            <component :is="tabs[current].template"></component>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    // 1. 声明一组组件
+    let home = {
+        template: '<div><h1>我是首页</h1></div>'
+    };
+    let news = {
+        template: '<div><h1>我是新闻</h1></div>'
+    };
+    let message = {
+        template: '<div><h1>我是消息</h1></div>'
+    };
+    let mine = {
+        template: '<div><h1>我是个人中心</h1></div>'
+    };
+
+
+    new Vue({
+        el: '#app',
+        components: {
+            home,
+            news,
+            message,
+            mine
+        },
+        data() {
+            return {
+                current: 0,
+                tabs: [
+                    {
+                        title: '首页',
+                        template: 'home'
+                    },
+                    {
+                        title: '新闻',
+                        template: 'news'
+                    },
+                    {
+                        title: '消息',
+                        template: 'message'
+                    },
+                    {
+                        title: '我的',
+                        template: 'mine'
+                    }
+                ]
+            }
+        },
+        mounted() {
+            console.log(this);
+
+        },
+    });
+</script>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件传值 $emit</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+
+<body>
+    <!-- 声明一个组件的template -->
+    <template id="hello">
+        <div>
+            <h1>我是子组件</h1>
+            <p>我是父组件传过来的值: {{ parentData }}</p>
+            <input type="text" v-model="msg" @blur="onInput">
+        </div>
+    </template>
+
+
+    <div id="app">
+        <hello :parent-data="msg" @change="onChildChange"></hello>
+        <hr>
+        <h1>我是父组件</h1>
+        <p>我是子组件传过来的值：{{ sonData }}</p>
+        <div>
+            <input type="text" v-model="msg">
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    let hello = {
+        template: '#hello',
+        data() {
+            return {
+                msg: '我是子组件信息'
+            }
+        },
+        props: ['parentData'],
+        methods: {
+            onInput: function (e) {
+                let value = e.target.value;
+                // 向父组件传递 $emit(接收的时间，值)
+                this.$emit('change',value);
+            }
+        },
+    };
+
+
+    new Vue({
+        el: '#app',
+        components: {
+            hello
+        },
+        data() {
+            return {
+                msg: '我是父组件信息',
+                sonData: ''
+            }
+        },
+        methods: {
+            onChildChange:function(value) {
+                this.sonData = value;
+            }
+        },
+    });
+</script>

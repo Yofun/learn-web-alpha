@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue 插槽的默认内容</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 当没有内容时，就会显示插槽的默认内容 -->
+        <hello></hello>
+        <!-- 当由内容时，就会显示已经有的内容 -->
+        <hello>插槽内容</hello>
+    </div>
+</body>
+
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        components: {
+            'hello': {
+                template: `
+            <div>
+                <h1>我是子组件</h1>
+                <slot>我是插槽的默认内容</slot>
+            </div>`
+            }
+        }
+    });
+</script>

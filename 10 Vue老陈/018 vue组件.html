@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue组件使用</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+
+<body>
+    <template id="myCon2">
+        <div>
+            <h1>{{msg}}</h1>
+            <button @click="click">点我</button>
+        </div>
+    </template>
+
+
+    <div id="app">
+        <my-con1></my-con1>
+        <my-con2></my-con2>
+    </div>
+</body>
+
+</html>
+
+<script>
+    let myCon1 = {
+        template: '<div><h1>{{msg}}</h1><button @click="click">点我</button></div>',
+        data() {
+            return {
+                msg: '组件1'
+            }
+        },
+        methods: {
+            click: function () {
+                alert('点击了' + this.msg);
+            }
+        },
+    }
+
+    let myCon2 = {
+        template: '#myCon2',
+        data() {
+            return {
+                msg: '组件2'
+            }
+        },
+        methods: {
+            click: function () {
+                alert('点击了' + this.msg);
+            }
+        },
+    }
+
+
+    new Vue({
+        el: '#app',
+        components:{
+            myCon1,
+            myCon2
+        }
+    });
+</script>

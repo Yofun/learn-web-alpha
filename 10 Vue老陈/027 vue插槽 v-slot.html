@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插槽v-slot的使用</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <hello>
+            <p>电影名称</p>
+            <template v-slot:image>
+                <img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2591289975.webp" alt="汤姆汉克斯" />
+            </template>
+            <template v-slot:content>
+                <h2>汤姆汉克斯</h2>
+            </template>
+            <template v-slot:description>
+                <p>影片讲述二战初期，由37支盟军船只组成的护航舰队在欧内斯特·克劳斯（汤姆·汉克斯饰）舰长率领的一艘美国驱逐舰指挥下，穿越险恶的北大西洋，同时还要与德国U型潜艇狼群的周旋。</p>
+            </template>
+        </hello>
+    </div>
+</body>
+
+</html>
+<script>
+    new Vue({
+        el: '#app',
+        components: {
+            'hello': {
+                template:
+                    `
+                <div>
+                    <h1>我是子组件</h1>
+                    <slot></slot>
+                    <slot name="image"></slot>
+                    <slot name="content"></slot>
+                    <slot name="description"></slot>
+                </div>
+                `,
+            }
+        }
+    });
+</script>

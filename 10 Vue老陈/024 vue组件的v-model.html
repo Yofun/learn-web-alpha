@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue组件的v-model</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <hello v-model="msg"></hello>
+        <h1>{{ msg }}</h1>
+    </div>
+</body>
+
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        components: {
+            'hello': {
+                template:
+                    `
+            <div>
+                <input :value="msg" @input="$emit('input',$event.target.value)" />
+            </div>
+            `,
+                props: ['msg']
+            }
+        },
+        data: {
+            msg: ''
+        }
+    });
+</script>

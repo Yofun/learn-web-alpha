@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件总线传值</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+
+<body>
+    <template id="hello">
+        <div>
+            <h1>我是子组件</h1>
+            <p>父组件中的值：{{parentData}}</p>
+            <input type="text" v-model="msg" @input='onInput'>
+        </div>
+    </template>
+
+
+    <div id="app">
+        <hello></hello>
+        <hr>
+        <h1>我是父组件</h1>
+        <p>子组件中的值：{{sonData}}</p>
+        <input type="text" v-model="msg" @input='onInput'>
+    </div>
+</body>
+
+</html>
+
+<script>
+    // 事件总线对象
+    let Event = new Vue();
+
+
+    // 子组件
+    let hello = {
+        template: '#hello',
+        data() {
+            return {
+                msg: '',
+                parentData: ''
+            }
+        },
+        methods: {
+            onInput: function (e) {
+                let value = e.target.value;
+                Event.$emit('sonEvent', value);
+            }
+        },
+        mounted() {
+            Event.$on('parentEvent', v => {
+                this.parentData = v;
+            });
+        },
+    };
+
+
+    // 挂载了el的实例
+    new Vue({
+        el: '#app',
+        components: {
+            hello
+        },
+        data() {
+            return {
+                msg: '',
+                sonData: ''
+            }
+        },
+        methods: {
+            onInput: function (e) {
+                let value = e.target.value;
+                Event.$emit('parentEvent', value);
+            }
+        },
+        mounted() {
+            Event.$on('sonEvent', v => {
+                this.sonData = v;
+            });
+        },
+    });
+</script>

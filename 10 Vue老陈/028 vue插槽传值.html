@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue插槽传值</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <hello>
+            <template v-slot:default="mySlot">
+                <!-- 这里调用的是插槽的prop -->
+                {{mySlot.content}}
+            </template>
+        </hello>
+    </div>
+</body>
+
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        components: {
+            'hello': {
+                template:
+                    `
+                <div>
+                    <h1>我是子组件</h1>
+                    <input type="text" v-model="msg" />
+                    <!-- 自定义一个prop，以供外部调用 -->
+                    <slot :content="msg"></slot>
+                </div>
+                `,
+                data() {
+                    return {
+                        msg: '我是子组件的内容'
+                    }
+                },
+            }
+        }
+    });
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标拖拽</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        div {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
+
+
+<script>
+    var div = document.querySelector('div');
+    div.onmousedown = function(e) {
+        var ev = e || window.event;
+        var l = ev.clientX - this.offsetLeft;
+        var t = ev.clientY - this.offsetTop;
+        document.onmousemove = function(e) {
+            this.style.left = e.clientX - l + 'px';
+            this.style.top = e.clientY - t + 'px';
+            
+        }.bind(this);
+
+        document.onmouseup = function() {
+            document.onmousemove = document.onmouseup = null;
+        }
+    }
+</script>

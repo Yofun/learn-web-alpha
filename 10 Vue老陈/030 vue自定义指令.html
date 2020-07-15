@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue自定义指令</title>
+    <script src="vue2.6.11.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #app div {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-drag></div>
+    </div>
+</body>
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        // 自定义指令
+        directives: {
+            upper: {
+                bind:function(el, binding, vnode) {
+                    console.log('bind');
+                },
+                inserted: function() {
+                    console.log('inserted');
+                },
+                update:function(el, binding, vnode){
+                    console.log('update',el, binding, vnode);
+                }
+            },
+            drag: {
+                bind:function(el, binding, vnode){
+                    el.onmousedown = function(e){
+                        let ev = e || window.event;
+                        let l = ev.clientX - this.offsetLeft;
+                        let t = ev.clientY - this.offsetTop;
+                        document.onmousemove = function(e){
+                            this.style.left = e.clientX - l + 'px';
+                            this.style.top = e.clientY - t + 'px';
+                        }.bind(this);
+
+                        document.onmouseup = function() {
+                            document.onmousemove = document.onmouseup = null;
+                        }
+                    }
+                }
+            }
+        },
+        data() {
+            return {
+                msg: ''
+            }
+        },
+    });
+</script>

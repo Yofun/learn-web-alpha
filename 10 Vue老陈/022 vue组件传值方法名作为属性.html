@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方法名作为属性传给子组件调用</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+
+<body>
+    <template id="hello">
+        <div>
+            <h1>我是子组件</h1>
+            <p>父组件中的值：{{parentData}}</p>
+            <input type="text" v-model="msg" @input='onInput'>
+        </div>
+    </template>
+
+
+    <div id="app">
+        <hello :parent-method="update"></hello>
+        <hr>
+        <h1>我是父组件</h1>
+        <p>子组件中的值：{{sonData}}</p>
+        <input type="text" v-model="msg" @input='onInput'>
+    </div>
+</body>
+
+</html>
+
+<script>
+    let hello = {
+        template: '#hello',
+        data() {
+            return {
+                msg: '',
+                parentData: ''
+            }
+        },
+        props: {
+            parentMethod: {
+                type: Function
+            }
+        },
+        methods: {
+            onInput: function (e) {
+                let value = e.target.value;
+                this.parentMethod(value);
+            }
+        }
+    };
+
+
+    // 挂载了el的实例
+    new Vue({
+        el: '#app',
+        components: {
+            hello
+        },
+        data() {
+            return {
+                msg: '',
+                sonData: ''
+            }
+        },
+        methods: {
+            // 传给子组件的父组件方法，在子组件中被调用
+            update:function(value) {
+                this.sonData = value;
+            }
+        }
+    });
+</script>

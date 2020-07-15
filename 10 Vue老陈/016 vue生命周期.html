@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命周期</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <button @click="msg='hello word'">修改</button>
+        <button @click="destroy">destroy</button>
+    </div>
+</body>
+</html>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                msg: ''
+            }
+        },
+        methods: {
+            destroy:function(){
+                this.$destroy();
+            }
+        },
+        beforeCreate() {
+            console.log('beforeCreate');
+            // 此时的数据和方法还未绑定到vue上
+        },
+        created() {
+            console.log('created');
+            // 此时数据和方法初始化完成，data和methods绑定到了vue上
+        },
+        beforeMount() {
+            console.log('beforeMount');
+            // 虚拟dom渲染之前
+        },
+        mounted() {
+            console.log('mounted');
+            // dom渲染完成
+        },
+        beforeUpdate() {
+            console.log('beforeUpdate');
+        },
+        updated() {
+            console.log('updated');
+        },
+        activated() {
+            console.log('activated');
+        },
+        deactivated() {
+            console.log('deactivated');
+        },
+        beforeDestroy() {
+            console.log('beforeDestroy');
+        },
+        destroyed() {
+            console.log('destroyed');
+        }
+    });
+</script>
