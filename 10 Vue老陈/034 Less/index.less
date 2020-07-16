@@ -1,0 +1,127 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+}
+
+
+
+// 1. 定义变量
+@main-color: green;
+@max-width: 960;
+
+body {
+    background-color: @main-color;
+}
+
+
+// 2. 类复用
+.border-black {
+    border: 2px solid black;
+}
+
+.bg-main {
+    background-color: pink;
+}
+
+.box1 {
+    .border-black; // 此时就会把.bg-blue类中的样式合并进来
+    .box;
+    background-color: pink;
+}
+
+
+// 3. 传参
+.box2-bg(@bgColor){
+    background-color: @bgColor;
+}
+
+.box2 {
+    // .box2-bg(@main-color); // 可以传全局变量
+    // .box2-bg(red); // 可以传浏览器自带的颜色
+    .box2-bg(#ff705e); // 可以传16为颜色值
+    .box;
+}
+
+
+// 4. 参数默认值
+.box3-bg(@bgColor:red){
+    background-color: @bgColor;
+}
+
+.box3 {
+    .box;
+    .box3-bg();
+}
+
+
+// 5. @_
+
+
+// 6. 运算
+
+.box4{
+    width: @max-width / 2px;
+    height: 100px;
+    .border-black;
+}
+
+// 7. 层级嵌套
+
+.box5 {
+    .box;
+    .bg-main;
+    h3 {
+        font-size: 20px;
+        color: white;
+    }
+}
+
+
+// 8. arguments
+.border(@width: 5px, @style: dashed,@color:black){
+    border: @arguments;
+}
+
+.box6 {
+    .box;
+    .bg-main;
+    // .border(); // 不传参数都是用默认的
+    .border(10px, solid, #333); // 不传参数都是用默认的
+}
+
+
+// 9. &元素表示同级别
+
+.box7 {
+    .box;
+    .bg-main;
+    // 此类的伪元素
+    &::after {
+        content: '我是伪元素';
+    }
+    // 此类的统计类 .small
+    &.small {
+        border-radius: 50%;
+    }
+    // 此类的伪类
+    &:hover {
+        background-color: blue;
+        color: white;
+    }
+}
+
+
+
+
+
+
+
+
+
+

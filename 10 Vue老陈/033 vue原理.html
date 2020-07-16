@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue 原理</title>
+</head>
+
+<body>
+    <div id="app">
+        {{msg}}
+        <p>{{msg}}</p>
+        <input type="text" v-model="msg">
+        <div>
+            <input type="text" v-model="msg">
+        </div>
+        <p v-html="msg"></p>
+        <button @click="click">点我</button>
+    </div>
+</body>
+
+</html>
+<script>
+    class Watcher {
+        /* 
+            vm: 实例化vue对象
+            key: 监听的属性 被观察者
+            node：绑定的html节点
+            prop：绑定的节点的属性值
+            nodeType：节点类型
+        */
+        constructor(vm, key, node, prop, nodeType) {
+            this.vm = vm;
+            this.key = key;
+            this.node = node;
+            this.prop = prop;
+            this.nodeType = nodeType;
+        }
+
+        update() {
+            this.node[this.prop] = this.vm[this.key];
+        }
+    }
+
+
+
+    class Vue {
+        constructor(options) {
+            this.$el = document.querySelector(options.el);
+            this.$options = options;
+            // 设置一个对象，专门更新订阅者
+            this.$watcherEvent = {};
+            // 代理data数据
+            this.proxyData();
+            // 订阅事件
+            this.observe();
+            // 编译，绑定订阅者
+            this.compile(this.$el);
+        }
+
+        proxyData() {
+            for (let key in this.$options.data) {
+                Object.defineProperty(this, key, {
+                    configurable: false,
+                    enumerable: true,
+                    get() {
+                        return this.$options.data[key];
+                    },
+                    set(val) {
+                        this.$options.data[key] = val;
+                    }
+                });
+            }
+        }
+
+        observe() {
+            let that = this;
+            for (let key in this.$options.data) {
+                // 获取此处value保存
+                let value = this.$options.data[key];
+
+                Object.defineProperty(this.$options.data, key, {
+                    configurable: false,
+                    enumerable: true,
+                    get() {
+                        return value;
+                    },
+                    set(val) {
+                        value = val;
+                        if (that.$watcherEvent[key]) {
+                            that.$watcherEvent[key].forEach((item, index) => {
+                                item.update();
+                            });
+                        }
+                    }
+                });
+            }
+        }
+
+        compile(node) {
+            node.childNodes.forEach((item, index) => {
+                let nodeType = item.nodeType;
+                if (nodeType == 1) {
+                    // 元素类型
+                    if (item.hasAttribute('v-html')) {
+                        let vmKey = item.getAttribute('v-html').trim();
+                        item.innerHTML = this[vmKey];
+                        let wather = new Watcher(this, vmKey, item, 'innerHTML', nodeType);
+                        if (this.$watcherEvent[vmKey]) {
+                            this.$watcherEvent[vmKey].push(wather);
+                        } else {
+                            this.$watcherEvent[vmKey] = [wather];
+                        }
+                        item.removeAttribute('v-html');
+                    }
+
+
+                    if (item.hasAttribute('v-model')) {
+                        let vmKey = item.getAttribute('v-model').trim();
+                        if (!this.hasOwnProperty(vmKey)) return;
+                        item.value = this[vmKey];
+                        let wather = new Watcher(this, vmKey, item, 'value', nodeType);
+                        if (this.$watcherEvent[vmKey]) {
+                            this.$watcherEvent[vmKey].push(wather);
+                        } else {
+                            this.$watcherEvent[vmKey] = [wather];
+                        }
+                        item.removeAttribute('v-model');
+
+                        // 绑定事件监听
+                        item.addEventListener('input', (e) => {
+                            this[vmKey] = item.value;
+                        });
+                    }
+
+                    // 判断是否有绑定事件
+                    if (item.hasAttribute('@click')) {
+                        let vmKey = item.getAttribute('@click').trim();
+                        item.addEventListener('click', (e) => {
+                            this.$options.methods[vmKey].call(this,e);
+                        })
+                    }
+
+
+                    // 判断是否还有子节点
+                    if (item.childNodes.length > 0) {
+                        this.compile(item);
+                    }
+                } else if (nodeType == 3) {
+                    // 文本类型  正则匹配
+                    let reg = /\{\{(.*?)\}\}/g;
+                    let text = item.textContent;
+
+                    item.textContent = text.replace(reg, (match, vmKey) => {
+                        vmKey = vmKey.trim();
+
+                        if (this.hasOwnProperty(vmKey)) {
+                            item.value = this[vmKey];
+                            let wather = new Watcher(this, vmKey, item, 'textContent');
+                            if (this.$watcherEvent[vmKey]) {
+                                this.$watcherEvent[vmKey].push(wather);
+                            } else {
+                                this.$watcherEvent[vmKey] = [wather];
+                            }
+                        }
+                        return this[vmKey];
+                    });
+
+                }
+            })
+        }
+    }
+</script>
+
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: {
+            name: '小明',
+            msg: 'hello world!'
+        },
+        methods: {
+            click: function () {
+                this.msg = this.name;
+            }
+        },
+    });
+
+    console.log(v);
+
+</script>

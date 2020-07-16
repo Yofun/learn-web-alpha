@@ -740,3 +740,194 @@ new Vue({
 
 ## 过滤器
 
+
+## @vue/cli
+
+`npm install -g @vue/cli`
+
+
+
+# 路由
+
+## hash和history模式
+
+hash模式url里面永远带着#号，我们在开发当中默认使用这个模式。那么什么时候要用history模式呢？如果用户考虑url的规范那么就需要使用history模式，因为history模式没有#号，是个正常的url适合推广宣传。当然其功能也有区别，比如我们在开发app的时候有分享页面，那么这个分享出去的页面就是用vue或是react做的，咱们把这个页面分享到第三方的app里，有的app里面url是不允许带有#号的，所以要将#号去除那么就要使用history模式，但是使用history模式还有一个问题就是，在访问二级页面的时候，做刷新操作，会出现404错误，那么就需要和后端人配合让他配置一下apache或是nginx的url重定向，重定向到你的首页路由上就ok啦。
+
+## 路由跳转
+
+1. `<router-link to="/bar">Go to Bar</router-link>`
+
+2. `this.$router`调用方法进行跳转
+    ```js
+    // 1. 通过名字跳转
+    this.$router.push({name: 'Me'});
+
+    // 2. 通过名字跳转携带参数
+    this.$router.push({ name: "Me", params: {name: '刘德华',age: 18} });
+
+    // 3. 通过路径跳转
+    this.$router.push({
+        path: "/news", // 同时有name和path的话，以path为主
+        name: "news",
+        params: { name: "刘德华", age: 18 }
+    });
+
+    // 3. query
+    this.$router.push({
+        path: "/news/image",
+        query: { name: "刘德华", age: 18 }
+    });
+
+    // 4. replace 替换当前页面
+    this.$router.replace({
+        path: "/news/image",
+        query: { name: "刘德华", age: 18 }
+    })
+    ```
+
+
+## 动态路由
+
+一个“路径参数”使用冒号 : 标记。当匹配到一个路由时，参数值会被设置到 this.$route.params，可以在每个组件内使用。于是，我们可以更新 User 的模板，输出当前用户的 ID：
+
+### 在path后面添加:name
+```js
+{
+    path: '/weather/:city/:price',
+    name: 'news',
+    component: () => import('../views/newsCom.vue')
+}
+```
+
+## 嵌套路由
+
+```js
+// 嵌套路由
+  {
+    path: '/news',
+    name: 'news',
+    component: news,
+    children: [
+      {
+        path: 'image',
+        name: 'image',
+        component: newsImage
+      },
+      {
+        path: 'content',
+        name: 'content',
+        component: newsContent
+      }
+    ]
+  }
+```
+
+## 命名视图
+
+有时候想同时 (同级) 展示多个视图，而不是嵌套展示，例如创建一个布局，有 sidebar (侧导航) 和 main (主内容) 两个视图，这个时候命名视图就派上用场了。你可以在界面中拥有多个单独命名的视图，而不是只有一个单独的出口。如果 router-view 没有设置名字，那么默认为 default。
+
+
+**1. 主视图页面**
+```html
+<template>
+    <div>
+        <h1>命名视图</h1>
+        <router-view name="daohang"></router-view>
+        <router-view name="cebian"></router-view>
+        <router-view></router-view>
+    </div>
+</template>
+```
+
+**2. 三个内容视图**
+
+导航栏
+```html
+<template>
+    <div>
+        <h1>我是导航</h1>
+    </div>
+</template>
+```
+侧边栏
+```html
+<template>
+    <div>
+        <h1>我是侧边栏</h1>
+    </div>
+</template>
+```
+内容
+```html
+<template>
+    <div>
+        <h1>我是内容</h1>
+    </div>
+</template>
+```
+
+**3.路由配置**
+```js
+// 命名视图
+{
+    path: '/name-router',
+    component: () => import('../views/nameRouter.vue'),
+    children: [
+    {
+        path: '',
+        components: {
+          default: () => import('@/views/name_router/main.vue'),
+          daohang: () => import('@/views/name_router/nav.vue'),
+          cebian: () => import('@/views/name_router/aside.vue')
+        }
+    }
+    ]
+}
+```
+
+
+## 重定向
+
+```js
+const router = new VueRouter({
+  routes: [
+    { path: '/a', redirect: '/b' }
+  ]
+})
+```
+
+```js
+const router = new VueRouter({
+  routes: [
+    { path: '/a', redirect: { name: 'foo' }}
+  ]
+})
+```
+
+```js
+const router = new VueRouter({
+  routes: [
+    { path: '/a', redirect: to => {
+      // 方法接收 目标路由 作为参数
+      // return 重定向的 字符串路径/路径对象
+    }}
+  ]
+})
+```
+
+
+## 404页面
+
+```js
+const router = new VueRouter({
+  routes: [
+    {
+        path: '*',
+        component: page404
+    }
+  ]
+})
+```
+
+
+# 看到P40

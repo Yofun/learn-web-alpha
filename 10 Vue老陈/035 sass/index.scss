@@ -1,0 +1,25 @@
+* {
+    padding:0;
+    margin: 0;
+}
+
+
+// 1. 变量
+$main-color: green;
+$sub-color: blue;
+$border-color: black;
+
+.box {
+    width: 200px;
+    height: 200px;
+    background-color: $sub-color;
+    border: 5px solid $border-color;
+    margin: 10px;
+}
+
+
+body {
+    background-color: $main-color;
+}
+
+
