@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>await错误处理</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+
+    // 1. 使用catch捕捉
+
+    // async function fn() {
+    //     return a;
+    // }
+    // fn()
+    // .then(res=>{
+    //     console.log(res);
+    // })
+    // // 使用catch在后边捕捉
+    // .catch(error=>{
+    //     console.log(error.message);
+
+    // })
+
+
+    // 2. 使用try...catch...
+
+    async function fn() {
+        try {
+            await new Promise((resolve, reject) => {
+                reject(new Error('出错了111'));
+            })
+
+            await new Promise((resolve, reject) => {
+                reject(new Error('出错了222'));
+            })
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+
+    fn();
+
+</script>

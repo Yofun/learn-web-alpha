@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+
+</html>
+<script>
+    /* 
+        Promise.allSettled和Promise.all方法类似，如果数组内容promise对象无论请求成功与否，都会回调fulfilled方法，
+        以数组的形式返回结果，数组中每个对象都有promise的返回结果：status
+    */
+
+
+
+    let pros = [1, 2, 3, 4, 5].map(v => {
+        if (v < 3) {
+            return Promise.reject(v);
+        }
+        return Promise.resolve(v);
+    })
+    Promise.allSettled(pros)
+    .then(values=>{
+        console.log(values);
+    });
+    
+</script>

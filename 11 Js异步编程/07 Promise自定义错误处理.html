@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise自定义错误处理</title>
+</head>
+
+<body>
+</body>
+
+</html>
+
+<script>
+    /* 
+        自定义错误处理是通过在catch方法中判断错误属于不同的类型来进行不同的操作
+    */
+
+    // 1. 定义几个错误类
+    class HttpError extends Error {
+    }
+    class ServerError extends Error {
+    }
+
+    new Promise((resolve, reject) => {
+        // reject(new HttpError('HttpError错误'));
+        reject(new ServerError('HttpError错误'));
+    })
+        .catch(error => {
+            if (error instanceof HttpError) {
+                console.log(error.message);
+            }
+            if (error instanceof ServerError) {
+                alert(error.message);
+            }
+        });
+
+
+
+</script>

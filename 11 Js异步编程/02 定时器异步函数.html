@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器异步函数</title>
+</head>
+<style>
+    div {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+    }
+</style>
+
+<body>
+    <div>
+
+    </div>
+</body>
+
+</html>
+<script>
+    function interval(callback, delay = 15) {
+        let id = setInterval(() => {
+            callback ? callback(id) : 0;
+        }, delay);
+    }
+
+    interval((timmerId) => {
+        let div = document.querySelector('div');
+        div.style.left = div.offsetLeft + 1 + 'px';
+        if(div.offsetLeft >= 200) {
+            clearInterval(timmerId);
+        }
+    });
+
+
+</script>

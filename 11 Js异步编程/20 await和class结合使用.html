@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>appear-active-class=""</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    class Progress {
+        constructor(array) {
+            this.array = array;
+        }
+
+        getData(i) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(i);
+                }, 200);
+            });
+        }
+
+
+        async progress() {
+            for (let i = 0; i < this.array.length; i++) {
+                let current = await this.getData(this.array[i]);
+                let progress = parseInt((i / (this.array.length - 1)) * 100);
+                if (current < this.array.length) {
+                    console.log('当前进度>>>>' + progress, '当前值>>>>' + current);
+                } else {
+                    console.log('加载完成>>>>' + progress, '当前值>>>>' + current);
+                }
+            }
+        }
+    }
+
+
+    new Progress([1, 2, 3, 4, 5, 6, 7, 8]).progress();
+</script>

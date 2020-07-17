@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise处理错误</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    /* 
+        promise内部会自动处理错误机制
+    */
+
+    // 1. 几种错误会自动抛出
+    // 1) 使用reject
+    // new Promise((resolve, reject) => {
+    //     reject('错误了');
+    // }).then(null, error => {
+    //     console.log(error);
+    // })
+
+    // 2) 代码出错
+    // new Promise((resolve, reject)=>{
+    //     // console.log(typeof 1/0 == NaN); // NaN
+    //     num + 1;
+    // })
+    // .then(null, error=>{
+    //     console.log('错误了',error); 
+    // })
+
+    // 3) 自己抛出错误
+    // new Promise((resolve, reject)=>{
+    //     throw new Error('error');
+    // })
+    // .then(null, error=>{
+    //     console.log('错误了',error); 
+    // });
+
+
+    // 2. 使用catch捕捉异常。
+    // catch解决了重复写过多的try...catch...代码，会自动捕获异常。
+    // 当有多个promise时，只要有一个出现错误异常，都会在catch中捕获，可以统一的捕获异常并且处理
+
+    // 1) 如果在then中已经处理了异常，就不会触发catch方法
+    // new Promise((resolve, reject) => {
+    //     reject('1111');
+    // })
+    //     .then(null, error => {
+    //         console.log('then', error);// then 1111
+
+    //     }).catch(error => {
+    //         console.log('catch', error);
+    //     });
+
+    // 2) 如果之前没有处理异常，那么就会触发catch的回调
+    // new Promise((resolve, reject) => {
+    //     reject('1');
+    // })
+    // .catch(error=>{
+    //     console.log(error);
+    // });
+
+
+
+</script>

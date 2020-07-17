@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise的setInterval封装</title>
+</head>
+<style>
+    div {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+    }
+</style>
+
+<body>
+    <div></div>
+</body>
+
+</html>
+<script>
+    
+
+
+    function interval(delay = 15, callback) {
+        return new Promise(resolve => {
+            let id = setInterval(() => {
+                callback(id, resolve);
+            }, 15);
+        })
+    }
+
+
+    var div = document.querySelector('div');
+
+    interval(15, function (id, reslove) {
+        div.style.left = div.offsetLeft + 1 + 'px';
+        if (div.offsetLeft >= 200) {
+            clearInterval(id);
+            reslove(div);
+        }
+    })
+        .then(div => {
+            return interval(15, function (id, resolve) {
+                div.style.width = div.offsetWidth - 1 + 'px';
+                if (div.offsetWidth <= 20) {
+                    clearInterval(id);
+                    resolve(div);
+                }
+            });
+        })
+        .then(div=>{
+            div.style.backgroundColor = 'red';
+        });
+</script>

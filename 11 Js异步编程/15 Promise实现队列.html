@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise实现队列</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    function queue(arr) {
+        let promise = Promise.resolve();
+        // arr.map(v => {
+        //     promise = promise.then(_ => {
+        //         return new Promise((resolve, reject) => {
+        //             setTimeout(() => {
+        //                 resolve(v);
+        //             }, 1000);
+        //         }).then(res => {
+        //             console.log(res);
+        //         });
+        //     })
+        // })
+
+        arr.forEach(v=>{
+            promise = promise.then(_=>new Promise(resolve=>{
+                setTimeout(() => {
+                    resolve(v);
+                }, 1000);
+            })).then(_=>{
+                console.log(_);
+            });
+        });
+    }
+
+
+    queue([1, 2, 3, 4, 5]);
+
+</script>

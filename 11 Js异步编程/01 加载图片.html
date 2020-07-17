@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加载图片</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function loadImage(src, resolve, reject) {
+        let img = new Image();
+        img.src = src;
+        img.onload = function() {
+            resolve(img);
+        };
+        img.onerror = function() {
+            reject('图片加载失败')
+        };
+    }
+    loadImage('https://i0.hdslb.com/bfs/archive/ab7186fec7b66f90262093eb0b7c311dde5a851b.jpg@880w_388h_1c_95q',(img) => {
+        document.body.appendChild(img);
+    },(error) => {
+        console.log(error);
+    });
+    loadImage('',(img) => {
+        document.body.appendChild(img);
+    },(error) => {
+        console.log(error);
+    });
+</script>

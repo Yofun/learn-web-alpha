@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise的then的返回值</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    // 1. then方法返回值
+    // new Promise((resolve, reject) => {
+    //     // resolve('成功');
+    //     reject('');
+    // }).then(success => {
+    //     console.log(success);
+    // }, error => {
+    //     console.log('失败');
+    // })
+    //     // 此时再添加then方法，就会触发一个默认的成功回调
+    //     .then(success => {
+    //         console.log(success); // undefined
+    //     });
+
+
+
+    // 2. then方法返回一个对象
+    // 成功
+    // new Promise((resolve, reject) => {
+    //     resolve('成功了');
+    // })
+    // .then(success=>{
+    //     console.log(success);
+    //     return '成功了了';
+    // })
+    // .then(success=>{
+    //     // 此时的参数是上个then的返回值
+    //     console.log(success);
+    // },err=>{
+    //     console.log('....'+err);
+
+    // });
+
+    // 失败
+    // new Promise((resolve, reject) => {
+    //     reject('失败了');
+    // })
+    //     .then(success => {
+    //         console.log(success);
+    //     },err=>{
+    //         console.log(err); // 失败了
+    //         return '失败了...'
+    //     })
+    //     .then(success => {
+    //         // 此时的参数是上个then的err的返回值
+    //         console.log(success); // 失败了...
+    //     });
+
+
+
+    // 3. 返回一个新的promise对象
+    // new Promise((resolve, reject)=>{
+    //     resolve('1');
+    // })
+    // .then(success=>{
+    //     console.log(success); // 1
+    //     return new Promise((resolve, reject)=>{
+    //         reject('2');
+    //     });
+    // })
+    // .then(success=>{
+    //     console.log('success',success); // 此时不会被触发  因为上一个then的返回值是一个promise对象，promise又返回了rejcet，所以会回到错误的函数
+    // },err=>{
+    //     console.log('err', err);  // 2
+
+    // });
+
+
+
+    // 4.
+    // 对象
+    // let obj = {
+    //     then(resolve, reject) {
+    //         resolve('1');
+    //     }
+    // };
+
+    // new Promise((resolve, reject) => {
+    //     resolve('2');
+    // })
+    //     .then(success => {
+    //         console.log(success); // 2
+    //         return obj;
+    //     })
+    //     .then(res => {
+    //         console.log(res); // 1
+    //         return '3'
+    //     })
+    //     .then(res => {
+    //         console.log(res); //3
+
+    //     });
+
+    // 构造函数
+    // class Person {
+    //     then(resolve, reject){
+    //         resolve(1);
+    //     }
+    // }
+
+    // new Promise((resolve, reject) => {
+    //     resolve('2');
+    // })
+    //     .then(success => {
+    //         console.log(success); // 2
+    //         return new Person();
+    //     })
+    //     .then(res => {
+    //         console.log(res); // 1
+    //         return '3'
+    //     })
+    //     .then(res => {
+    //         console.log(res); //3
+
+    //     });
+
+
+    // 构造函数静态方法
+    // new Promise((resolve, reject) => {
+    //     resolve('2');
+    // })
+    //     .then(success => {
+    //         console.log(success); // 2
+    //         // return new Person();
+    //         return class Person {
+    //             static then(resolve, reject) {
+    //                 resolve('4');
+    //             }
+    //         };
+    //     })
+    //     .then(res => {
+    //         console.log(res); // 4
+    //         return '3'
+    //     })
+    //     .then(res => {
+    //         console.log(res); //3
+
+    //     });
+
+
+
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise处理超时</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /* 
+        Promise.race方法只会执行数组中第一个返回的对象，其他promise还未返回就不会管了
+    */
+
+
+    let pros = [
+        new Promise(resolve => {
+            setTimeout(() => {
+                resolve('请求成功');
+            }, 3000);
+        }),
+
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject('请求超时......');
+            }, 2000);
+        })
+    ];
+
+    Promise.race(pros)
+        .then(success => {
+            console.log('success', success);
+        })
+        .catch(error => {
+            console.log('error', error);
+        });
+</script>
