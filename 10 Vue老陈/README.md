@@ -990,3 +990,250 @@ const Foo = {
 ## meta
 
 route的meta字段相当于一个存储数据的字段，可以在路由跳转的时候，获取到存储的数据
+
+
+
+# Vuex
+
+包含state、mutation、actions、modules
+
+
+## state
+
+### 1. 获取state内容
+
+1. 使用`this.$store.state.xxx`
+
+2. 在计算属性computed中获取
+    ```js
+    computed: {
+        name: {
+            get() {
+                return this.$store.state.name;
+            },
+            // 如果数据有变动，通过commit()去调用mutation中的方法，再通过方法去修改state中的值
+            set(val) {
+                this.$store.commit("setName",val);
+            }
+        }
+    }
+    ```
+
+3. mapState
+
+    ```js
+    // 首先需要导入mapState
+    import { mapState } from 'vuex';
+    // 在计算属性中使用
+    computed: mapState(['name','msg'])
+    ```
+
+
+4. 在计算属性中对mapState使用扩展运算符
+    ```js
+    // 首先需要导入mapState
+    import { mapState } from 'vuex';
+
+    // computed
+    computed: {
+        ...mapState(['name','age','msg']);
+    }
+    ```
+
+
+## getter
+
+getter在store中相当于组件中的计算属性comuted，可以计算复杂的state变量
+
+### 1. 引入
+引入方式和mapState一样，注意是 `mapGetters`
+```js
+import { mapGetters } from 'vuex';
+```
+
+### 2. getter不仅能声明变量，而且还能返回函数
+store
+```js
+ getters:{
+    nameReverse(state){
+      return state.name.split('').reverse().join('');
+    },
+    // 函数传参
+    msgAdd(state){
+      return function(val) {
+        state.msg = val;
+      }
+    }
+  }
+```
+使用
+```js
+computed: {
+    ...mapState(['name','msg']),
+    // 获取到getter中的属性
+    ...mapGetters(['nameReverse','msgAdd']),
+},
+methods: {
+    onInput:function(e) {
+        // 调用getter中返回的方法
+        this.msgAdd(e.target.value);
+    }
+}
+```
+
+
+## mutation
+
+修改状态，commit()的方法会触发mutation中的方法，commit触发mutation是同步的。
+
+
+### 调用mutation中的方法
+
+1. 使用`this.$store.commit('方法名',参数)`
+
+2. 在组件`methods`中进行结构
+    ```js
+    // 引入
+    import { mapMutations } from "vuex";
+
+    // 组件中结构
+    methods: {
+        ...mapMutations(['setName'])
+    }
+
+    // 然后直接在需要的时候调用getBanner方法即可
+    ```
+
+
+
+**store中**
+
+```js
+  mutations: {
+    addNum(state){
+      state.num++;
+    },
+    setName(state,val){
+      state.name = val;
+    }
+  }
+```
+
+**使用**
+```js
+// 会触发mutation中的setName方法
+this.$store.commit('setName','改变的值');
+
+// 或者如果是结构导入的，直接调用setName方法
+```
+
+
+## actions
+异步的修改state
+
+### 调用actions中的方法
+
+1. 使用`this.$store.dispatch('方法名',参数)`
+
+2. 在组件`methods`中进行结构
+    ```js
+    // 引入
+    import { mapActions } from "vuex";
+
+    // 组件中结构
+    methods: {
+        ...mapActions(['getBanner'])
+    }
+
+    // 然后直接在需要的时候调用getBanner方法即可
+    ```
+
+3. actions中的方法
+    ```js
+    actions: {
+        // 获取异步任务  方法名({commit,state},参数)
+        getBanner({ commit }, params) {
+        console.log('store中actions参数',params);
+        return new Promise((resolve, reject) => {
+            http.get('/banners')
+            .then(response => {
+                console.log(response);
+                if (response.status == 200) {
+                // 将获取的内容存储到state中
+                let arr = response.data.data;
+                commit('setBanners', arr);
+                resolve(response.data);
+                } else {
+                reject(response.status);
+                }
+            })
+            .catch(error => {
+                reject(error);
+            })
+        });
+        }
+    }
+    ```
+
+
+## modules
+
+### 新增module
+moudle定义
+
+```js
+// 一个名字为user的module
+const user = {
+  // 命名空间
+  namespaced: true,
+  state: {
+    name: '张学友',
+    age: 20
+  },
+  getters: {
+    subName(state) {
+      return state.name + '是歌神';
+    }
+  },
+  mutations: {
+    setName: function (state, val) {
+      state.name = val;
+    },
+    setAge: function (state) {
+      state.age++;
+    }
+  },
+  actions: {}
+};
+
+export default new Vuex.Store({
+    // 将module引入
+    modules: {
+        // 传入一个module，名字为user
+        user
+    }
+});
+```
+
+### 导入module中的数据
+
+1. 直接使用`this.$store.state.模块名.属性`、`this.$store.getters.模块名.属性`、`this.$store.commit.方法名('模块名/方法名',值)`和`this.$store.dispatch.方法名('模块名/方法名',值)`
+
+
+2. 使用解构的方法
+    ```js
+    // 导入
+    import {mapState, mapGetters, mapMutations, mapActions} from 'vuex';
+    // 解构
+    computed: {
+        // 在页面中直接使用 解构的值即可
+        ...mapState('模块名',['解构的值']),
+        ...mapGetters('模块名',['解构的值'])
+    },
+    methods: {
+        ...mapMutations('模块名',['方法名1','方法名2']), // 在页面中直接调用解构的方法名
+        ...mapActions('模块名',['方法名1','方法名2'])
+    }
+    ```
+
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue混入</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+
+</html>
+<script>
+
+    let options = {
+        beforeCreate() {
+            console.log('options的beforeCreate');
+        },
+        created() {
+            console.log('options的created');
+        },
+        beforeMount() {
+            console.log('options的beforeMount');
+        },
+        mounted() {
+            console.log('options的mounted');
+        }
+    }
+
+
+    new Vue({
+        el: '#app',
+        mixins: [options]
+    });
+</script>
