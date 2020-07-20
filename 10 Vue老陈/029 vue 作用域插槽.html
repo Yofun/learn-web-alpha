@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue 作用域插槽</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ msg }}
+        <hello>
+            <!-- <template v-slot:default="u"> -->
+            <template slot-scope="u">
+                <ul>
+                    <li v-for="(item,index) in u.user" :key="index">{{item}}</li>
+                </ul>
+            </template>
+        </hello>
+    </div>
+
+
+    <template id="tem">
+        <div>
+            <slot :user="user"></slot>
+        </div>
+    </template>
+</body>
+
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                msg: 'hello'
+            }
+        },
+        components: {
+            hello: {
+                template: '#tem',
+                data() {
+                    return {
+                        user: {
+                            name: '刘德华',
+                            age: 18
+                        }
+                    }
+                },
+            }
+        }
+    });
+</script>
