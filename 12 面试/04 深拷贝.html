@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深拷贝</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    var obj = {
+        name: '刘德华',
+        age: 18,
+        msg: {
+            height: 180,
+            weight: 68,
+            song: ['冰雨', '中国人'],
+            o: null
+        }
+    };
+
+
+
+    function deepCopy(obj) {
+        if(obj == null) {
+            return null;
+        }
+        if (typeof obj !== 'object') {
+            return obj;
+        }
+        let newObj = new obj.constructor;
+        for (let key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                newObj[key] = deepCopy(obj[key]);
+            }
+        }
+        return newObj;
+    }
+
+
+    console.log(deepCopy(obj));
+</script>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组扁平化2</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 使用toString()进行拆箱，但是会丢失原来的数据类型
+
+
+
+    var arr1 = [1, [2, [3, 4, 5, [6, 7, 8, [9, 10]]]]];
+
+
+    var result = arr1.toString().split(',').map(v=>+v);
+    console.log(result);
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件传值 provide/inject</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <input type="text" v-model="msg">
+        <hello></hello>
+    </div>
+
+
+    <template id="hello">
+        <div>
+            <h1>{{injections.person.name}}</h1>
+        </div>
+    </template>
+</body>
+
+</html>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                msg: '刘德华'
+            }
+        },
+        provide() {
+            return {
+                person: {
+                    name: this.msg
+                }
+            }
+        },
+        components: {
+            hello: {
+                template: '#hello',
+                inject: {
+                    person: {
+                        default: () => ({})
+                    }
+                }
+            }
+        }
+    });
+</script>

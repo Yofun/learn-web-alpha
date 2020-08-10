@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件的生命周期</title>
+    <script src="vue2.6.11.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <hello :msg="msg"></hello>
+        <hr>
+        <h1>{{msg}}</h1>
+        <input type="text" v-model="msg">
+        <button @click="clickUninstall">卸载</button>
+    </div>
+
+    <script type="x-template" id="hello">
+        <div>
+            {{msg}} 
+        </div>
+    </script>
+</body>
+
+</html>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        components: {
+            hello: {
+                template: '#hello',
+                props: ['msg'],
+                beforeCreate() {
+                    console.log('子>>>>>>beforeCreate');
+                },
+                created() {
+                    console.log('子>>>>>>created');
+                },
+                beforeMount() {
+                    console.log('子>>>>>>beforeMount');
+                },
+                mounted() {
+                    console.log('子>>>>>>mounted');
+                },
+                beforeUpdate() {
+                    console.log('子>>>>>>beforeUpdate');
+                },
+                updated() {
+                    console.log('子>>>>>>updated');
+                },
+                beforeDestroy() {
+                    console.log('子>>>>>>beforeDestroy');
+                },
+                destroyed() {
+                    console.log('子>>>>>>destroyed');
+                }
+            }
+        },
+        data() {
+            return {
+                msg: '我是父组件'
+            }
+        },
+        beforeCreate() {
+            console.log('父>>>>>>beforeCreate');
+        },
+        created() {
+            console.log('父>>>>>>created');
+        },
+        beforeMount() {
+            console.log('父>>>>>>beforeMount');
+        },
+        mounted() {
+            console.log('父>>>>>>mounted');
+        },
+        beforeUpdate() {
+            console.log('父>>>>>>beforeUpdate');
+        },
+        updated() {
+            console.log('父>>>>>>updated');
+        },
+        beforeDestroy() {
+            console.log('父>>>>>>beforeDestroy');
+        },
+        destroyed() {
+            console.log('父>>>>>>destroyed');
+        },
+        methods: {
+            clickUninstall: function() {
+                vm.$destroy();
+            }
+        },
+    });
+</script>
