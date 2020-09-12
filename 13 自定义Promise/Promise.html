@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise测试</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script src="./Promise.js"></script>
+<script>
+    new Promise((resolve, reject) => {
+        resolve('哈哈哈哈')
+    })
+    .then(value=>{
+        console.log('onResolved', value);
+    })
+
+    new Promise((resolve, reject) => {
+        throw new Error('出错了')
+    })
+    .then(value=>{
+        console.log('onResolved', value);
+    },reason=>{
+        console.log('onRejected', reason);
+    })
+
+
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('123456')
+        }, 500);
+    })
+    .then(value => {
+        console.log('onResolved  500ms', value);
+    })
+</script>
