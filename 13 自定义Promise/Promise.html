@@ -37,4 +37,17 @@
     .then(value => {
         console.log('onResolved  500ms', value);
     })
+
+
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject('123456')
+        }, 500);
+    })
+    .then(value => {
+        console.log('onResolved  500ms', value);
+    })
+    .catch(reason => {
+        console.log('onCatch  500ms', reason);
+    })
 </script>

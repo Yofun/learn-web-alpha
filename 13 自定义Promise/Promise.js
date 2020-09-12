@@ -103,6 +103,21 @@
     });
   };
 
+  /**
+   * Promise.prototype.resolve
+   */
+
+  /**
+   * Promise.prototype.reject
+   */
+
+  /**
+   * Promise.prototype.catch
+   */
+  Promise.prototype.catch = function (onResolved) {
+    return this.then(undefined, onResolved)
+  };
+
   // 将Promise挂在到window对象上
   w.Promise = Promise;
 })(window);
