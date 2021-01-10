@@ -1,0 +1,50 @@
+<!--
+ * @Author       : heyongfeng
+ * @Date         : 2021-01-10 15:40:09
+ * @Description  : 
+ * @LastEditors  : heyongfeng
+ * @LastEditTime : 2021-01-10 17:26:10
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mvvm实现</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="person.name">
+        <br>
+        <ul>
+            <li>
+                姓名：{{person.name}}----
+                信息：{{message}}
+            </li>
+            <li>年龄：{{person.age}}</li>
+            <li>身高：{{person.height}}</li>
+            <li>体重：{{person.weight}}</li>
+        </ul>
+    </div>
+</body>
+</html>
+<script src="./dep.js"></script>
+<script src="./watcher.js"></script>
+<script src="./observer.js"></script>
+<script src="./compiler.js"></script>
+<script src="./Vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            person: {
+                name: '张三',
+                age: 23,
+                height: 172,
+                weight: 56
+            },
+            message: '这是一条message'
+        }
+    })
+</script>
