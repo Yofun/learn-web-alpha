@@ -1,0 +1,62 @@
+<!--
+ * @Author       : heyongfeng
+ * @Date         : 2021-01-11 13:29:24
+ * @Description  : 
+ * @LastEditors  : heyongfeng
+ * @LastEditTime : 2021-01-11 14:57:43
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mvvm实现</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            姓名：<input type="text" v-model="user.name">
+        </div>
+        <div>
+            别名：<input type="text" v-model="user.subName">
+        </div>
+        <div>
+            年龄：<input type="text" v-model="user.age">
+        </div>
+        <div>
+            身高：<input type="text" v-model="user.height">
+        </div>
+        <div>
+            个人简介：<textarea v-model="user.des" cols="30" rows="10"></textarea>
+        </div>
+
+        <hr>
+
+        <div>
+            <div>名字：{{user.name}} ({{user.subName}})</div>
+            <div>年龄：{{user.age}}</div>
+            <div>身高：{{user.height}}</div>
+            <div>简介：{{user.des}}</div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="./dep.js"></script>
+<script src="./watcher.js"></script>
+<script src="./observer.js"></script>
+<script src="./compiler.js"></script>
+<script src="./vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            user: {
+                name: '张三',
+                subName: '小三子',
+                age: 23,
+                height: 175,
+                des: '我的个人简介'
+            }
+        }
+    })
+</script>
